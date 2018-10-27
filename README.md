@@ -10,7 +10,7 @@ If you do, please provide the _minimum_ amount of information necessary.  Please
 
 In the case of verbs, we want the computer to automatically conjugate each verb.  To the greatest extent possible, we must avoid telling the computer what the conjugation is.  We want the computer to create the conjugations for us, so that then (one day in the future) we can ask the computer to provide a conjugation for each dialect of the Sicilian language.
 
-The Perl scripts are able to conjugate a verb properly with a minimal amount of information because -- after accounting for "[boot and stem](https://www.wdowiak.me/archive/sicilian/sicilian-verbs.shtml)" patterns -- there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.  
+The Perl scripts are able to conjugate a verb properly with a minimal amount of information because -- after accounting for "[boot and stem](https://www.wdowiak.me/archive/sicilian/sicilian-verbs.shtml)" patterns -- there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.
 
 We hope that you will contribute to our project, so that we can all share a great Sicilian dictionary.
 
