@@ -32,13 +32,11 @@ Grazzii pi l'aiutu!
 ### immediate agenda
 
 * make sure that the 1000 most common words are in _Cchiù dâ Palora_
-* convert Eryk's CSS into Cademia's CSS
 
 ### long-term agenda
 
 * create a proper Perl module for verb conjugations and noun-adjective inflections
 * convert to a Modern Perl web application framework (e.g. Mojolicious)
-* transition between simple orthography and Cademia's orthography
 
 ## Sicilian dictionary specification
 
@@ -279,6 +277,7 @@ For example:
 ```
 invariant  -- scalar  -- indicator that the adjective is invariant
 femsi  -- scalar  -- feminine singular form
+plural  -- scalar  -- plural form
 may_precede  -- scalar  -- indicator that the adjective may precede the noun
 massi_precede  -- scalar  -- masculine singular form when preceding the noun
 ```
