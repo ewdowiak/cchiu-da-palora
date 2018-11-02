@@ -20,18 +20,20 @@ Grazzii pi l'aiutu!
 
 * [_Manifestu dûn Giùvini Sicilianu_](https://www.wdowiak.me/archive/sicilian/giuvini-sicilianu.shtml)
 * [_Young Sicilian Manifesto_](https://www.wdowiak.me/archive/sicilian/young-sicilian.shtml)
-* [dictionary specification](https://www.wdowiak.me/archive/sicilian/index.shtml)
-* [boot and stem theory](https://www.wdowiak.me/archive/sicilian/sicilian-verbs.shtml)
-* [bibliography](https://www.wdowiak.me/archive/sicilian/bibliography.shtml)
 * [_Dizziunariu di Dieli_](https://www.wdowiak.me/cgi-bin/sicilian.pl)
 * [_Cchiù dâ Palora_](https://www.wdowiak.me/cgi-bin/cchiu-da-palora.pl)
 * [_Aiùtami!_](https://www.wdowiak.me/cgi-bin/aiutami.pl)
+* [dictionary specification](https://www.wdowiak.me/archive/sicilian/index.shtml)
+* [boot and stem theory](https://www.wdowiak.me/archive/sicilian/sicilian-verbs.shtml)
+* [bibliography](https://www.wdowiak.me/archive/sicilian/bibliography.shtml)
 
 ## to do
 
 ### immediate agenda
 
-* make sure that the 1000 most common words are in _Cchiù dâ Palora_
+* contribute verb conjugations to Sicilian Wiktionary.  The [it-conj](https://en.wiktionary.org/wiki/Template:it-conj) module could be adapted for the purpose.
+* and contribute nouns and adjectives to Sicilian Wiktionary too
+* add poetry and proverbs to the dictionary, so that the dictionary sings the Sicilian language
 
 ### long-term agenda
 
