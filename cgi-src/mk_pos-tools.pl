@@ -136,6 +136,13 @@ sub mk_noun_plural {
 		##  lu sgangu --> li sgagni 
 		( $plural = $palora ) =~ s/nga$/gni/ ; 
 
+	    } elsif ( $palora =~ /ga$/ ) {
+		##  lu parcu --> li parchi
+		##  l'amica --> li amichi
+		( $plural = $palora ) =~ s/ga$/ghi/ ;
+		##  note:  important exceptions to this rule:
+		##  l'amicu -> l'amici
+
 	    } elsif ( $palora =~ /a$/ ) {
 		##  otherwise:  "-a" to "-i"
 		( $plural = $palora ) =~ s/a$/i/ ; 
@@ -185,6 +192,13 @@ sub mk_noun_plural {
 		##  la janga  --> li jagni 
 		##  lu sgangu --> li sgagni 
 		( $plural = $palora ) =~ s/ng[ua]$/gni/ ; 
+
+	    } elsif ( $palora =~ /g[ua]$/ ) {
+		##  lu parcu --> li parchi
+		##  lu duca --> li duchi
+		( $plural = $palora ) =~ s/g[ua]$/ghi/ ;
+		##  note:  important exceptions to this rule:
+		##  l'amicu -> l'amici
 
 	    } elsif ( $palora =~ /[au]$/ ) {
 		##  lu capu --> li capi 
@@ -264,7 +278,7 @@ my %allari = (
 %{ $vbconj{ciari} } = %allari ;
 %{ $vbconj{giari} } = %allari ;
 
-##  same throughout -IRI
+##  same throughout -IRI ... with one exception
 my %alliri = (
     inf => "iri",
     pim => {                  ds => "i"      , ts => "issi"    ,
@@ -284,9 +298,28 @@ my %alliri = (
 %{ $vbconj{xxiri} } = %alliri ;
 %{ $vbconj{xciri} } = %alliri ;
 %{ $vbconj{xgiri} } = %alliri ;
-%{ $vbconj{xhiri} } = %alliri ;
 %{ $vbconj{xsiri} } = %alliri ;
 %{ $vbconj{sciri} } = %alliri ;
+
+##  the exception
+my %xxhiri = (
+    inf => "iri",
+    pim => {                  ds => "i"      , ts => "issi"    ,
+	     up => "iemu"   , dp => "iti"    }, ## tp => "ìssiru" },
+    pai => { us => "ìi"     , ds => "isti"   , ts => "ìu"      ,   ## us => "ivi" , 
+	     up => "iemu"   , dp => "ìstivu" , tp => "eru"    },   ## up => "iemmu" , 
+    imi => { us => "ieva"   , ds => "ievi"   , ts => "ieva"    ,
+	     up => "ièvamu" , dp => "ièvavu" , tp => "ièvanu"  },
+    ims => { us => "issi"   , ds => "issi"   , ts => "issi"    ,
+	     up => "ìssimu" , dp => "ìssivu" , tp => "ìssiru" },
+    ger => "iennu" ,
+    
+    ##  imperative -- for use with reflexive pronouns
+    pimr => {                 ds => "i"      , ts => "issi"    ,
+	     up => "ièmu"   , dp => "ìti"    }, ## tp => "ìssiru" },
+    );
+%{ $vbconj{xhiri} } = %xxhiri ;
+
 
 ##  PAP -- past participle
 $vbconj{xxiri}{pap} = "utu";
@@ -321,7 +354,7 @@ my %pricigi = ( us => "u"   , ds => ""    , ts => "a"   ,
 %{ $vbconj{xgiri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
 			     up => "emu" , dp => "iti" , tp => "inu" );
 %{ $vbconj{xhiri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
-			     up => "emu" , dp => "iti" , tp => "inu" );
+			     up => "iemu", dp => "iti" , tp => "inu" );
 %{ $vbconj{xsiri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
 			     up => "emu" , dp => "iti" , tp => "inu" );
 %{ $vbconj{sciri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,

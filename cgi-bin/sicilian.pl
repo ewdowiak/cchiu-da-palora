@@ -129,8 +129,8 @@ foreach my $search (@searches) {
 	    foreach my $key (sort keys(%dieli) ) {
 		my $sch_noa = $vbsubs{rid_accents}( $search ) ;
 		my $key_noa = $vbsubs{rid_accents}( $key ) ;  
-		$key_noa =~ s/[\(\)]//g;  $key_noa =~ s/_SQUOTE_/ /g;
-		$sch_noa =~ s/[\(\)]//g;  $sch_noa =~ s/_SQUOTE_/ /g;
+		$key_noa =~ s/[\(\)]//g;  $key_noa =~ s/'/_SQUOTE_/g;
+		$sch_noa =~ s/[\(\)]//g;  $sch_noa =~ s/'/_SQUOTE_/g;
 		if ( $key_noa eq $sch_noa ) {
 		    push( @subsearches , $key ) ;
 		}
@@ -156,7 +156,7 @@ foreach my $search (@searches) {
 		my $sch_noa = $vbsubs{rid_accents}( $search ) ;
 		my $key_noa = $vbsubs{rid_accents}( $key ) ;  
 		$key_noa =~ s/[\(\)]//g;
-		$key_noa =~ s/_SQUOTE_/ /g;
+		$key_noa =~ s/'/_SQUOTE_/g;
 
 		if ( $key_noa =~ /$sch_noa/ ) {
 		    ##  found search term in key

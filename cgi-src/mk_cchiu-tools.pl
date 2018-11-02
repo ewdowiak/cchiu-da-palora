@@ -181,13 +181,23 @@ sub mk_adjhtml {
     my $massi ; my $femsi ; my $maspl ; my $fempl  ;
 
     ##  check to see if adjective is invariant (e.g. "la megghiu cosa") or only feminine changes (e.g. "giuvini, giuvina")
-    if ( ! defined $vnotes{$palora}{adj}{invariant} && ! defined $vnotes{$palora}{adj}{femsi} ) {
+    if ( ! defined $vnotes{$palora}{adj}{invariant} && 
+	 ! defined $vnotes{$palora}{adj}{femsi} && 
+	 ! defined $vnotes{$palora}{adj}{plural} ) {
+	##  not invariant, regular femsi and regular plural
 	($massi , $femsi , $maspl , $fempl) = $vbsubs{mk_adjectives}($display) ;
-    } else {
+    } elsif ( ! defined $vnotes{$palora}{adj}{plural} ) {
+	##  either invariant or only fem form changes
 	$massi = $display  ;  
-	$femsi = ( ! defined $vnotes{$palora}{adj}{femsi} ) ? $display : $vnotes{$palora}{adj}{femsi} ;
-	$maspl = $display  ;  
-	$fempl = $display  ;
+	$femsi = ( ! defined $vnotes{$palora}{adj}{femsi}  ) ? $display : $vnotes{$palora}{adj}{femsi} ;
+	$maspl = $display ;
+	$fempl = $display ;
+    } else {
+	##  plural is special
+	($massi , $femsi , $maspl , $fempl) = $vbsubs{mk_adjectives}($display) ;
+	$femsi = ( ! defined $vnotes{$palora}{adj}{femsi}  ) ? $femsi : $vnotes{$palora}{adj}{femsi} ;
+	$maspl = ( ! defined $vnotes{$palora}{adj}{plural} ) ? $maspl : $vnotes{$palora}{adj}{plural};
+	$fempl = ( ! defined $vnotes{$palora}{adj}{plural} ) ? $fempl : $vnotes{$palora}{adj}{plural};
     }
 
     ##  make note of masculine singular forms that precedes the noun (if any)
@@ -421,12 +431,16 @@ sub mk_dielitrans {
     my $dieli_en_str = join( ', ' , @dieli_en_links ); 
     my $dieli_it_str = join( ', ' , @dieli_it_links ); 
     
-    $ot .= '<p style="margin-top: 0em; margin-bottom: 0em;"><b>EN:</b> &nbsp; ' . $dieli_en_str . '</p>' . "\n" ; 
-    $ot .= '<p style="margin-top: 0em; margin-bottom: 0em;"><b>IT:</b> &nbsp; ' . $dieli_it_str . '</p>' . "\n" ; 
-
-    ##  only show Dieli list if more than one
+    ##  only show Sicilian list if more than one
     if ( $#dieli_sc_links > 0 ) {
-	$ot .= '<p style="margin-top: 0.5em; margin-bottom: 0em;"><i>Dieli:</i> &nbsp; ' . $dieli_sc_str . '</p>' . "\n" ;
+	$ot .= '<p style="margin-top: 0em; margin-bottom: 0em;"><b>SC:</b> &nbsp; ' . $dieli_sc_str . '</p>' . "\n" ;
+    }
+    ##  always show English list
+    $ot .= '<p style="margin-top: 0em; margin-bottom: 0em;"><b>EN:</b> &nbsp; ' . $dieli_en_str . '</p>' . "\n" ; 
+    #
+    ##  only show Italian list if more than zero
+    if ( $#dieli_it_links > -1 ) {
+	$ot .= '<p style="margin-top: 0em; margin-bottom: 0em;"><b>IT:</b> &nbsp; ' . $dieli_it_str . '</p>' . "\n" ; 
     }
     
     $ot .= '</div>' . "\n" ;
@@ -513,7 +527,7 @@ sub mk_showall {
     ##  scalars to adjust length of columns (for appearances)
     my $adjustone =  $_[4] ;
     my $adjusttwo =  $_[5] ;
-    my $adjusttre =  $_[5] ;
+    my $adjusttre =  $_[6] ;
     
     ##  let's split the print over four columns
     ##  keep words together by first letter
@@ -690,8 +704,21 @@ sub mk_cctophtml {
     $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-bklyn.css">' . "\n" ;
     $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_widenme.css">' . "\n" ;
     $ottxt .= '    <link rel="icon" type="image/png" href="/config/eryk-icon.png">' . "\n" ;
+    $ottxt .= "\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="SC-EN Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_sc-en.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="SC-IT Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_sc-it.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="EN-SC Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_en-sc.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="IT-SC Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_it-sc.xml">'."\n";
+    $ottxt .= "\n";
     $ottxt .= '    <meta name="viewport" content="width=device-width, initial-scale=1">' . "\n" ;
-
     ##  extra CSS
     $ottxt .= '    <style>' . "\n" ;
 
@@ -915,6 +942,20 @@ sub mk_ddtophtml {
     $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-bklyn.css">' . "\n" ;
     $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_widenme.css">' . "\n" ;
     $ottxt .= '    <link rel="icon" type="image/png" href="/config/eryk-icon.png">' . "\n" ;
+    $ottxt .= "\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="SC-EN Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_sc-en.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="SC-IT Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_sc-it.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="EN-SC Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_en-sc.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="IT-SC Dieli Dictionary"'."\n";
+    $ottxt .= '          href="https://www.wdowiak.me/archive/sicilian/search/dieli_it-sc.xml">'."\n";
+    $ottxt .= "\n";
     $ottxt .= '    <meta name="viewport" content="width=device-width, initial-scale=1">' . "\n" ;
     $ottxt .= '    <style>' . "\n" ;
     $ottxt .= '    p.zero { margin-top: 0em; margin-bottom: 0em; }' . "\n" ;
@@ -1060,7 +1101,7 @@ sub mk_foothtml {
     $othtml .= '      <li style="margin-bottom: 0.5em;"><a href="/archive/sicilian/bibliography.shtml">bibliography</a></li>'."\n";
     $othtml .= '      <li><i><a href="/archive/sicilian/giuvini-sicilianu.shtml">Manifestu dûn Giùvini Sicilianu</a></i></li>'."\n";
     $othtml .= '      <li style="margin-bottom: 0.5em;"><i><a href="/archive/sicilian/young-sicilian.shtml">Young Sicilian Manifesto</a></i></li>'."\n";
-    $othtml .= '      <li><a href="https://github.com/cademia/cchiu-da-palora" target="_blank">source code</a> <small>(GitHub)</small></li>'."\n";
+    $othtml .= '      <li><a href="https://github.com/ewdowiak/cchiu-da-palora" target="_blank">source code</a> <small>(GitHub)</small></li>'."\n";
     $othtml .= '    </ul>'."\n";
     $othtml .= '  </div>'."\n";
     $othtml .= '  <div class="col-t-2"></div>'."\n";
@@ -1069,7 +1110,7 @@ sub mk_foothtml {
     $othtml .= '    <ul style="margin-top: 0em; margin-bottom: 0em; padding-left: 25px;">'."\n";
     $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.arbasicula.org/" target="_blank">Arba Sicula</a></li>'."\n";
     $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.dieli.net/" target="_blank">Arthur Dieli</a></li>'."\n";
-    $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.cademiasiciliana.org/" target="_blank">Cadèmia Siciliana</a></li>'."\n";
+    ## $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.cademiasiciliana.org/" target="_blank">Cadèmia Siciliana</a></li>'."\n";
     $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.pizzocalabro.it/Orlando/Dizionario%20Napitino/bozza_di_studio_per_un_dizionario%20napitino.htm"'."\n";
     $othtml .= '	     target="_blank"><i>Napitinu</i> <small>(O.&nbsp;Accetta)</small></a></li>'."\n";
     $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.dialettosalentino.it" target="_blank"><i>Salentinu</i> <small>(G.&nbsp;Presicce)</small></a></li>'."\n";

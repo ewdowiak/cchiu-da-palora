@@ -28,9 +28,9 @@ use Storable qw( retrieve ) ;
 #}
 
 ##  scalars to adjust length of columns (for appearances)
-my $adjustone =   0 ;
-my $adjusttwo =  -5 ;
-my $adjusttre =   0 ;
+my $adjustone =     0 ;
+my $adjusttwo =    -5 ;
+my $adjusttre =     0 ;
 
 ##  retrieve hashes and subroutines
 my $vthash  = retrieve('../cgi-lib/verb-tools' );
