@@ -285,8 +285,8 @@ my %alliri = (
 	     up => "emu"    , dp => "iti"    }, ## tp => "ìssiru" },
     pai => { us => "ìi"     , ds => "isti"   , ts => "ìu"      ,   ## us => "ivi" , 
 	     up => "emu"    , dp => "ìstivu" , tp => "eru"    },   ## up => "emmu" , 
-    imi => { us => "eva"    , ds => "evi"    , ts => "eva"     ,
-	     up => "èvamu"  , dp => "èvavu"  , tp => "èvanu"   },
+    imi => { us => "ìa"     , ds => "ivi"    , ts => "ìa"      ,   ## us => "eva"  , ## ds => "evi" , ## ts => "eva" ,
+	     up => "ìamu"   , dp => "ìavu"   , tp => "ìanu"   },   ## up => "èvamu", ## dp => "èvavu" , ## tp => "èvanu" },
     ims => { us => "issi"   , ds => "issi"   , ts => "issi"    ,
 	     up => "ìssimu" , dp => "ìssivu" , tp => "ìssiru" },
     ger => "ennu" ,
@@ -308,8 +308,8 @@ my %xxhiri = (
 	     up => "iemu"   , dp => "iti"    }, ## tp => "ìssiru" },
     pai => { us => "ìi"     , ds => "isti"   , ts => "ìu"      ,   ## us => "ivi" , 
 	     up => "iemu"   , dp => "ìstivu" , tp => "eru"    },   ## up => "iemmu" , 
-    imi => { us => "ieva"   , ds => "ievi"   , ts => "ieva"    ,
-	     up => "ièvamu" , dp => "ièvavu" , tp => "ièvanu"  },
+    imi => { us => "ìa"     , ds => "ivi"   , ts => "ìa"     ,    ## us => "ieva"  , ## ds => "ievi" , ## ts => "eva" ,
+	     up => "ìamu"   , dp => "ìavu"  , tp => "ìanu"   },   ## up => "ièvamu", ## dp => "ièvavu" , ## tp => "ièvanu" },
     ims => { us => "issi"   , ds => "issi"   , ts => "issi"    ,
 	     up => "ìssimu" , dp => "ìssivu" , tp => "ìssiru" },
     ger => "iennu" ,
@@ -331,34 +331,34 @@ $vbconj{sciri}{pap} = "utu";
 
 ##  PRI -- present indicative
 my %prixxxi = ( us => "u"   , ds => "i"   , ts => "a"   ,
-		up => "amu" , dp => "ati" , tp => "anu");
+		up => "amu" , dp => "ati" , tp => "anu");  ##  tp => "unu" );
 %{ $vbconj{xxari}{pri} } = %prixxxi ;
 %{ $vbconj{xiari}{pri} } = %prixxxi ;
 
 my %prixcxg = ( us => "u"   , ds => "hi"  , ts => "a"   ,
-		up => "amu" , dp => "ati" , tp => "anu");
+		up => "amu" , dp => "ati" , tp => "anu");  ##  tp => "unu" );
 %{ $vbconj{xcari}{pri} } = %prixcxg ;
 %{ $vbconj{xgari}{pri} } = %prixcxg ;
 
 
 my %pricigi = ( us => "u"   , ds => ""    , ts => "a"   ,
-		up => "amu" , dp => "ati" , tp => "anu");
+		up => "amu" , dp => "ati" , tp => "anu");  ##  tp => "unu" );
 %{ $vbconj{ciari}{pri} } = %pricigi ;
 %{ $vbconj{giari}{pri} } = %pricigi ;
 
 
 %{ $vbconj{xxiri}{pri} } = ( us => "u"   , ds => "i"   , ts => "i"   ,
-			     up => "emu" , dp => "iti" , tp => "inu" );
+			     up => "emu" , dp => "iti" , tp => "unu" );  ##  tp => "inu" );
 %{ $vbconj{xciri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
-			     up => "emu" , dp => "iti" , tp => "inu" );
+			     up => "emu" , dp => "iti" , tp => "iunu" );  ##  tp => "inu" );
 %{ $vbconj{xgiri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
-			     up => "emu" , dp => "iti" , tp => "inu" );
+			     up => "emu" , dp => "iti" , tp => "iunu" );  ##  tp => "inu" );
 %{ $vbconj{xhiri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
-			     up => "iemu", dp => "iti" , tp => "inu" );
+			     up => "iemu", dp => "iti" , tp => "iunu" );  ##  tp => "inu" );
 %{ $vbconj{xsiri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
-			     up => "emu" , dp => "iti" , tp => "inu" );
+			     up => "emu" , dp => "iti" , tp => "iunu" );  ##  tp => "inu" );
 %{ $vbconj{sciri}{pri} } = ( us => "iu"  , ds => "i"   , ts => "i"   ,
-			     up => "emu" , dp => "iti" , tp => "inu" ); 
+			     up => "emu" , dp => "iti" , tp => "iunu" );  ##  tp => "inu" ); 
 
 
 ##  FTI -- future
