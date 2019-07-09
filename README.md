@@ -20,12 +20,10 @@ Grazzi pi l'aiutu!
 
 * [_Manifestu dûn Giùvini Sicilianu_](https://www.wdowiak.me/archive/sicilian/giuvini-sicilianu.shtml)
 * [_Young Sicilian Manifesto_](https://www.wdowiak.me/archive/sicilian/young-sicilian.shtml)
-
 * [_Dizziunariu di Dieli_](https://www.napizia.com/cgi-bin/sicilian.pl)
 * [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl)
 * [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl)
 * [poets' page](https://www.napizia.com/pages/sicilian/poets.shtml)
-
 * [introduction](https://www.napizia.com/pages/sicilian/intro-en.shtml)
 * [dictionary specification](https://www.napizia.com/pages/sicilian/index.shtml)
 * [boot and stem theory](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml)
