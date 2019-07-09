@@ -449,7 +449,8 @@ my %vnotes ;
 	stem => "d",
 	boot => "dùn",
 	irrg => {
-	    pri => { us => "dugnu", }, 
+	    pri => { us => "dugnu", },
+	    pim => { ds => "da" ,},
 	    pai => { quad => "dètt" },
 	    fti => { stem => "dar" },
 	    coi => { stem => "dar" },
@@ -469,6 +470,7 @@ my %vnotes ;
 	boot => "dìc",
 	irrg => {
 	    inf => "diri",
+	    pim => { ds => "dì" ,},
 	    pai => { quad => "dìss" },
 	    pap => "dittu",
 	    adj => "dittu",
@@ -502,7 +504,7 @@ my %vnotes ;
 	boot => "èss",
 	irrg => {
 	    pri => { us => "sugnu", ds => "sì", ts => "è", up => "semu", dp => "siti", tp => "sunnu"},
-	    pim => { ds => "sia", ts => "fussi", up => "semu", dp => "siti", tp => "fùssiru"},
+	    pim => { ds => "sì", ts => "fussi", up => "semu", dp => "siti", tp => "fùssiru"},
 	    pai => { us => "fui", ds => "fusti", ts => "fu", up => "fomu", dp => "fùstivu", tp => "foru"},
 	    imi => { us => "era", ds => "eri", ts => "era", up => "eramu", dp => "eravu", tp => "eranu"},
 	    ims => { us => "fussi", ds => "fussi", ts => "fussi", up => "fùssimu", dp => "fùssivu", tp => "fùssiru"},
@@ -527,7 +529,7 @@ my %vnotes ;
 	irrg => {
 	    inf => "fari",
 	    pri => { us => "fazzu", ds => "fai", ts => "fa", tp => "fannu" },
-	    pim => { ds => "fazza" },
+	    pim => { ds => "fa" },
 	    pai => { quad => "fìc" },
 	    fti => { stem => "far" }, 
 	    coi => { stem => "far" }, 
@@ -1233,6 +1235,7 @@ my %vnotes ;
 	irrg => {
 	    inf => "putiri",
 	    pri => { us => "pozzu", ds => "poi", ts => "pò", tp => "ponnu" },
+	    pim => { ds => "poi"},
 	    pim => { ds => "pozza"},
 	    pai => { quad => "pòtt" },
 	},
@@ -1378,7 +1381,6 @@ my %vnotes ;
 	boot => "tèn",
 	irrg => {
 	    pri => { us => "tegnu" },
-	    pim => { ds => "tegna" },
 	    pai => { quad => "tìnn" },
 	},
     },);
@@ -1536,7 +1538,6 @@ my %vnotes ;
 	boot => "vèn",
 	irrg => {
 	    pri => { us => "vegnu" },
-	    pim => { ds => "vegna" },
 	    pai => { quad => "vìnn" },
 	},		
     },);
