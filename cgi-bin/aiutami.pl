@@ -64,9 +64,9 @@ my $amlsrf = retrieve('../cgi-lib/aiutu-list' );
 my %amlist = %{ $amlsrf } ;
 
 ## prepare connection to the database
-my $dbuser = "cs_student" ; 
-my $dbpass = "Sfinciuni.2018" ; 
-my $connection = 'dbi:mysql:sicilian:eryk.bizlandmysql.com:3306' ; 
+my $dbuser = "USERNAME" ; 
+my $dbpass = "PASSWORD" ; 
+my $connection = 'CONNECTION' ; 
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
