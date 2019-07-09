@@ -1236,7 +1236,6 @@ my %vnotes ;
 	    inf => "putiri",
 	    pri => { us => "pozzu", ds => "poi", ts => "pò", tp => "ponnu" },
 	    pim => { ds => "poi"},
-	    pim => { ds => "pozza"},
 	    pai => { quad => "pòtt" },
 	},
     },);
