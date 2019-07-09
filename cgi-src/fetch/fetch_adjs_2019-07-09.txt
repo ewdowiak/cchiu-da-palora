@@ -1362,10 +1362,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  appròdicu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"appròdicu_adj"} } = (
-##      display_as => "appròdicu",
-##      dieli => ["appròdicu",],
+##  ##  apprÃ²dicu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"apprÃ²dicu_adj"} } = (
+##      display_as => "apprÃ²dicu",
+##      dieli => ["apprÃ²dicu",],
 ##      dieli_en => ["extravagant","lavish",],
 ##      dieli_it => ["prodigo",],
 ##      ## notex => ["","",],
@@ -2334,10 +2334,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  biddìssimu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"biddìssimu_adj"} } = (
-##      display_as => "biddìssimu",
-##      dieli => ["biddìssimu",],
+##  ##  biddÃ¬ssimu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"biddÃ¬ssimu_adj"} } = (
+##      display_as => "biddÃ¬ssimu",
+##      dieli => ["biddÃ¬ssimu",],
 ##      dieli_en => ["very beautiful",],
 ##      dieli_it => ["bellissimo",],
 ##      ## notex => ["","",],
@@ -2718,10 +2718,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cadìvili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cadìvili_adj"} } = (
-##      display_as => "cadìvili",
-##      dieli => ["cadìvili",],
+##  ##  cadÃ¬vili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cadÃ¬vili_adj"} } = (
+##      display_as => "cadÃ¬vili",
+##      dieli => ["cadÃ¬vili",],
 ##      dieli_en => ["capable of falling","fleeting","obsolete","outdated","teetering",],
 ##      dieli_it => ["cadevole","caduco",],
 ##      ## notex => ["","",],
@@ -3126,10 +3126,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cc_SQUOTE_è -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cc_SQUOTE_è_adj"} } = (
-##      display_as => "cc_SQUOTE_è",
-##      dieli => ["cc_SQUOTE_è",],
+##  ##  cc_SQUOTE_Ã¨ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cc_SQUOTE_Ã¨_adj"} } = (
+##      display_as => "cc_SQUOTE_Ã¨",
+##      dieli => ["cc_SQUOTE_Ã¨",],
 ##      dieli_en => ["there is",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -3138,10 +3138,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cchiù autu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cchiù autu_adj"} } = (
-##      display_as => "cchiù autu",
-##      dieli => ["cchiù autu",],
+##  ##  cchiÃ¹ autu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cchiÃ¹ autu_adj"} } = (
+##      display_as => "cchiÃ¹ autu",
+##      dieli => ["cchiÃ¹ autu",],
 ##      dieli_en => ["upper",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -3150,10 +3150,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cchiù supra -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cchiù supra_adj"} } = (
-##      display_as => "cchiù supra",
-##      dieli => ["cchiù supra",],
+##  ##  cchiÃ¹ supra -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cchiÃ¹ supra_adj"} } = (
+##      display_as => "cchiÃ¹ supra",
+##      dieli => ["cchiÃ¹ supra",],
 ##      dieli_en => ["upper",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -3534,10 +3534,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  chiù -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"chiù_adj"} } = (
-##      display_as => "chiù",
-##      dieli => ["chiù",],
+##  ##  chiÃ¹ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"chiÃ¹_adj"} } = (
+##      display_as => "chiÃ¹",
+##      dieli => ["chiÃ¹",],
 ##      dieli_en => ["better",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -4338,10 +4338,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cucìuli -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cucìuli_adj"} } = (
-##      display_as => "cucìuli",
-##      dieli => ["cucìuli",],
+##  ##  cucÃ¬uli -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cucÃ¬uli_adj"} } = (
+##      display_as => "cucÃ¬uli",
+##      dieli => ["cucÃ¬uli",],
 ##      dieli_en => ["pliable","soft","supple","yielding",],
 ##      dieli_it => ["cedevole",],
 ##      ## notex => ["","",],
@@ -4782,10 +4782,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cunzumàtu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cunzumàtu_adj"} } = (
-##      display_as => "cunzumàtu",
-##      dieli => ["cunzumàtu",],
+##  ##  cunzumÃ tu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cunzumÃ tu_adj"} } = (
+##      display_as => "cunzumÃ tu",
+##      dieli => ["cunzumÃ tu",],
 ##      dieli_en => ["worn",],
 ##      dieli_it => ["consumato",],
 ##      ## notex => ["","",],
@@ -5118,10 +5118,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  càudu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"càudu_adj"} } = (
-##      display_as => "càudu",
-##      dieli => ["càudu",],
+##  ##  cÃ udu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cÃ udu_adj"} } = (
+##      display_as => "cÃ udu",
+##      dieli => ["cÃ udu",],
 ##      dieli_en => ["hot","warm",],
 ##      dieli_it => ["caldo",],
 ##      ## notex => ["","",],
@@ -5130,10 +5130,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  càuru -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"càuru_adj"} } = (
-##      display_as => "càuru",
-##      dieli => ["càuru",],
+##  ##  cÃ uru -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cÃ uru_adj"} } = (
+##      display_as => "cÃ uru",
+##      dieli => ["cÃ uru",],
 ##      dieli_en => ["hot",],
 ##      dieli_it => ["caldo",],
 ##      ## notex => ["","",],
@@ -5142,10 +5142,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  càvuru -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"càvuru_adj"} } = (
-##      display_as => "càvuru",
-##      dieli => ["càvuru",],
+##  ##  cÃ vuru -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cÃ vuru_adj"} } = (
+##      display_as => "cÃ vuru",
+##      dieli => ["cÃ vuru",],
 ##      dieli_en => ["hot",],
 ##      dieli_it => ["caldo",],
 ##      ## notex => ["","",],
@@ -5154,10 +5154,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  côtu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"côtu_adj"} } = (
-##      display_as => "côtu",
-##      dieli => ["côtu",],
+##  ##  cÃ´tu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cÃ´tu_adj"} } = (
+##      display_as => "cÃ´tu",
+##      dieli => ["cÃ´tu",],
 ##      dieli_en => ["cultured","learned","well-read",],
 ##      dieli_it => ["colto",],
 ##      ## notex => ["","",],
@@ -5742,10 +5742,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  di prima qualità -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"di prima qualità_adj"} } = (
-##      display_as => "di prima qualità",
-##      dieli => ["di prima qualità",],
+##  ##  di prima qualitÃ  -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"di prima qualitÃ _adj"} } = (
+##      display_as => "di prima qualitÃ ",
+##      dieli => ["di prima qualitÃ ",],
 ##      dieli_en => ["first-class","first-rate",],
 ##      dieli_it => ["di prima qualitÃ ",],
 ##      ## notex => ["","",],
@@ -5946,10 +5946,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  diffìcili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"diffìcili_adj"} } = (
-##      display_as => "diffìcili",
-##      dieli => ["diffìcili",],
+##  ##  diffÃ¬cili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"diffÃ¬cili_adj"} } = (
+##      display_as => "diffÃ¬cili",
+##      dieli => ["diffÃ¬cili",],
 ##      dieli_en => ["difficult",],
 ##      dieli_it => ["difficile",],
 ##      ## notex => ["","",],
@@ -6102,10 +6102,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  dillizziùsu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"dillizziùsu_adj"} } = (
-##      display_as => "dillizziùsu",
-##      dieli => ["dillizziùsu",],
+##  ##  dillizziÃ¹su -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"dillizziÃ¹su_adj"} } = (
+##      display_as => "dillizziÃ¹su",
+##      dieli => ["dillizziÃ¹su",],
 ##      dieli_en => ["wonderful",],
 ##      dieli_it => ["delizioso",],
 ##      ## notex => ["","",],
@@ -6510,10 +6510,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  divìduu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"divìduu_adj"} } = (
-##      display_as => "divìduu",
-##      dieli => ["divìduu",],
+##  ##  divÃ¬duu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"divÃ¬duu_adj"} } = (
+##      display_as => "divÃ¬duu",
+##      dieli => ["divÃ¬duu",],
 ##      dieli_en => ["apportionable","divisible",],
 ##      dieli_it => ["divisibile",],
 ##      ## notex => ["","",],
@@ -7614,10 +7614,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  facciòlu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"facciòlu_adj"} } = (
-##      display_as => "facciòlu",
-##      dieli => ["facciòlu",],
+##  ##  facciÃ²lu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"facciÃ²lu_adj"} } = (
+##      display_as => "facciÃ²lu",
+##      dieli => ["facciÃ²lu",],
 ##      dieli_en => ["imitation",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -8382,10 +8382,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  foràsticu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"foràsticu_adj"} } = (
-##      display_as => "foràsticu",
-##      dieli => ["foràsticu",],
+##  ##  forÃ sticu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"forÃ sticu_adj"} } = (
+##      display_as => "forÃ sticu",
+##      dieli => ["forÃ sticu",],
 ##      dieli_en => ["alien","foreign","unfamiliar",],
 ##      dieli_it => ["forestiero","foraneo",],
 ##      ## notex => ["","",],
@@ -8622,10 +8622,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  frìvulu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"frìvulu_adj"} } = (
-##      display_as => "frìvulu",
-##      dieli => ["frìvulu",],
+##  ##  frÃ¬vulu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"frÃ¬vulu_adj"} } = (
+##      display_as => "frÃ¬vulu",
+##      dieli => ["frÃ¬vulu",],
 ##      dieli_en => ["frivolous","futile","light hearted","trivial",],
 ##      dieli_it => ["frivolo","che manca di serietÃ ","futile",],
 ##      ## notex => ["","",],
@@ -8790,10 +8790,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  fàcili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"fàcili_adj"} } = (
-##      display_as => "fàcili",
-##      dieli => ["fàcili",],
+##  ##  fÃ cili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"fÃ cili_adj"} } = (
+##      display_as => "fÃ cili",
+##      dieli => ["fÃ cili",],
 ##      dieli_en => ["easy","facile",],
 ##      dieli_it => ["facile",],
 ##      ## notex => ["","",],
@@ -9138,10 +9138,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  giàlinu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"giàlinu_adj"} } = (
-##      display_as => "giàlinu",
-##      dieli => ["giàlinu",],
+##  ##  giÃ linu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"giÃ linu_adj"} } = (
+##      display_as => "giÃ linu",
+##      dieli => ["giÃ linu",],
 ##      dieli_en => ["yellow",],
 ##      dieli_it => ["giallo",],
 ##      ## notex => ["","",],
@@ -9150,10 +9150,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  giùvini -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"giùvini_adj"} } = (
-##      display_as => "giùvini",
-##      dieli => ["giùvini",],
+##  ##  giÃ¹vini -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"giÃ¹vini_adj"} } = (
+##      display_as => "giÃ¹vini",
+##      dieli => ["giÃ¹vini",],
 ##      dieli_en => ["shop assistant",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -9210,10 +9210,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  gnèschisi -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"gnèschisi_adj"} } = (
-##      display_as => "gnèschisi",
-##      dieli => ["gnèschisi",],
+##  ##  gnÃ¨schisi -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"gnÃ¨schisi_adj"} } = (
+##      display_as => "gnÃ¨schisi",
+##      dieli => ["gnÃ¨schisi",],
 ##      dieli_en => ["savory",],
 ##      dieli_it => ["saporito",],
 ##      ## notex => ["","",],
@@ -9222,10 +9222,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  gnìschisi -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"gnìschisi_adj"} } = (
-##      display_as => "gnìschisi",
-##      dieli => ["gnìschisi",],
+##  ##  gnÃ¬schisi -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"gnÃ¬schisi_adj"} } = (
+##      display_as => "gnÃ¬schisi",
+##      dieli => ["gnÃ¬schisi",],
 ##      dieli_en => ["savory",],
 ##      dieli_it => ["saporito",],
 ##      ## notex => ["","",],
@@ -11658,10 +11658,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  intròpitu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"intròpitu_adj"} } = (
-##      display_as => "intròpitu",
-##      dieli => ["intròpitu",],
+##  ##  intrÃ²pitu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"intrÃ²pitu_adj"} } = (
+##      display_as => "intrÃ²pitu",
+##      dieli => ["intrÃ²pitu",],
 ##      dieli_en => ["unpleasant",],
 ##      dieli_it => ["antipatico",],
 ##      ## notex => ["","",],
@@ -11766,10 +11766,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  inùtili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"inùtili_adj"} } = (
-##      display_as => "inùtili",
-##      dieli => ["inùtili",],
+##  ##  inÃ¹tili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"inÃ¹tili_adj"} } = (
+##      display_as => "inÃ¹tili",
+##      dieli => ["inÃ¹tili",],
 ##      dieli_en => ["useless",],
 ##      dieli_it => ["inutile",],
 ##      ## notex => ["","",],
@@ -12486,10 +12486,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  làidu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"làidu_adj"} } = (
-##      display_as => "làidu",
-##      dieli => ["làidu",],
+##  ##  lÃ idu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"lÃ idu_adj"} } = (
+##      display_as => "lÃ idu",
+##      dieli => ["lÃ idu",],
 ##      dieli_en => ["ugly",],
 ##      dieli_it => ["brutto",],
 ##      ## notex => ["","",],
@@ -12498,10 +12498,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  lìmpiu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"lìmpiu_adj"} } = (
-##      display_as => "lìmpiu",
-##      dieli => ["lìmpiu",],
+##  ##  lÃ¬mpiu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"lÃ¬mpiu_adj"} } = (
+##      display_as => "lÃ¬mpiu",
+##      dieli => ["lÃ¬mpiu",],
 ##      dieli_en => ["clear","proper",],
 ##      dieli_it => ["limpido","terso",],
 ##      ## notex => ["","",],
@@ -12510,10 +12510,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  lòccu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"lòccu_adj"} } = (
-##      display_as => "lòccu",
-##      dieli => ["lòccu",],
+##  ##  lÃ²ccu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"lÃ²ccu_adj"} } = (
+##      display_as => "lÃ²ccu",
+##      dieli => ["lÃ²ccu",],
 ##      dieli_en => ["thick",],
 ##      dieli_it => ["tonto",],
 ##      ## notex => ["","",],
@@ -12774,10 +12774,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  manciàbbili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"manciàbbili_adj"} } = (
-##      display_as => "manciàbbili",
-##      dieli => ["manciàbbili",],
+##  ##  manciÃ bbili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"manciÃ bbili_adj"} } = (
+##      display_as => "manciÃ bbili",
+##      dieli => ["manciÃ bbili",],
 ##      dieli_en => ["eatable","edible",],
 ##      dieli_it => ["mangiabile",],
 ##      ## notex => ["","",],
@@ -12894,10 +12894,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  marrò -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"marrò_adj"} } = (
-##      display_as => "marrò",
-##      dieli => ["marrò",],
+##  ##  marrÃ² -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"marrÃ²_adj"} } = (
+##      display_as => "marrÃ²",
+##      dieli => ["marrÃ²",],
 ##      dieli_en => ["brown",],
 ##      dieli_it => ["marrone",],
 ##      ## notex => ["","",],
@@ -13050,10 +13050,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  mbambù -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"mbambù_adj"} } = (
-##      display_as => "mbambù",
-##      dieli => ["mbambù",],
+##  ##  mbambÃ¹ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"mbambÃ¹_adj"} } = (
+##      display_as => "mbambÃ¹",
+##      dieli => ["mbambÃ¹",],
 ##      dieli_en => ["idiotic",],
 ##      dieli_it => ["idiota",],
 ##      ## notex => ["","",],
@@ -13098,10 +13098,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  mbè -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"mbè_adj"} } = (
-##      display_as => "mbè",
-##      dieli => ["mbè",],
+##  ##  mbÃ¨ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"mbÃ¨_adj"} } = (
+##      display_as => "mbÃ¨",
+##      dieli => ["mbÃ¨",],
 ##      dieli_en => ["well",],
 ##      dieli_it => ["ebbene",],
 ##      ## notex => ["","",],
@@ -13422,10 +13422,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  mimuràbbili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"mimuràbbili_adj"} } = (
-##      display_as => "mimuràbbili",
-##      dieli => ["mimuràbbili",],
+##  ##  mimurÃ bbili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"mimurÃ bbili_adj"} } = (
+##      display_as => "mimurÃ bbili",
+##      dieli => ["mimurÃ bbili",],
 ##      dieli_en => ["memorable",],
 ##      dieli_it => ["memorabile",],
 ##      ## notex => ["","",],
@@ -14202,10 +14202,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  mùciru -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"mùciru_adj"} } = (
-##      display_as => "mùciru",
-##      dieli => ["mùciru",],
+##  ##  mÃ¹ciru -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"mÃ¹ciru_adj"} } = (
+##      display_as => "mÃ¹ciru",
+##      dieli => ["mÃ¹ciru",],
 ##      dieli_en => ["greedy","sweet toothed",],
 ##      dieli_it => ["ghiotto","goloso di dolci",],
 ##      ## notex => ["","",],
@@ -15402,10 +15402,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  nìvuru -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"nìvuru_adj"} } = (
-##      display_as => "nìvuru",
-##      dieli => ["nìvuru",],
+##  ##  nÃ¬vuru -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"nÃ¬vuru_adj"} } = (
+##      display_as => "nÃ¬vuru",
+##      dieli => ["nÃ¬vuru",],
 ##      dieli_en => ["black",],
 ##      dieli_it => ["nero",],
 ##      ## notex => ["","",],
@@ -16614,10 +16614,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  piacèvuli -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"piacèvuli_adj"} } = (
-##      display_as => "piacèvuli",
-##      dieli => ["piacèvuli",],
+##  ##  piacÃ¨vuli -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"piacÃ¨vuli_adj"} } = (
+##      display_as => "piacÃ¨vuli",
+##      dieli => ["piacÃ¨vuli",],
 ##      dieli_en => ["pleasing",],
 ##      dieli_it => ["piacevole",],
 ##      ## notex => ["","",],
@@ -16842,10 +16842,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  pirùtu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"pirùtu_adj"} } = (
-##      display_as => "pirùtu",
-##      dieli => ["pirùtu",],
+##  ##  pirÃ¹tu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"pirÃ¹tu_adj"} } = (
+##      display_as => "pirÃ¹tu",
+##      dieli => ["pirÃ¹tu",],
 ##      dieli_en => ["despairing",],
 ##      dieli_it => ["disperato",],
 ##      ## notex => ["","",],
@@ -17334,10 +17334,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  primintìu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"primintìu_adj"} } = (
-##      display_as => "primintìu",
-##      dieli => ["primintìu",],
+##  ##  primintÃ¬u -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"primintÃ¬u_adj"} } = (
+##      display_as => "primintÃ¬u",
+##      dieli => ["primintÃ¬u",],
 ##      dieli_en => ["premature",],
 ##      dieli_it => ["maturi a buon_SQUOTE_ ora",],
 ##      ## notex => ["","",],
@@ -17742,10 +17742,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  pròdigu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"pròdigu_adj"} } = (
-##      display_as => "pròdigu",
-##      dieli => ["pròdigu",],
+##  ##  prÃ²digu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"prÃ²digu_adj"} } = (
+##      display_as => "prÃ²digu",
+##      dieli => ["prÃ²digu",],
 ##      dieli_en => ["extravagant",],
 ##      dieli_it => ["prodigo",],
 ##      ## notex => ["","",],
@@ -17958,10 +17958,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  pussìbbili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"pussìbbili_adj"} } = (
-##      display_as => "pussìbbili",
-##      dieli => ["pussìbbili",],
+##  ##  pussÃ¬bbili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"pussÃ¬bbili_adj"} } = (
+##      display_as => "pussÃ¬bbili",
+##      dieli => ["pussÃ¬bbili",],
 ##      dieli_en => ["possible",],
 ##      dieli_it => ["possibile",],
 ##      ## notex => ["","",],
@@ -17970,10 +17970,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  pussìbbuli -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"pussìbbuli_adj"} } = (
-##      display_as => "pussìbbuli",
-##      dieli => ["pussìbbuli",],
+##  ##  pussÃ¬bbuli -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"pussÃ¬bbuli_adj"} } = (
+##      display_as => "pussÃ¬bbuli",
+##      dieli => ["pussÃ¬bbuli",],
 ##      dieli_en => ["possible",],
 ##      dieli_it => ["possibile",],
 ##      ## notex => ["","",],
@@ -18030,10 +18030,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  pèggiu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"pèggiu_adj"} } = (
-##      display_as => "pèggiu",
-##      dieli => ["pèggiu",],
+##  ##  pÃ¨ggiu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"pÃ¨ggiu_adj"} } = (
+##      display_as => "pÃ¨ggiu",
+##      dieli => ["pÃ¨ggiu",],
 ##      dieli_en => ["bad","worse",],
 ##      dieli_it => ["peggio",],
 ##      ## notex => ["","",],
@@ -20142,10 +20142,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  sdisèrramu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"sdisèrramu_adj"} } = (
-##      display_as => "sdisèrramu",
-##      dieli => ["sdisèrramu",],
+##  ##  sdisÃ¨rramu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"sdisÃ¨rramu_adj"} } = (
+##      display_as => "sdisÃ¨rramu",
+##      dieli => ["sdisÃ¨rramu",],
 ##      dieli_en => ["inept","yokel","slacker",],
 ##      dieli_it => ["inetto","tanghero","poltrone",],
 ##      ## notex => ["","",],
@@ -20286,10 +20286,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  senza formalità -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"senza formalità_adj"} } = (
-##      display_as => "senza formalità",
-##      dieli => ["senza formalità",],
+##  ##  senza formalitÃ  -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"senza formalitÃ _adj"} } = (
+##      display_as => "senza formalitÃ ",
+##      dieli => ["senza formalitÃ ",],
 ##      dieli_en => ["informal",],
 ##      dieli_it => ["informale",],
 ##      ## notex => ["","",],
@@ -22782,10 +22782,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  sàcusu! -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"sàcusu!_adj"} } = (
-##      display_as => "sàcusu!",
-##      dieli => ["sàcusu!",],
+##  ##  sÃ cusu! -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"sÃ cusu!_adj"} } = (
+##      display_as => "sÃ cusu!",
+##      dieli => ["sÃ cusu!",],
 ##      dieli_en => ["damned!","misfortune!",],
 ##      dieli_it => ["maledetto!","malanno!","sia ucciso!",],
 ##      ## notex => ["","",],
@@ -22794,10 +22794,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  sàturu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"sàturu_adj"} } = (
-##      display_as => "sàturu",
-##      dieli => ["sàturu",],
+##  ##  sÃ turu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"sÃ turu_adj"} } = (
+##      display_as => "sÃ turu",
+##      dieli => ["sÃ turu",],
 ##      dieli_en => ["full","satiated",],
 ##      dieli_it => ["sazio","saturo",],
 ##      ## notex => ["","",],
@@ -22806,10 +22806,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  sìmplici -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"sìmplici_adj"} } = (
-##      display_as => "sìmplici",
-##      dieli => ["sìmplici",],
+##  ##  sÃ¬mplici -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"sÃ¬mplici_adj"} } = (
+##      display_as => "sÃ¬mplici",
+##      dieli => ["sÃ¬mplici",],
 ##      dieli_en => ["simple",],
 ##      dieli_it => ["semplice",],
 ##      ## notex => ["","",],
@@ -22818,10 +22818,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  sìmprici -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"sìmprici_adj"} } = (
-##      display_as => "sìmprici",
-##      dieli => ["sìmprici",],
+##  ##  sÃ¬mprici -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"sÃ¬mprici_adj"} } = (
+##      display_as => "sÃ¬mprici",
+##      dieli => ["sÃ¬mprici",],
 ##      dieli_en => ["simple",],
 ##      dieli_it => ["semplice",],
 ##      ## notex => ["","",],
@@ -23118,10 +23118,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  tirrìbbili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"tirrìbbili_adj"} } = (
-##      display_as => "tirrìbbili",
-##      dieli => ["tirrìbbili",],
+##  ##  tirrÃ¬bbili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"tirrÃ¬bbili_adj"} } = (
+##      display_as => "tirrÃ¬bbili",
+##      dieli => ["tirrÃ¬bbili",],
 ##      dieli_en => ["terrible",],
 ##      dieli_it => ["terribile",],
 ##      ## notex => ["","",],
@@ -23478,10 +23478,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  tènniru -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"tènniru_adj"} } = (
-##      display_as => "tènniru",
-##      dieli => ["tènniru",],
+##  ##  tÃ¨nniru -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"tÃ¨nniru_adj"} } = (
+##      display_as => "tÃ¨nniru",
+##      dieli => ["tÃ¨nniru",],
 ##      dieli_en => ["delicate",],
 ##      dieli_it => ["tenero",],
 ##      ## notex => ["","",],
@@ -23490,10 +23490,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  u cchiù granni -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"u cchiù granni_adj"} } = (
-##      display_as => "u cchiù granni",
-##      dieli => ["u cchiù granni",],
+##  ##  u cchiÃ¹ granni -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"u cchiÃ¹ granni_adj"} } = (
+##      display_as => "u cchiÃ¹ granni",
+##      dieli => ["u cchiÃ¹ granni",],
 ##      dieli_en => ["eldest",],
 ##      dieli_it => ["maggiore",],
 ##      ## notex => ["","",],
@@ -23502,10 +23502,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  u cchiù luntanu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"u cchiù luntanu_adj"} } = (
-##      display_as => "u cchiù luntanu",
-##      dieli => ["u cchiù luntanu",],
+##  ##  u cchiÃ¹ luntanu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"u cchiÃ¹ luntanu_adj"} } = (
+##      display_as => "u cchiÃ¹ luntanu",
+##      dieli => ["u cchiÃ¹ luntanu",],
 ##      dieli_en => ["furthest",],
 ##      dieli_it => ["il piÃ¹ lontano",],
 ##      ## notex => ["","",],
@@ -23514,10 +23514,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  u cchiù vecchiu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"u cchiù vecchiu_adj"} } = (
-##      display_as => "u cchiù vecchiu",
-##      dieli => ["u cchiù vecchiu",],
+##  ##  u cchiÃ¹ vecchiu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"u cchiÃ¹ vecchiu_adj"} } = (
+##      display_as => "u cchiÃ¹ vecchiu",
+##      dieli => ["u cchiÃ¹ vecchiu",],
 ##      dieli_en => ["eldest",],
 ##      dieli_it => ["maggiore",],
 ##      ## notex => ["","",],
@@ -23526,10 +23526,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  u chiù -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"u chiù_adj"} } = (
-##      display_as => "u chiù",
-##      dieli => ["u chiù",],
+##  ##  u chiÃ¹ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"u chiÃ¹_adj"} } = (
+##      display_as => "u chiÃ¹",
+##      dieli => ["u chiÃ¹",],
 ##      dieli_en => ["most",],
 ##      dieli_it => ["il piÃ¹",],
 ##      ## notex => ["","",],
@@ -23562,10 +23562,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  u pèggiu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"u pèggiu_adj"} } = (
-##      display_as => "u pèggiu",
-##      dieli => ["u pèggiu",],
+##  ##  u pÃ¨ggiu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"u pÃ¨ggiu_adj"} } = (
+##      display_as => "u pÃ¨ggiu",
+##      dieli => ["u pÃ¨ggiu",],
 ##      dieli_en => ["worse","worst",],
 ##      dieli_it => ["il peggiore",],
 ##      ## notex => ["","",],
@@ -23886,10 +23886,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  unurèvuli -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"unurèvuli_adj"} } = (
-##      display_as => "unurèvuli",
-##      dieli => ["unurèvuli",],
+##  ##  unurÃ¨vuli -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"unurÃ¨vuli_adj"} } = (
+##      display_as => "unurÃ¨vuli",
+##      dieli => ["unurÃ¨vuli",],
 ##      dieli_en => ["honorable",],
 ##      dieli_it => ["onorevole",],
 ##      ## notex => ["","",],
@@ -24018,10 +24018,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  utilizzàbbili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"utilizzàbbili_adj"} } = (
-##      display_as => "utilizzàbbili",
-##      dieli => ["utilizzàbbili",],
+##  ##  utilizzÃ bbili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"utilizzÃ bbili_adj"} } = (
+##      display_as => "utilizzÃ bbili",
+##      dieli => ["utilizzÃ bbili",],
 ##      dieli_en => ["usable",],
 ##      dieli_it => ["utilizzabile",],
 ##      ## notex => ["","",],
@@ -25014,10 +25014,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  àbbili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"àbbili_adj"} } = (
-##      display_as => "àbbili",
-##      dieli => ["àbbili",],
+##  ##  Ã bbili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"Ã bbili_adj"} } = (
+##      display_as => "Ã bbili",
+##      dieli => ["Ã bbili",],
 ##      dieli_en => ["capable","skilled","skillful",],
 ##      dieli_it => ["abile",],
 ##      ## notex => ["","",],
@@ -25026,10 +25026,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  àcitu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"àcitu_adj"} } = (
-##      display_as => "àcitu",
-##      dieli => ["àcitu",],
+##  ##  Ã citu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"Ã citu_adj"} } = (
+##      display_as => "Ã citu",
+##      dieli => ["Ã citu",],
 ##      dieli_en => ["sour",],
 ##      dieli_it => ["acido",],
 ##      ## notex => ["","",],
@@ -25038,10 +25038,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  àggili -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"àggili_adj"} } = (
-##      display_as => "àggili",
-##      dieli => ["àggili",],
+##  ##  Ã ggili -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"Ã ggili_adj"} } = (
+##      display_as => "Ã ggili",
+##      dieli => ["Ã ggili",],
 ##      dieli_en => ["supple",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -25050,10 +25050,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  àridu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"àridu_adj"} } = (
-##      display_as => "àridu",
-##      dieli => ["àridu",],
+##  ##  Ã ridu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"Ã ridu_adj"} } = (
+##      display_as => "Ã ridu",
+##      dieli => ["Ã ridu",],
 ##      dieli_en => ["arid","bleak",],
 ##      dieli_it => ["arido",],
 ##      ## notex => ["","",],
@@ -25062,10 +25062,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  àutru -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"àutru_adj"} } = (
-##      display_as => "àutru",
-##      dieli => ["àutru",],
+##  ##  Ã utru -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"Ã utru_adj"} } = (
+##      display_as => "Ã utru",
+##      dieli => ["Ã utru",],
 ##      dieli_en => ["another","other","other (one)","some other","someone else",],
 ##      dieli_it => ["un altro","altro",],
 ##      ## notex => ["","",],
@@ -25074,10 +25074,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  àvidu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"àvidu_adj"} } = (
-##      display_as => "àvidu",
-##      dieli => ["àvidu",],
+##  ##  Ã vidu -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"Ã vidu_adj"} } = (
+##      display_as => "Ã vidu",
+##      dieli => ["Ã vidu",],
 ##      dieli_en => ["grasping",],
 ##      dieli_it => [],
 ##      ## notex => ["","",],
@@ -25086,10 +25086,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  â banna di -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"â banna di_adj"} } = (
-##      display_as => "â banna di",
-##      dieli => ["â banna di",],
+##  ##  Ã¢ banna di -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"Ã¢ banna di_adj"} } = (
+##      display_as => "Ã¢ banna di",
+##      dieli => ["Ã¢ banna di",],
 ##      dieli_en => ["nearby","next",],
 ##      dieli_it => ["accanto","accanto a",],
 ##      ## notex => ["","",],

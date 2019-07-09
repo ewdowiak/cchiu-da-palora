@@ -167,7 +167,6 @@ sub mk_wants {
 	}
 
 	
-
 	##  now loop through it all again
 	foreach my $i (0..$#{$dieli_sc{$key}}){
 	    
@@ -175,57 +174,60 @@ sub mk_wants {
 	    my $sc_word = ${$dieli_sc{$key}[$i]}{"sc_word"} ; 
 	    my $linkto  = ${$dieli_sc{$key}[$i]}{"linkto"} ; 
 	    
-	    
-	    ##  ##  for now, single words only -- no phrases, no capital letters
-	    ##  if ( $vbsubs{rid_accents}($sc_word) =~ /^[a-z]+$/ ) {}
+	    ##  make sure that there is a word to annotate
+	    if ( $sc_word ne "" ) {
 		
-	    my $is_verb = ( $sc_part eq '{v}' && $sc_word =~ /ari$|iri$|arisi$|irisi$/ ) ? "true" : "false" ;
-	    my $is_noun = ( $sc_part eq '{m}'   || $sc_part eq '{f}'   || $sc_part eq '{m/f}' || 
-			    $sc_part eq '{mpl}' || $sc_part eq '{fpl}') ? "true" : "false" ;
-	    my $is_adj  = ( $sc_part eq '{adj}' ) ? "true" : "false" ;
-	    
-	    ##  if linkto not defined
-	    if ( $is_noun eq "true" &&  ! defined $linkto ) {
-		my ( $othref , $pos_tag ) = want_about_noun( $sc_word , $sc_part ); 
-		$othash{ $pos_tag } = ( $othref ) ; 
-		$othash{ $pos_tag }{dieli_en} = $trans_en{"noun"} ;
-		$othash{ $pos_tag }{dieli_it} = $trans_it{"noun"} ;
+		##  ##  for now, single words only -- no phrases, no capital letters
+		##  if ( $vbsubs{rid_accents}($sc_word) =~ /^[a-z]+$/ ) {}
 		
-	    } elsif ( $is_adj eq "true" && ! defined $linkto ) {
-		my ( $othref , $pos_tag ) = want_about_adj( $sc_word ); 
-		$othash{ $pos_tag } = ( $othref ) ; 
-		$othash{ $pos_tag }{dieli_en} = $trans_en{"adj"} ;
-		$othash{ $pos_tag }{dieli_it} = $trans_it{"adj"} ;
+		my $is_verb = ( $sc_part eq '{v}' && $sc_word =~ /ari$|iri$|arisi$|irisi$/ ) ? "true" : "false" ;
+		my $is_noun = ( $sc_part eq '{m}'   || $sc_part eq '{f}'   || $sc_part eq '{m/f}' || 
+				$sc_part eq '{mpl}' || $sc_part eq '{fpl}') ? "true" : "false" ;
+		my $is_adj  = ( $sc_part eq '{adj}' ) ? "true" : "false" ;
 		
-	    } elsif ( $is_verb eq "true" && ! defined $linkto ) {
-		my ( $othref , $pos_tag ) = want_about_verb( $sc_word , \%vbsubs ); 
-		$othash{ $pos_tag } = ( $othref ) ; 
-		$othash{ $pos_tag }{dieli_en} = $trans_en{"verb"} ;
-		$othash{ $pos_tag }{dieli_it} = $trans_it{"verb"} ;
-	    } elsif  ( ! defined $linkto &&  $sc_word !~ /- - -/ ) {
-		my $pos_tag ; 
-		$pos_tag = ( $is_verb eq "true" )  ?  'verb'  : $pos_tag ;
-		$pos_tag = ( $is_noun eq "true" )  ?  'noun'  : $pos_tag ;
-		$pos_tag = ( $is_adj  eq "true" )  ?  'adj'   : $pos_tag ;
-		$pos_tag = ( $sc_part eq '{adv}' ) ?  'adv'   : $pos_tag ;
-		$pos_tag = ( $sc_part eq '{prep}') ?  'prep'  : $pos_tag ;
-		$pos_tag = ( $sc_part eq '{pron}') ?  'pron'  : $pos_tag ;
-		$pos_tag = ( $sc_part eq '{conj}') ?  'conj'  : $pos_tag ;
-		$pos_tag = ( ! defined $pos_tag  ) ?  'other' : $pos_tag ;
-
-		my $pos_disp ;
-		$pos_disp = ( $pos_tag eq "other" ) ? 'àutru' : $pos_tag ;
-
-		( my $display = $sc_word ) =~ s/_SQUOTE_/'/ ; 
-		my $hkey = $sc_word . "_" . $pos_tag ; 
-
-		%{ $othash{ $hkey } } = ( 
-		    palora => $display ,
-		    part_speech => $pos_disp , 
-		    hashkey => $hkey ,
-		    dieli_en => $trans_en{$pos_tag} ,
-		    dieli_it => $trans_it{$pos_tag} ,
-		    );
+		##  if linkto not defined
+		if ( $is_noun eq "true" &&  ! defined $linkto ) {
+		    my ( $othref , $pos_tag ) = want_about_noun( $sc_word , $sc_part ); 
+		    $othash{ $pos_tag } = ( $othref ) ; 
+		    $othash{ $pos_tag }{dieli_en} = $trans_en{"noun"} ;
+		    $othash{ $pos_tag }{dieli_it} = $trans_it{"noun"} ;
+		    
+		} elsif ( $is_adj eq "true" && ! defined $linkto ) {
+		    my ( $othref , $pos_tag ) = want_about_adj( $sc_word ); 
+		    $othash{ $pos_tag } = ( $othref ) ; 
+		    $othash{ $pos_tag }{dieli_en} = $trans_en{"adj"} ;
+		    $othash{ $pos_tag }{dieli_it} = $trans_it{"adj"} ;
+		    
+		} elsif ( $is_verb eq "true" && ! defined $linkto ) {
+		    my ( $othref , $pos_tag ) = want_about_verb( $sc_word , \%vbsubs ); 
+		    $othash{ $pos_tag } = ( $othref ) ; 
+		    $othash{ $pos_tag }{dieli_en} = $trans_en{"verb"} ;
+		    $othash{ $pos_tag }{dieli_it} = $trans_it{"verb"} ;
+		} elsif  ( ! defined $linkto &&  $sc_word !~ /- - -/ ) {
+		    my $pos_tag ; 
+		    $pos_tag = ( $is_verb eq "true" )  ?  'verb'  : $pos_tag ;
+		    $pos_tag = ( $is_noun eq "true" )  ?  'noun'  : $pos_tag ;
+		    $pos_tag = ( $is_adj  eq "true" )  ?  'adj'   : $pos_tag ;
+		    $pos_tag = ( $sc_part eq '{adv}' ) ?  'adv'   : $pos_tag ;
+		    $pos_tag = ( $sc_part eq '{prep}') ?  'prep'  : $pos_tag ;
+		    $pos_tag = ( $sc_part eq '{pron}') ?  'pron'  : $pos_tag ;
+		    $pos_tag = ( $sc_part eq '{conj}') ?  'conj'  : $pos_tag ;
+		    $pos_tag = ( ! defined $pos_tag  ) ?  'other' : $pos_tag ;
+		    
+		    my $pos_disp ;
+		    $pos_disp = ( $pos_tag eq "other" ) ? 'àutru' : $pos_tag ;
+		    
+		    ( my $display = $sc_word ) =~ s/_SQUOTE_/'/ ; 
+		    my $hkey = $sc_word . "_" . $pos_tag ; 
+		    
+		    %{ $othash{ $hkey } } = ( 
+			palora => $display ,
+			part_speech => $pos_disp , 
+			hashkey => $hkey ,
+			dieli_en => $trans_en{$pos_tag} ,
+			dieli_it => $trans_it{$pos_tag} ,
+			);
+		}
 	    }
 	}
     }

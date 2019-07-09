@@ -64,9 +64,9 @@ my $amlsrf = retrieve('../cgi-lib/aiutu-list' );
 my %amlist = %{ $amlsrf } ;
 
 ## prepare connection to the database
-my $dbuser = "USERNAME" ; 
-my $dbpass = "PASSWORD" ; 
-my $connection = 'CONNECTION' ; 
+my $dbuser = "cs_student" ; 
+my $dbpass = "Sfinciuni.2018" ; 
+my $connection = 'dbi:mysql:sicilian:eryk.bizlandmysql.com:3306' ; 
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
@@ -203,11 +203,6 @@ foreach my $entry ($ip_addr, $usr_agt, $usr_nme, $poetry,
 ##  CREATE  WEBPAGE
 ##  ======  =======
 
-##  open webpage
-print $amsubs{mk_amtophtml}("../config/topnav.html");
-
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
 ##  cases:
 ##    *  first arrive or browsing words
 ##    *  submission good
@@ -224,6 +219,7 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
 
 
     ##  landing page with alphabetical list of lists
+    print $amsubs{mk_amtophtml}("../config/topnav.html" ,"");
     print $amsubs{make_welcome_msg}();
     print $amsubs{make_alfa_welcome}( $amlsrf , \%amsubs , $vbsubs, $nupages );
    
@@ -238,6 +234,9 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
     ##  note:  either arriving from the home page or from previous word
 
     ##  browsing words one page of collection     
+    my $title_insert = $coll;
+    $title_insert =~ s/alfa_/ìnnici /;
+    print $amsubs{mk_amtophtml}("../config/topnav.html" , $title_insert );
     print $amsubs{make_alfa_coll}( $coll , $amlsrf , \%amsubs , $vbsubs , $lastauto , $nupages );
 
 
@@ -253,6 +252,7 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
     ##  NB:  making $palora local here !!
     my $palora = ( $lastauto eq "auto" ) ? $amsubs{get_random_word}($amlsrf) : $palora ;
     my $askORthank = "askhelp" ;
+    print $amsubs{mk_amtophtml}("../config/topnav.html" , clean_title($palora) );
     print make_tests( $palora , $askORthank , $lastauto ) ;
 
 
@@ -291,23 +291,29 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
 	if ( ! defined $lastauto && ! defined $palora ) { 
 	    ##  SKIP  #1  -- "lastauto" not defined
 	    ##  send them back home -- should not occur!
+	    print $amsubs{mk_amtophtml}("../config/topnav.html" ,"");
 	    print $amsubs{make_welcome_msg}();
 	    print $amsubs{make_alfa_welcome}( $amlsrf , \%amsubs , $vbsubs, $nupages );
 
 	} elsif ( $lastauto eq "auto" ) {
 	    ##  SKIP  #2  -- automode
-	    my $palora = $amsubs{get_random_word}($amlsrf) ;	    
+	    my $palora = $amsubs{get_random_word}($amlsrf) ;
 	    my $askORthank = "askhelp" ;
+	    print $amsubs{mk_amtophtml}("../config/topnav.html" , clean_title($palora) );
 	    print make_tests( $palora , $askORthank , $lastauto ) ;
 
 	} elsif ( $lastauto =~ /^alfa_p[0-9][0-9]$/ ) {
 	    ##  SKIP  #3  -- go back to collection 
 	    ##  note first and fifth arguments passed are "lastauto"
+	    my $title_insert = $lastauto;
+	    $title_insert =~ s/alfa_/ìnnici /;
+	    print $amsubs{mk_amtophtml}("../config/topnav.html" , $title_insert );
 	    print $amsubs{make_alfa_coll}( $lastauto , $amlsrf , \%amsubs , $vbsubs , $lastauto , $nupages );
 	    
 	} else {
 	    ##  SKIP  #4  -- "lastauto" is not a collection name
 	    ##  send them back home -- should not occur!
+	    print $amsubs{mk_amtophtml}("../config/topnav.html" ,"");
 	    print $amsubs{make_welcome_msg}();
 	    print $amsubs{make_alfa_welcome}( $amlsrf , \%amsubs , $vbsubs, $nupages );
 	}
@@ -361,6 +367,7 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
 	##  just in case "palora" is not defined, select word at random -- should not occur
 	my $palora = ( ! defined  $palora ) ? $amsubs{get_random_word}($amlsrf) : $palora ;
 	my $askORthank = "askhelp" ;
+	print $amsubs{mk_amtophtml}("../config/topnav.html" , clean_title($palora) );
 	print make_tests( $palora , $askORthank , $lastauto ) ;
     }
 
@@ -429,18 +436,23 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
     if ( ! defined $coll && ( ! defined $lastauto || $lastauto eq "auto" || $lastauto !~ /^alfa_p[0-9][0-9]$/ ) ) {
 
 	##  send them new word -- AUTO MODE
-	my $palora = $amsubs{get_random_word}($amlsrf) ;	    
+	my $palora = $amsubs{get_random_word}($amlsrf) ;
 	my $askORthank = "thankyou" ;
+	print $amsubs{mk_amtophtml}("../config/topnav.html" , clean_title($palora) );
 	print make_tests( $palora , $askORthank , $lastauto ) ;
 
     } else {	
 	##  we can do this because of the way the IF-ELSE command is defined 
 	my $coll = ( ! defined $coll ) ? $lastauto : $coll ;
 	
+	my $title_insert = $coll;
+	$title_insert =~ s/alfa_/ìnnici /;
+	print $amsubs{mk_amtophtml}("../config/topnav.html" , $title_insert );
+
 	##  say thank you
 	my $thanks ;
 	$thanks .= '<p style="margin-top: 0em; margin-bottom: 1em; text-align: center;">' ;
-	$thanks .= '<b><i><span class="lightcolor">Grazzii pi l' . "'" . 'aiutu!</span></i></b></p>' . "\n" ; 
+	$thanks .= '<b><i><span class="lightcolor">Grazzi pi l' . "'" . 'aiutu!</span></i></b></p>' . "\n" ; 
 	print $thanks ; 
 
 	##  send them back to the list where they came from	
@@ -454,6 +466,7 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
 
     ##  send them back home
     ##  landing page with alphabetical list of lists
+    print $amsubs{mk_amtophtml}("../config/topnav.html" ,"");
     print $amsubs{make_welcome_msg}();
     print $amsubs{make_alfa_welcome}( $amlsrf , \%amsubs , $vbsubs, $nupages );
 }
@@ -461,6 +474,7 @@ if ( ! defined $cagna && ! defined $chista && ! defined $palora && ! defined $la
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 ##  close webpage
+#print $ddsubs{mk_ricota}();
 print $ddsubs{mk_foothtml}("../config/navbar-footer.html");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
@@ -469,6 +483,20 @@ print $ddsubs{mk_foothtml}("../config/navbar-footer.html");
 
 ##  SUBROUTINES
 ##  ===========
+
+sub clean_title {
+    my $title_insert = $_[0];
+    $title_insert =~ s/_SQUOTE_/'/g;
+    $title_insert =~ s/_verb//;
+    $title_insert =~ s/_noun//;
+    $title_insert =~ s/_adj//;
+    $title_insert =~ s/_adv//;
+    $title_insert =~ s/_prep//;
+    $title_insert =~ s/_pron//;
+    $title_insert =~ s/_conj//;
+    $title_insert =~ s/_other//;
+    return $title_insert;
+}
 
 ##  remove efforts to run Perl code with this script
 sub rm_malice {

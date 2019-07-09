@@ -20,6 +20,7 @@
 
 use strict;
 use warnings;
+no warnings qw( uninitialized );
 use Storable qw( nstore ) ;
 {   no warnings;             
     $Storable::Deparse = 1;  
@@ -238,7 +239,7 @@ sub make_alfa_welcome {
     $othtml .= '</div>' . "\n" ; 
     $othtml .= '</div>' . "\n" ; 
     
-    $othtml .= '<p style="margin-bottom: 0.5em; text-align: center;">Grazii a'."\n";
+    $othtml .= '<p style="margin-bottom: 0.5em; text-align: center;">Grazzi a'."\n";
     $othtml .= '  <a href="http://www.dieli.net/" target="_blank">Arthur Dieli</a>'."\n";
     $othtml .= '  pi cumpilari stu dizziunariu.</p>'."\n";
 
@@ -435,7 +436,7 @@ sub make_alfa_coll {
     $othtml .= $navigation ; 
     ##  end with navigation
 
-    $othtml .= '<p style="margin-bottom: 0.5em; text-align: center;">Grazii a'."\n";
+    $othtml .= '<p style="margin-bottom: 0.5em; text-align: center;">Grazzi a'."\n";
     $othtml .= '  <a href="http://www.dieli.net/" target="_blank">Arthur Dieli</a>'."\n";
     $othtml .= '  pi cumpilari stu dizziunariu.</p>'."\n";
 
@@ -649,7 +650,7 @@ sub deal_cards {
     $othtml .= '</select>' . "\n" ; 
     $othtml .= '</div>' . "\n" ; 
     $othtml .= '<p style="margin-top: 0.25em;">' ; 
-    $othtml .= '<small><span class="lightcolor"><i>Haiu a essiri sicuru ca tu sì essiri umanu.</i></span></small></p>' . "\n" ;
+    $othtml .= '<span class="lightcolor"><i>Haiu a essiri sicuru ca tu sì essiri umanu.</i></span></p>' ."\n";
     $othtml .= '</div>' . "\n" ; 
     $othtml .= '<div class="col-m-1 col-1"></div>' . "\n" ; 
     $othtml .= '</div>' . "\n" ;    
@@ -678,23 +679,38 @@ sub decode_carta {
 
 sub mk_amtophtml {
 
-    my $topnav = $_[0] ; 
+    my $topnav = $_[0] ;
+    my $title_insert = $_[1] ;
+    $title_insert = ( $title_insert ne "" ) ? $title_insert .' :: ' : "" ;
 
     my $ottxt ;
     $ottxt .= "Content-type: text/html\n\n";
     $ottxt .= '<!DOCTYPE html>' . "\n" ;
     $ottxt .= '<html>' . "\n" ;
     $ottxt .= '  <head>' . "\n" ;
-    $ottxt .= '    <title>Aiùtami! :: Eryk Wdowiak</title>' . "\n" ;
-    $ottxt .= '    <meta name="DESCRIPTION" content="Aiùtami a annutari un dizziunariu sicilianu.  Help me annotate a Sicilian dictionary.">'."\n";
+    $ottxt .= '    <title>' . $title_insert . 'Aiùtami! :: Napizia</title>' . "\n" ;
+    $ottxt .= '    <meta name="DESCRIPTION" content="Aiùtami a annutari nu dizziunariu sicilianu. ';
+    $ottxt .= ' Help me annotate a Sicilian dictionary.">'."\n";
     $ottxt .= '    <meta name="KEYWORDS" content="Sicilian, language, dictionary">' . "\n" ;
     $ottxt .= '    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">' . "\n" ;
     $ottxt .= '    <meta name="Author" content="Eryk Wdowiak">' . "\n" ;
     $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk.css">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-bklyn.css">' . "\n" ;
+    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-blue.css">' . "\n" ;
     $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_widenme.css">' . "\n" ;
     $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/cchiu_forms.css">' . "\n" ;
-    $ottxt .= '    <link rel="icon" type="image/png" href="/config/eryk-icon.png">' . "\n" ;
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="SC-EN Dieli Dict"'."\n";
+    $ottxt .= '          href="https://www.napizia.com/pages/sicilian/search/dieli_sc-en.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="SC-IT Dieli Dict"'."\n";
+    $ottxt .= '          href="https://www.napizia.com/pages/sicilian/search/dieli_sc-it.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="EN-SC Dieli Dict"'."\n";
+    $ottxt .= '          href="https://www.napizia.com/pages/sicilian/search/dieli_en-sc.xml">'."\n";
+    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
+    $ottxt .= '          title="IT-SC Dieli Dict"'."\n";
+    $ottxt .= '          href="https://www.napizia.com/pages/sicilian/search/dieli_it-sc.xml">'."\n";
+    $ottxt .= '    <link rel="icon" type="image/png" href="/config/napizia-icon.png">' . "\n" ;
     $ottxt .= '    <meta name="viewport" content="width=device-width, initial-scale=1">' . "\n" ;
 
     ##  extra CSS
@@ -710,18 +726,19 @@ sub mk_amtophtml {
     $ottxt .= '      div.btop { background-color: rgb(255, 255, 204);' . "\n" ; 
     $ottxt .= '                 width: 80%;  margin: 0em auto 0em auto;' . "\n" ;
     $ottxt .= '                 padding: 7px 0px 7px 0px;' . "\n" ;
-    $ottxt .= '                 border-top: 1px solid rgb(106, 2, 2);}' . "\n" ;
+    $ottxt .= '                 border-top: 1px solid rgb(2, 2, 102);}' . "\n" ;
 
     $ottxt .= '      @media only screen and (max-width: 500px) { ' . "\n" ;
     $ottxt .= '          div.btop { width: 95%; }' . "\n" ;
     $ottxt .= '      }' . "\n" ;
-    $ottxt .= '      div.bbot { border-bottom: 1px solid rgb(106, 2, 2); }' . "\n" ;
-    $ottxt .= '      div.bside { border-left: 1px solid rgb(106, 2, 2);' . "\n" ;
-    $ottxt .= '                  border-right: 1px solid rgb(106, 2, 2); }' . "\n" ;
+    $ottxt .= '      div.bbot { border-bottom: 1px solid rgb(2, 2, 102); }' . "\n" ;
+    $ottxt .= '      div.bside { border-left: 1px solid rgb(2, 2, 102);' . "\n" ;
+    $ottxt .= '                  border-right: 1px solid rgb(2, 2, 102); }' . "\n" ;
     
-    ##  zero and half paragraph spacing
-    $ottxt .= '      p.zero { margin-top: 0em; margin-bottom: 0em; }' . "\n" ;
-    $ottxt .= '      p.half { margin-top: 0.5em; margin-bottom: 0.5em; }' . "\n" ;
+    ## ##  zero and half paragraph spacing
+    ## ##  now handled by "eryk_widenme.css"
+    ## $ottxt .= '      p.zero { margin-top: 0em; margin-bottom: 0em; }' . "\n" ;
+    ## $ottxt .= '      p.half { margin-top: 0.5em; margin-bottom: 0.5em; }' . "\n" ;
 
     ##  form text -- larger, different font
     $ottxt .= '      p.formtext { font-size: 1.05em; font-family: Arial, "Liberation Sans", sans-serif; }' . "\n" ;
@@ -743,11 +760,19 @@ sub mk_amtophtml {
     $ottxt .= '          div.transconj { position: relative; margin: auto; width: 90%;}' . "\n" ;
     $ottxt .= '      }' . "\n" ;
 
-#    ##  DIV -- suggestions
-#    $ottxt .= '      div.cunzigghiu { position: relative; margin: auto; width: 50%;}' . "\n" ;
-#    $ottxt .= '      @media only screen and (max-width: 835px) { ' . "\n" ;
-#    $ottxt .= '          div.cunzigghiu { position: relative; margin: auto; width: 90%;}' . "\n" ;
-#    $ottxt .= '      }' . "\n" ;
+    ## ##  DIV -- suggestions
+    ## ##  now handled by "eryk_widenme.css"
+    ## $ottxt .= '      div.cunzigghiu { position: relative; margin: auto; width: 50%;}' . "\n" ;
+    ## $ottxt .= '      @media only screen and (max-width: 835px) { ' . "\n" ;
+    ## $ottxt .= '          div.cunzigghiu { position: relative; margin: auto; width: 90%;}' . "\n" ;
+    ## $ottxt .= '      }' . "\n" ;
+
+    ## ##  spacing for second column of Dieli collections
+    ## ##  now handled by "eryk_widenme.css"
+    ## $ottxt .= '    ul.ddcoltwo { margin-top: 0em; }' . "\n" ;
+    ## $ottxt .= '    @media only screen and (min-width: 600px) { ' . "\n" ;
+    ## $ottxt .= '        ul.ddcoltwo { margin-top: 2.25em; }' . "\n" ;
+    ## $ottxt .= '    }' . "\n" ;
 
     ##  close CSS -- close head
     $ottxt .= '    </style>' . "\n" ;
@@ -846,7 +871,7 @@ sub offer_translation {
 	$othtml .= '<span class="lightcolor">Mi dici cchiù di sta palora?</span></i></p>' . "\n" ; 
     } else {
 	$othtml .= '<p style="margin-top: 0.2em; margin-bottom: 0.25em; text-align: center;">' ;
-	$othtml .= '<b><i><span class="lightcolor">Grazzii pi l' . "'" . 'aiutu!</span></i></b></p>' . "\n" ; 
+	$othtml .= '<b><i><span class="lightcolor">Grazzi pi l' . "'" . 'aiutu!</span></i></b></p>' . "\n" ; 
 	$othtml .= '<p style="margin-top: 0.5em; margin-bottom: 0.25em; text-align: center;"><i>' ;
 	$othtml .= '<span class="lightcolor">Mi dici cchiù di sta palora puru?</span></i></p>' . "\n" ; 
     }
@@ -1472,8 +1497,8 @@ sub make_welcome_msg {
     ## $othtml .= '  <div class="col-1"></div>'."\n";
     $othtml .= '  <div class="col-m-12 col-6" style="padding: 0px 20px 0px 25px;">'."\n";
     $othtml .= "\n";
-    $othtml .= '<p style="font-size: 1.2em;"><i>Mi aiuti a annutari un dizziunariu sicilianu?</i></p>'."\n";
-    $othtml .= "\n";    
+    $othtml .= '<p style="font-size: 1.2em;"><i>Mi aiuti a annutari nu dizziunariu sicilianu?</i></p>'."\n";
+    $othtml .= "\n";
     $othtml .= '<p>Cercu grammàtica, puisìa e pruverbi di li palori siciliani nni lu '."\n";
     $othtml .= '  <i><a href="/cgi-bin/sicilian.pl">Dizzionariu di Dieli</a></i>.'."\n";
     $othtml .= '  Di sutta c'."'".'è un ìnnici a la opira di '."\n";

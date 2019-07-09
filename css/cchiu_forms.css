@@ -3,13 +3,13 @@
 /*  "cchiu_forms.css" -- CSS for HTML form elements     */
 /*                                                      */
 /*  Eryk Wdowiak                                        */
-/*  03 May 2018                                         */
+/*  24 May 2018                                         */
 /*                                                      */
 /*  ==================================================  */  
 
 /*  lighter shade for some text */
 span.lightcolor{
-    color: rgb(204, 7, 39);
+    color: rgb(2, 78, 168);
 }
 
 /*  center DIV on small screens  */
@@ -29,7 +29,7 @@ span.lightcolor{
 /*  https://www.w3schools.com/css/css_form.asp  */
 
 select, option {
-    background-color: rgb(204, 7, 39);
+    background-color: rgb(2, 78, 168);
     color: white;
     font-size: 16px; 
     font-weight: bold;
@@ -48,7 +48,7 @@ select, option {
 
 /*  highlight text area  -- for name field */
 input[type=text]:focus, textarea:focus {
-    border: 2px solid rgb(204, 7, 39);
+    border: 2px solid rgb(2, 78, 168);
     background-color: #f8f8f8; 
     border-radius: 4px;
 }
@@ -73,7 +73,7 @@ textarea {
 
 /* submit button */
 input[type=button], input[type=submit], input[type=reset] {
-    background-color: rgb(204, 7, 39);
+    background-color: rgb(2, 78, 168);
     border: none;
     color: white;
     font-size: 16px;
@@ -130,9 +130,9 @@ input[type=button], input[type=submit], input[type=reset] {
   background-color: #ccc;
 }
 
-/* When the radio button is checked, add a bklyn red background */
+/* When the radio button is checked, add a napizia blue background */
 .container input:checked ~ .checkmark {
-  background-color: rgb(204, 7, 39);
+  background-color: rgb(2, 78, 168);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */

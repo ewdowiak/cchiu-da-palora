@@ -66,10 +66,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  accussì -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"accussì_adv"} } = (
-##      display_as => "accussì",
-##      dieli => ["accussì",],
+##  ##  accussÃ¬ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"accussÃ¬_adv"} } = (
+##      display_as => "accussÃ¬",
+##      dieli => ["accussÃ¬",],
 ##      dieli_en => ["as","so","such","thus",],
 ##      dieli_it => ["cosÃ¬",],
 ##      ## notex => ["","",],
@@ -102,10 +102,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  ammàtula -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"ammàtula_adv"} } = (
-##      display_as => "ammàtula",
-##      dieli => ["ammàtula",],
+##  ##  ammÃ tula -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"ammÃ tula_adv"} } = (
+##      display_as => "ammÃ tula",
+##      dieli => ["ammÃ tula",],
 ##      dieli_en => ["in vain","useless",],
 ##      dieli_it => ["invano","inutilmente",],
 ##      ## notex => ["","",],
@@ -186,10 +186,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cchiù -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cchiù_adv"} } = (
-##      display_as => "cchiù",
-##      dieli => ["cchiù",],
+##  ##  cchiÃ¹ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cchiÃ¹_adv"} } = (
+##      display_as => "cchiÃ¹",
+##      dieli => ["cchiÃ¹",],
 ##      dieli_en => ["any more","more","plus",],
 ##      dieli_it => ["piÃ¹",],
 ##      ## notex => ["","",],
@@ -198,10 +198,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  ccà -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"ccà_adv"} } = (
-##      display_as => "ccà",
-##      dieli => ["ccà",],
+##  ##  ccÃ  -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"ccÃ _adv"} } = (
+##      display_as => "ccÃ ",
+##      dieli => ["ccÃ ",],
 ##      dieli_en => ["here",],
 ##      dieli_it => ["qua","qui",],
 ##      ## notex => ["","",],
@@ -306,10 +306,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cussì -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cussì_adv"} } = (
-##      display_as => "cussì",
-##      dieli => ["cussì",],
+##  ##  cussÃ¬ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cussÃ¬_adv"} } = (
+##      display_as => "cussÃ¬",
+##      dieli => ["cussÃ¬",],
 ##      dieli_en => ["so","thus",],
 ##      dieli_it => ["cosÃ¬",],
 ##      ## notex => ["","",],
@@ -330,10 +330,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  cà -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"cà_adv"} } = (
-##      display_as => "cà",
-##      dieli => ["cà",],
+##  ##  cÃ  -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"cÃ _adv"} } = (
+##      display_as => "cÃ ",
+##      dieli => ["cÃ ",],
 ##      dieli_en => ["here",],
 ##      dieli_it => ["qua","qui",],
 ##      ## notex => ["","",],
@@ -414,10 +414,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  ddà -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"ddà_adv"} } = (
-##      display_as => "ddà",
-##      dieli => ["ddà",],
+##  ##  ddÃ  -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"ddÃ _adv"} } = (
+##      display_as => "ddÃ ",
+##      dieli => ["ddÃ ",],
 ##      dieli_en => ["there",],
 ##      dieli_it => ["colÃ ","ivi",],
 ##      ## notex => ["","",],
@@ -726,10 +726,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  in realtà -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"in realtà_adv"} } = (
-##      display_as => "in realtà",
-##      dieli => ["in realtà",],
+##  ##  in realtÃ  -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"in realtÃ _adv"} } = (
+##      display_as => "in realtÃ ",
+##      dieli => ["in realtÃ ",],
 ##      dieli_en => ["indeed","really",],
 ##      dieli_it => ["in realtÃ ",],
 ##      ## notex => ["","",],
@@ -762,10 +762,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  iùsu -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"iùsu_adv"} } = (
-##      display_as => "iùsu",
-##      dieli => ["iùsu",],
+##  ##  iÃ¹su -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"iÃ¹su_adv"} } = (
+##      display_as => "iÃ¹su",
+##      dieli => ["iÃ¹su",],
 ##      dieli_en => ["down",],
 ##      dieli_it => ["giÃ¹","in basso","in giÃ¹",],
 ##      ## notex => ["","",],
@@ -846,10 +846,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  mai cchiù -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"mai cchiù_adv"} } = (
-##      display_as => "mai cchiù",
-##      dieli => ["mai cchiù",],
+##  ##  mai cchiÃ¹ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"mai cchiÃ¹_adv"} } = (
+##      display_as => "mai cchiÃ¹",
+##      dieli => ["mai cchiÃ¹",],
 ##      dieli_en => ["never","never again",],
 ##      dieli_it => ["giammai",],
 ##      ## notex => ["","",],
@@ -870,10 +870,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  masinnò -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"masinnò_adv"} } = (
-##      display_as => "masinnò",
-##      dieli => ["masinnò",],
+##  ##  masinnÃ² -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"masinnÃ²_adv"} } = (
+##      display_as => "masinnÃ²",
+##      dieli => ["masinnÃ²",],
 ##      dieli_en => ["or else","otherwise",],
 ##      dieli_it => ["altrimenti",],
 ##      ## notex => ["","",],
@@ -930,10 +930,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  mirè -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"mirè_adv"} } = (
-##      display_as => "mirè",
-##      dieli => ["mirè",],
+##  ##  mirÃ¨ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"mirÃ¨_adv"} } = (
+##      display_as => "mirÃ¨",
+##      dieli => ["mirÃ¨",],
 ##      dieli_en => ["likewise","also",],
 ##      dieli_it => ["medesimamente","anche",],
 ##      ## notex => ["","",],
@@ -962,6 +962,18 @@
 ##      dieli_it => ["in fretta",],
 ##      ## notex => ["","",],
 ##      part_speech => "adv",
+##      );
+
+##  ##  ##  ##  ##  ##  ##  ##  ##
+
+##  ##  mprÃ² -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"mprÃ²_conj"} } = (
+##      display_as => "mprÃ²",
+##      dieli => ["mprÃ²",],
+##      dieli_en => ["however","since",],
+##      dieli_it => ["perÃ²","dacchÃ¨",],
+##      ## notex => ["","",],
+##      part_speech => "conj",
 ##      );
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -1074,10 +1086,10 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  ##  nzèmmula -- proto hash -- MUST check for accuracy
-##  %{ $vnotes{"nzèmmula_adv"} } = (
-##      display_as => "nzèmmula",
-##      dieli => ["nzèmmula",],
+##  ##  nzÃ¨mmula -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"nzÃ¨mmula_adv"} } = (
+##      display_as => "nzÃ¨mmula",
+##      dieli => ["nzÃ¨mmula",],
 ##      dieli_en => ["concurrently",],
 ##      dieli_it => ["insieme","nello stesso momento",],
 ##      ## notex => ["","",],
@@ -1122,6 +1134,18 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
+##  ##  perÃ² -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"perÃ²_conj"} } = (
+##      display_as => "perÃ²",
+##      dieli => ["perÃ²",],
+##      dieli_en => ["but","only","yet",],
+##      dieli_it => ["perÃ²",],
+##      ## notex => ["","",],
+##      part_speech => "conj",
+##      );
+
+##  ##  ##  ##  ##  ##  ##  ##  ##
+
 ##  ##  pi -- proto hash -- MUST check for accuracy
 ##  %{ $vnotes{"pi_prep"} } = (
 ##      display_as => "pi",
@@ -1130,6 +1154,18 @@
 ##      dieli_it => ["per",],
 ##      ## notex => ["","",],
 ##      part_speech => "prep",
+##      );
+
+##  ##  ##  ##  ##  ##  ##  ##  ##
+
+##  ##  pirchÃ¬ -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"pirchÃ¬_conj"} } = (
+##      display_as => "pirchÃ¬",
+##      dieli => ["pirchÃ¬",],
+##      dieli_en => ["because","for","so that",],
+##      dieli_it => ["perchÃ©","affinchÃ©",],
+##      ## notex => ["","",],
+##      part_speech => "conj",
 ##      );
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -1566,6 +1602,18 @@
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
 
+##  ##  sÃ¹pira -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"sÃ¹pira_prep"} } = (
+##      display_as => "sÃ¹pira",
+##      dieli => ["sÃ¹pira",],
+##      dieli_en => ["above","over",],
+##      dieli_it => ["al di sopra",],
+##      ## notex => ["","",],
+##      part_speech => "prep",
+##      );
+
+##  ##  ##  ##  ##  ##  ##  ##  ##
+
 ##  ##  tannu -- proto hash -- MUST check for accuracy
 ##  %{ $vnotes{"tannu_adv"} } = (
 ##      display_as => "tannu",
@@ -1728,6 +1776,18 @@
 ##      dieli => ["zoccu",],
 ##      dieli_en => ["that which","what",],
 ##      dieli_it => ["ciÃ² che","quello che",],
+##      ## notex => ["","",],
+##      part_speech => "pron",
+##      );
+
+##  ##  ##  ##  ##  ##  ##  ##  ##
+
+##  ##  zÃ² -- proto hash -- MUST check for accuracy
+##  %{ $vnotes{"zÃ²_pron"} } = (
+##      display_as => "zÃ²",
+##      dieli => ["zÃ²",],
+##      dieli_en => ["that","this",],
+##      dieli_it => ["ciÃ²",],
 ##      ## notex => ["","",],
 ##      part_speech => "pron",
 ##      );

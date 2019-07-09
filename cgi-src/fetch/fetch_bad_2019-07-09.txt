@@ -1,0 +1,163 @@
+
+fetch_bad_2019-07-09.txt
+
+
+## $ ./query-dieli.pl sc strittu basilicò
+## 	0  ==  basilicò {nm} --> bassilico {n} --> basil {n}
+
+## $ ./query-dieli.pl sc strittu bonu!
+## 	0  ==  bonu! {intj} --> <br> {intj} --> just imagine! {intj}
+## 	1  ==  bonu! {intj} --> <br> {intj} --> well! {intj}
+
+## $ ./query-dieli.pl sc strittu bonu!
+## 	0  ==  bonu! {intj} --> <br> {intj} --> just imagine! {intj}
+## 	1  ==  bonu! {intj} --> <br> {intj} --> well! {intj}
+
+## $ ./query-dieli.pl sc strittu caspita!
+## 	0  ==  caspita! {intj} --> <br> {intj} --> good heavens! {intj}
+## 	1  ==  caspita! {intj} --> <br> {intj} --> wow! {intj}
+
+## $ ./query-dieli.pl sc strittu caspita!
+## 	0  ==  caspita! {intj} --> <br> {intj} --> good heavens! {intj}
+## 	1  ==  caspita! {intj} --> <br> {intj} --> wow! {intj}
+
+## $ ./query-dieli.pl sc strittu cchiù
+## 	0  ==  cchiù {adv} --> più {adv} --> any more {adv}
+## 	1  ==  cchiù {} --> maggiore {} --> more {}
+## 	2  ==  cchiù {adv} --> più {adv} --> more {adv}
+## 	3  ==  cchiù {pro} --> più {pro} --> more {pro}
+## 	4  ==  cchiù {adv} --> più {adv} --> plus {prep}
+
+## $ ./query-dieli.pl sc strittu dati
+## 	0  ==  dati {pl} --> dato {m} --> data {pl}
+
+## $ ./query-dieli.pl sc strittu difetti
+## 	0  ==  difetti {p} --> <br> {} --> faults {np}
+
+## $ ./query-dieli.pl sc strittu dommaggiu!
+## 	0  ==  dommaggiu! {excl} --> peccato! {excl} --> what a pity! {excl}
+
+## $ ./query-dieli.pl sc strittu eccu
+## 	0  ==  eccu {intj} --> <br> {intj} --> behold {intj}
+## 	1  ==  eccu {intj} --> <br> {intj} --> look {intj}
+
+## $ ./query-dieli.pl sc strittu eccu
+## 	0  ==  eccu {intj} --> <br> {intj} --> behold {intj}
+## 	1  ==  eccu {intj} --> <br> {intj} --> look {intj}
+
+## $ ./query-dieli.pl sc strittu fezza
+## 	0  ==  fezza {pl} --> feccia {} --> dregs {}
+
+## $ ./query-dieli.pl sc strittu firramenta
+## 	0  ==  firramenta {pl} --> ferramenta {pl} --> hardware {npl}
+
+## $ ./query-dieli.pl sc strittu fora di
+## 	0  ==  fora di {prep} --> <br> {prep} --> off {prep}
+## 	1  ==  fora di {f}p} --> giù da {prep} --> off {prep}
+## 	2  ==  fora di {prep} --> fuori di {prep} --> outside {prep}
+
+## $ ./query-dieli.pl sc strittu grana
+## 	0  ==  grana {p} --> <br> {} --> money {n}
+
+## $ ./query-dieli.pl sc strittu granfi
+## 	0  ==  granfi {} --> <br> {} --> claw {}
+## 	1  ==  granfi {pl} --> grinfie {pl} --> clutches {n}
+## 	2  ==  granfi {f} --> <br> {} --> power {n}
+
+## $ ./query-dieli.pl sc strittu guai
+## 	0  ==  guai {p} --> <br> {p} --> troubles {n}
+
+## $ ./query-dieli.pl sc strittu innamurati
+## 	0  ==  innamurati {pl} --> innamorate {pl} --> sweethearts {n}
+
+## $ ./query-dieli.pl sc strittu ligumi
+## 	0  ==  ligumi {p} --> <br> {p} --> vegetables {n}
+
+## $ ./query-dieli.pl sc strittu liri
+## 	0  ==  liri {p} --> <br> {} --> money {n}
+
+## $ ./query-dieli.pl sc strittu mpijuràri(si)
+## 	0  ==  mpijuràri(si) {vi} --> peggiorare {vi} --> make worse (become worse) {vi}
+## 	1  ==  mpijuràri(si) {vi} --> peggiorare {vi} --> worsen {vi}
+
+## $ ./query-dieli.pl sc strittu mpijuràri(si)
+## 	0  ==  mpijuràri(si) {vi} --> peggiorare {vi} --> make worse (become worse) {vi}
+## 	1  ==  mpijuràri(si) {vi} --> peggiorare {vi} --> worsen {vi}
+
+## $ ./query-dieli.pl sc strittu munita
+## 	0  ==  munita {f} --> moneta {f} --> coin {n}
+## 	1  ==  munita {f} --> <br> {f} --> dough {n}
+## 	2  ==  munita {p} --> <br> {} --> money {n}
+
+## $ ./query-dieli.pl sc strittu ninni
+## 	0  ==  ninni {pl} --> quatrini {pl} --> money {n}
+
+## $ ./query-dieli.pl sc strittu nninni
+## 	0  ==  nninni {pl} --> quatrini {pl} --> money {n}
+## 	1  ==  nninni {mpl} --> dindi (voce bambinesca) {mpl} --> nninni (baby talk) {npl}
+
+## $ ./query-dieli.pl sc strittu occhi
+## 	0  ==  occhi {p} --> occhi {p} --> eyes {n}
+
+## $ ./query-dieli.pl sc strittu pecca
+## 	0  ==  pecca {npl} --> <br> {} --> sins {npl}
+
+## $ ./query-dieli.pl sc strittu piatta
+## 	0  ==  piatta {p} --> piatti {p} --> plates {n}
+
+## $ ./query-dieli.pl sc strittu piatti
+## 	0  ==  piatti {p} --> piatti {p} --> plates {n}
+
+## $ ./query-dieli.pl sc strittu pregu
+## 	0  ==  pregu {excl} --> prego {excl} --> you_SQUOTE_re welcome {excl}
+
+## $ ./query-dieli.pl sc strittu pìcciuli
+## 	0  ==  pìcciuli {p} --> <br> {} --> money {n}
+
+## $ ./query-dieli.pl sc strittu quattrini
+## 	0  ==  quattrini {pl} --> quatrini {pl} --> money {n}
+## 	1  ==  quattrini {adj} --> <br> {adj} --> small change {adj}
+
+## $ ./query-dieli.pl sc strittu risposta
+## 	0  ==  risposta {r} --> risposta {f} --> answer {n}
+## 	1  ==  risposta {f} --> risposta {f} --> reply {n}
+## 	2  ==  risposta {f} --> <br> {f} --> response {n}
+
+## $ ./query-dieli.pl sc strittu salvia
+## 	0  ==  salvia n{} --> salvia {n} --> sage {n}
+
+## $ ./query-dieli.pl sc strittu scuti
+## 	0  ==  scuti {p} --> <br> {} --> money {n}
+
+## $ ./query-dieli.pl sc strittu soldi
+## 	0  ==  soldi {f} --> <br> {f} --> dough {n}
+## 	1  ==  soldi {p} --> <br> {} --> money {n}
+
+## $ ./query-dieli.pl sc strittu sordi
+## 	0  ==  sordi {p} --> <br> {} --> money {n}
+
+## $ ./query-dieli.pl sc strittu sticchiu
+## 	0  ==  sticchiu {m --> vulva (volg) {f} --> cherry {n}
+
+## $ ./query-dieli.pl sc strittu sì
+## 	0  ==  sì {adv} --> sì {adv} --> yes {adv}
+## 	1  ==  sì {vt} --> sì {vt} --> yes {vt}
+
+## $ ./query-dieli.pl sc strittu veggetabbili
+## 	0  ==  veggetabbili {p} --> <br> {p} --> vegetables {n}
+
+## $ ./query-dieli.pl sc strittu vicini
+## 	0  ==  vicini {pl} --> <br> {} --> neighbors {n}
+
+## $ ./query-dieli.pl sc strittu virdura
+## 	0  ==  virdura {f} --> verdura {f} --> greens {pl}
+## 	1  ==  virdura {p} --> verdura {p} --> vegetables (green) {n}
+
+## $ ./query-dieli.pl sc strittu ziti
+## 	0  ==  ziti {pl} --> innamorate {pl} --> sweethearts {n}
+
+## $ ./query-dieli.pl sc strittu è
+## 	0  ==  è {v} --> è {v} --> he is {v}
+## 	1  ==  è {art} --> ai, agli, alle {art} --> to the {art}
+## 	2  ==  è {prep} --> ai, agli, alle {prep} --> to the {prep}
+

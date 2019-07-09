@@ -195,6 +195,546 @@ ${$dieli_sc{"voscu"}[3]}{"sc_part"} = '{m}';
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
+##  La TALIA
+##  == =====
+
+{ my $search = "Abbruzzu"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Abbruzzo" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Abbruzzo" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Lucania"; 
+  my %th ;  
+  $th{"sc_word"} = $search      ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Basilicata" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Basilicata" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Calabbria"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Calabria" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Calabria" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Campania"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Campania" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Campania" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Emilia"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Emilia" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Emilia" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Rumagna"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Romagna" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Romagna" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Friuli"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Friuli" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Friuli" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Venezzia Giulia"; 
+  my %th ;  
+  $th{"sc_word"} = $search          ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Venezia Giulia" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Venezia Giulia" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Lazziu"; 
+  my %th ;  
+  $th{"sc_word"} = $search ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Lazio" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Lazio" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Liguria"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Liguria" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Liguria" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Lummardìa"; 
+  my %th ;  
+  $th{"sc_word"} = $search     ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Lombardia" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Lombardy"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Marchi"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{fpl}";
+  $th{"it_word"} = "Marche" ; $th{"it_part"} = "{fpl}";
+  $th{"en_word"} = "Marche" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Mulisi"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Molise" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Molise" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Piemunti"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Piemonte" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Piedmont" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Pugghia"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Puglia" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Apulia" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Sardigna"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Sardegna" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Sardinia" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Tuscana"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Toscana" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Tuscany" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Trentinu"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Trentino" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Trentino" ; $th{"en_part"} = "{n}"; 
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Autu Adici"; 
+  my %th ;  
+  $th{"sc_word"} = $search      ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Alto Adige" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Alto Adige" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Suttu Tirolu"; 
+  my %th ;  
+  $th{"sc_word"} = $search      ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Sud Tirolo" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "South Tyrol"; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Umbria"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Umbria" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Umbria" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Vaddi d'Aosta"; 
+  my %th ;  
+  $th{"sc_word"} = $search         ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Valle d'Aosta" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Aosta Valley"  ; $th{"en_part"} = "{n}";
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Vènitu"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Veneto" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Veneto" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "L'Aquila"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "L'Aquila" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "L'Aquila" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Putenza"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Potenza" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Potenza" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Pizzu"; 
+  my %th ;  
+  $th{"sc_word"} = $search         ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Pizzo"         ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Pizzo Calabro" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Vibbu Valenzia"; 
+  my %th ;  
+  $th{"sc_word"} = $search          ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Vibo Valentia"  ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Vibo Valentia"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Riggiu Calabbria"; 
+  my %th ;  
+  $th{"sc_word"} = $search           ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Reggio Calabria" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Reggio Calabria" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Catanzaru"; 
+  my %th ;  
+  $th{"sc_word"} = $search     ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Catanzaro" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Catanzaro" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Cusenza"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Cosenza" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Cosenza" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Cutroni"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Crotone" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Crotone" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Nàpuli"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Napoli" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Naples" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Bulogna"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Bologna" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Bologna" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Triesti"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Trieste" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Trieste" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Roma"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Roma"   ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Rome"   ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Gènuva"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Genova"  ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Genoa"   ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Milanu"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Milano"   ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Milan"    ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Ancona"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Ancona" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Ancona" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Campubbassu"; 
+  my %th ;  
+  $th{"sc_word"} = $search      ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Campobasso" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Campobasso" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Turinu"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Torino" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Turin"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Lecci"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Lecce"   ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Lecce"   ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Bari"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Bari"   ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Bari"   ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Barletta"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Barletta" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Barletta" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Andria"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Andria"  ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Andria"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Trani"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Trani"   ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Trani"   ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Foggia"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Foggia"  ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Foggia"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Brìndisi"; 
+  my %th ;  
+  $th{"sc_word"} = $search     ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Brindisi"  ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Brindisi"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Tàrantu"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Taranto"  ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Taranto"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Càgliari"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Cagliari" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Cagliari" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+## $ ./query-dieli.pl sc strittu Palermu
+##      0  ==  Palermu {n} --> <br> {} --> Palermo {}
+{ my $i = 0;
+  my $search = "Palermu";
+  ${$dieli_sc{$search}[$i]}{"sc_part"} = '{m}';
+  ${$dieli_sc{$search}[$i]}{"it_word"} = 'Palermo';
+  ${$dieli_sc{$search}[$i]}{"it_part"} = '{m}';
+  ${$dieli_sc{$search}[$i]}{"en_part"} = '{n}';
+}
+
+## $ ./query-dieli.pl sc strittu Missina
+## 	0  ==  Missina {} --> <br> {} --> Messina {}
+{ my $i = 0;
+  my $search = "Missina"; 
+  ${$dieli_sc{$search}[$i]}{"sc_part"} = '{f}';
+  ${$dieli_sc{$search}[$i]}{"it_word"} = 'Messina';
+  ${$dieli_sc{$search}[$i]}{"it_part"} = '{f}';
+  ${$dieli_sc{$search}[$i]}{"en_part"} = '{n}';
+}
+
+{ my $search = "Carini"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Carini" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Carini" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Casteddammari"; 
+  my %th ;  
+  $th{"sc_word"} = $search                   ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Castellammare del Golfo" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Castellammare del Golfo" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Sarausa"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Siracusa" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Syracuse" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Tràpani"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Trapani"  ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Trapani"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Girgenti"; 
+  my %th ;  
+  $th{"sc_word"} = $search     ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Agrigento" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Agrigento" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Nissa"; 
+  my %th ;  
+  $th{"sc_word"} = $search         ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Caltanissetta" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Caltanissetta" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Enna"; 
+  my %th ;  
+  $th{"sc_word"} = $search ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Enna"  ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Enna"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+## $ ./query-dieli.pl sc strittu Catania
+## 	0  ==  Catania {} --> Catania {} --> Catania {}
+{ my $i = 0;
+  my $search = "Catania";
+  ${$dieli_sc{$search}[$i]}{"sc_part"} = '{f}';
+  ${$dieli_sc{$search}[$i]}{"it_part"} = '{f}';
+  ${$dieli_sc{$search}[$i]}{"en_part"} = '{n}';
+}
+
+{ my $search = "Rausa"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Ragusa" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Ragusa" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+    
+{ my $search = "Firenzi"; 
+  my %th ;  
+  $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Firenze"  ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Florence" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Trentu"; 
+  my %th ;  
+  $th{"sc_word"} = $search  ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Trento" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Trent"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Buzzanu"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{m}";
+  $th{"it_word"} = "Bolzano" ; $th{"it_part"} = "{m}";
+  $th{"en_word"} = "Bolzano" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Perugia"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Perugia" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Perugia" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Aosta"; 
+  my %th ;  
+  $th{"sc_word"} = $search ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Aosta" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Aosta" ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+{ my $search = "Vinezzia"; 
+  my %th ;  
+  $th{"sc_word"} = $search   ; $th{"sc_part"} = "{f}";
+  $th{"it_word"} = "Venezia" ; $th{"it_part"} = "{f}";
+  $th{"en_word"} = "Venice"  ; $th{"en_part"} = "{n}";  
+  push( @{ $dieli_sc{$search} } , \%th ) ;
+}
+
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+
 ##  EXAMPLES of VERBS
 ##  ======== == =====
 

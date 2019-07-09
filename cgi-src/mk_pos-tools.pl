@@ -20,6 +20,7 @@
 
 use strict;
 use warnings;
+no warnings qw( uninitialized );
 use Storable qw( nstore ) ;
 {   no warnings;             
     $Storable::Deparse = 1;  
@@ -120,8 +121,8 @@ sub mk_noun_plural {
 		( $plural = $palora ) =~ s/hia$/hi/ ;
 		
 	    } elsif ( $palora =~ /ia$/ ) {
-		##  lu studiu  --> li studii
-		##  la grazzia --> la grazzii 
+		##  lu diu  --> li dii
+		##  la malatia --> li malatii
 		( $plural = $palora ) =~ s/ia$/ii/ ;
 		
 	    } elsif ( $palora =~ /ca$/ ) {
@@ -177,8 +178,8 @@ sub mk_noun_plural {
 		( $plural = $palora ) =~ s/hi[ua]$/hi/ ;
 		
 	    } elsif ( $palora =~ /i[ua]$/ ) {
-		##  lu studiu  --> li studii
-		##  la grazzia --> la grazzii 
+		##  lu diu  --> li dii
+		##  la malatia --> li malatii
 		( $plural = $palora ) =~ s/i[ua]$/ii/ ;
 		
 	    } elsif ( $palora =~ /c[ua]$/ ) {

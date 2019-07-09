@@ -21,8 +21,6 @@
 use strict ;
 use warnings ;
 no warnings qw( uninitialized );
-use utf8 ;
-use Encoding::FixLatin qw(fix_latin);
 use Storable qw( retrieve ) ;
 
 my %dieli_sc = %{ retrieve('../../cgi-lib/dieli-sc-dict' ) } ;
@@ -53,9 +51,6 @@ foreach my $palora (@order) {
     }
     @dieli_en = uniq( @dieli_en ) ; 
     @dieli_it = uniq( @dieli_it ) ; 
-
-    ##  please give me utf8 !!
-    $palora = fix_latin( $palora ) ;
 
     ##  fetch/infer gender
     my $gender ;
@@ -172,3 +167,68 @@ sub get_alpha_order {
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##
+
+sub fix_accents {
+
+    my $line = $_[0] ;
+    
+    ##  fix accents
+    $line =~ s/~aG~/à/g;
+    $line =~ s/~eG~/è/g;
+    $line =~ s/~iG~/ì/g;
+    $line =~ s/~oG~/ò/g;
+    $line =~ s/~uG~/ù/g;
+    
+    $line =~ s/~AG~/À/g;
+    $line =~ s/~EG~/È/g;
+    $line =~ s/~IG~/Ì/g;
+    $line =~ s/~OG~/Ò/g;
+    $line =~ s/~UG~/Ù/g;
+	           
+    $line =~ s/~aH~/â/g;
+    $line =~ s/~eH~/ê/g;
+    $line =~ s/~iH~/î/g;
+    $line =~ s/~oH~/ô/g;
+    $line =~ s/~uH~/û/g;
+	           
+    $line =~ s/~AH~/Â/g;
+    $line =~ s/~EH~/Ê/g;
+    $line =~ s/~IH~/Î/g;
+    $line =~ s/~OH~/Ô/g;
+    $line =~ s/~UH~/Û/g;
+    
+    return $line;
+}
+
+##  ##  ##  ##  ##  ##  ##  ##  ##
+
+sub accents_to_tildas {
+
+    my $line = $_[0];
+
+    $line =~ s/à/~aG~/g;
+    $line =~ s/è/~eG~/g;
+    $line =~ s/ì/~iG~/g;
+    $line =~ s/ò/~oG~/g;
+    $line =~ s/ù/~uG~/g;
+
+    $line =~ s/À/~AG~/g;
+    $line =~ s/È/~EG~/g;
+    $line =~ s/Ì/~IG~/g;
+    $line =~ s/Ò/~OG~/g;
+    $line =~ s/Ù/~UG~/g;
+
+    $line =~ s/â/~aH~/g;
+    $line =~ s/ê/~eH~/g;
+    $line =~ s/î/~iH~/g;
+    $line =~ s/ô/~oH~/g;
+    $line =~ s/û/~uH~/g;
+
+    $line =~ s/Â/~AH~/g;
+    $line =~ s/Ê/~EH~/g;
+    $line =~ s/Î/~IH~/g;
+    $line =~ s/Ô/~OH~/g;
+    $line =~ s/Û/~UH~/g;
+    
+    return $line;
+}

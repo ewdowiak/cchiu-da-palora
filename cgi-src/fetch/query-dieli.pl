@@ -34,9 +34,9 @@ if ( ! defined $lang || ! defined $deep  || $lang !~ /^sc$|^en$|^it$/ || $deep !
 }
 
 ##  retrieve dictionaries
-my %dieli_sc = %{ retrieve('../../cgi-lib/dieli-sc-dict' ) } ;
-my %dieli_en = %{ retrieve('../../cgi-lib/dieli-en-dict' ) } ;
-my %dieli_it = %{ retrieve('../../cgi-lib/dieli-it-dict' ) } ;
+my %dieli_sc = %{ retrieve('/home/eryk/website/napizia/cgi-lib/dieli-sc-dict' ) } ;
+my %dieli_en = %{ retrieve('/home/eryk/website/napizia/cgi-lib/dieli-en-dict' ) } ;
+my %dieli_it = %{ retrieve('/home/eryk/website/napizia/cgi-lib/dieli-it-dict' ) } ;
 
 ##  generate search results
 my $ottext ;
@@ -62,10 +62,17 @@ foreach my $arg (@lkup) {
     } else {
 
 	foreach my $search (uniq(@matches)) {
+
+	    $ottext .= ( $deep eq "largu" ) ? "\n" : "";
+
+	    ## format for dieli edits file
+	    my $fmt_search = ($search =~ / / ) ? '"'. $search .'"' : $search ;
+	    $ottext .= '## $ ./query-dieli.pl '. $lang .' strittu '. $fmt_search  ."\n";
+	    
 	    if ( $lang eq "sc" ) {    
 		foreach my $i (0..$#{$dieli_sc{$search}}) {
 		    my %th = %{ ${$dieli_sc{$search}}[$i] } ; 
-		    $ottext .= "\t" . $i . "  ==  " ;
+		    $ottext .= "## \t" . $i . "  ==  " ;
 		    $ottext .= $th{"sc_word"} . " " . $th{"sc_part"} . " --> " ;
 		    $ottext .= $th{"it_word"} . " " . $th{"it_part"} . " --> " ;
 		    $ottext .= $th{"en_word"} . " " . $th{"en_part"} . "\n" ;
@@ -73,7 +80,7 @@ foreach my $arg (@lkup) {
 	    } elsif ( $lang eq "en" ) {
 		foreach my $i (0..$#{$dieli_en{$search}}) {
 		    my %th = %{ ${$dieli_en{$search}}[$i] } ; 
-		    $ottext .= "\t" . $i . "  ==  " ;
+		    $ottext .= "## \t" . $i . "  ==  " ;
 		    $ottext .= $th{"en_word"} . " " . $th{"en_part"} . " --> " ;
 		    $ottext .= $th{"it_word"} . " " . $th{"it_part"} . " --> " ;
 		    $ottext .= $th{"sc_word"} . " " . $th{"sc_part"} . "\n" ;
@@ -81,7 +88,7 @@ foreach my $arg (@lkup) {
 	    } elsif ( $lang eq "it" ) {
 		foreach my $i (0..$#{$dieli_it{$search}}) {
 		    my %th = %{ ${$dieli_it{$search}}[$i] } ; 
-		    $ottext .= "\t" . $i . "  ==  " ;
+		    $ottext .= "## \t" . $i . "  ==  " ;
 		    $ottext .= $th{"it_word"} . " " . $th{"it_part"} . " --> " ;
 		    $ottext .= $th{"en_word"} . " " . $th{"en_part"} . " --> " ;
 		    $ottext .= $th{"sc_word"} . " " . $th{"sc_part"} . "\n" ;

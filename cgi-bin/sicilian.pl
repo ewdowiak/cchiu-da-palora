@@ -59,9 +59,10 @@ s/'/_SQUOTE_/g for @searches ;
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 ##  we need to make a webpage, so let's get some HTML
-my $tophtml  = $ddsubs{mk_ddtophtml}( "../config/topnav.html");
+my $tophtml  = $ddsubs{mk_ddtophtml}( "../config/topnav.html", $lgparm , $insearch );
 my $newform  = $ddsubs{mk_newform}( $lgparm , $insearch );
 my $thanks   = $ddsubs{thank_dieli}();
+my $ricota   = $ddsubs{mk_ricota}();
 my $foothtml = $ddsubs{mk_foothtml}("../config/navbar-footer.html");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -110,14 +111,7 @@ foreach my $search (@searches) {
 	##  check if language specified in request
 	##  if language not specified, then there is no request
 
-	if ( $insearch =~ /_OR_/ ) { 
-	    ##  _OR_ was specified, so limit results
-	    my $pclass = "" ; 
-	    $otline .= '<div align="center">' . "\n" ; 
-	    $otline .= $ddsubs{mk_search}( $rquest, $search , \%dieli , \%ddsubs , $lgparm , $pclass , "BeNice" ) ; 
-	    $otline .= '</div>' . "\n" ; 
-
-	} elsif ( length($insearch) < 5 ) {
+	if ( length($insearch) < 5 ) {
 	    ###  ( $rquest =~ /SCEN|SCIT/ && 
 	    ###    ( length($insearch) < 2 || 
 	    ###      $search =~ /lu|la|li|ca|cu|di|nna|nni|nta|ntra|pi|pri/ ) )  
@@ -143,8 +137,10 @@ foreach my $search (@searches) {
 		    $otline .= '</div>' . "\n" ; 
 		}
 	    } else {
+		my $rsrch = $search ;
+		$rsrch =~ s/_SQUOTE_/'/g;
 		$otline .= '<div align="center">' . "\n" ; 
-		$otline .= "<p>nun c'è na traduzzioni dâ palora: " . '&nbsp; <b>' . $search . '</b></p>';
+		$otline .= "<p>nun c'è na traduzzioni dâ palora: " . '&nbsp; <b>' . $rsrch . '</b></p>';
 		$otline .= '</div>' . "\n" ; 
 	    }
 	    
@@ -163,7 +159,10 @@ foreach my $search (@searches) {
 		    ##  does search term match a word in key?
 		    my @key_wds = split( / /, $key_noa ) ;
 		    foreach my $keyword (@key_wds) {
-			if ( $sch_noa =~ /$keyword/ ) {
+			##  need to match on keyword beginning and ending,
+			##  otherwise excess (bad) results
+			if ( $sch_noa =~ /^$keyword$/ || ( $sch_noa =~ / / && $sch_noa =~ /$keyword/ )  ) {
+			## if ( $sch_noa =~ /^$keyword$/ ) {
 			    push( @subsearches , $key ) ;
 			}
 		    }
@@ -177,8 +176,10 @@ foreach my $search (@searches) {
 		    $otline .= '</div>' . "\n" ; 
 		}
 	    } else {
+		my $rsrch = $search ;
+		$rsrch =~ s/_SQUOTE_/'/g;
 		$otline .= '<div align="center">' . "\n" ; 
-		$otline .= "<p>nun c'è na traduzzioni dâ palora: " . '&nbsp; <b>' . $search . '</b></p>';
+		$otline .= "<p>nun c'è na traduzzioni dâ palora: " . '&nbsp; <b>' . $rsrch . '</b></p>';
 		$otline .= '</div>' . "\n" ; 
 	    }
 	} 
@@ -192,6 +193,7 @@ print $tophtml ;
 print $newform ;
 print $otline  ;
 print $thanks  ;
+print $ricota  ;
 print $foothtml ;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -402,8 +404,19 @@ sub mk_collections {
     ## COLL_places
     @{ $othash{"COLL_places"} } = ( 
 	["SCEN"],
-	["Sicilia",],
-	["Cartagiruni","Castedduvitranu","Partinicu","Patti","Siracusa",], ## "Siragusa",],
+	["Sicilia","Calabbria","Pugghia",],
+	["Sardigna","Lucania","Campania","Abbruzzu","Mulisi",
+	 "Lazziu","Umbria","Marchi","Tuscana","Emilia","Rumagna","Liguria",
+	 "Friuli","Venezzia Giulia","Vènitu","Trentinu","Autu Adici","Suttu Tirolu",
+	 "Vaddi d'Aosta","Lummardìa","Piemunti",], 	
+	["Casteddammari","Tràpani","Castedduvitranu","Palermu","Carini","Partinicu",
+	 "Missina","Patti","Girgenti","Nissa","Enna","Catania","Cartagiruni","Rausa","Sarausa",],
+	["Pizzu","Vibbu Valenzia","Riggiu Calabbria","Cutroni","Cusenza","Catanzaru",],
+	["Lecci","Barletta","Andria","Trani","Foggia","Tàrantu","Brìndisi","Bari",],
+	["Càgliari","Putenza","Nàpuli","L'Aquila","Campubbassu",
+	 "Roma","Perugia","Ancona","Firenzi","Bulogna","Gènuva",
+	 "Vinezzia","Triesti","Trentu","Buzzanu",
+	 "Aosta","Milanu","Turinu",], 
 	["munnu",],
 	["Arabbia Saudita","Australia","Austria","Belgiu","Bolivia","Brasili","Bulgaria",
 	 "Cecoslovacchia","Cile","Cina","Colombia","Cuba","Danimarca","Ecuaturi","Egittu",

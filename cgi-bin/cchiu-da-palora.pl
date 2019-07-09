@@ -29,8 +29,8 @@ use Storable qw( retrieve ) ;
 
 ##  scalars to adjust length of columns (for appearances)
 my $adjustone =     0 ;
-my $adjusttwo =    -5 ;
-my $adjusttre =     0 ;
+my $adjusttwo =    -8 ;
+my $adjusttre =   -20 ;
 
 ##  retrieve hashes and subroutines
 my $vthash  = retrieve('../cgi-lib/verb-tools' );
@@ -48,18 +48,33 @@ my %ddsubs = %{ $cchash->{ddsubs} } ;
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
 ##  what are we looking for?
-my $inword = param('palora') ; 
+my $inword = param('palora');
+if ( ! defined $inword ) {
+    my $blah = "leave it undefined";
+} elsif ( ! defined $vnotes{ $inword } ) {
+    ## try to fix it
+    $inword = fixurl($inword);
+}
+
+##  set the language pair
 my $lgparm = ( ! defined param('langs') ) ? "SCEN" : param('langs') ;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  make webpage -- do not conjugate if $inword not defined
-print $ccsubs{mk_cctophtml}("../config/topnav.html");
-print $ddsubs{mk_newform}( $lgparm );
-if ( ! defined $inword ) {
-    print $ccsubs{mk_showall}(  \%vnotes , $vbconj , $vbsubs , \%ccsubs , $adjustone , $adjusttwo , $adjusttre ) ;
-} else { 
+##  make webpage; if input word not defined, cannot conjugate/decline, so show all
+if ( ! defined $inword || ! defined $vnotes{ $inword } ) {
+    ## make top
+    print $ccsubs{mk_cctophtml}("../config/topnav.html" , "" , \%vnotes , $vbconj , $vbsubs );
+    print $ddsubs{mk_newform}( $lgparm );
 
+    ## show all
+    print $ccsubs{mk_showall}(  \%vnotes , $vbconj , $vbsubs , \%ccsubs , $adjustone , $adjusttwo , $adjusttre ) ;
+
+} else { 
+    ## make top
+    print $ccsubs{mk_cctophtml}("../config/topnav.html" , $inword , \%vnotes , $vbconj , $vbsubs );
+    print $ddsubs{mk_newform}( $lgparm );
+    
     ##  print translations and notes
     print $ccsubs{mk_dielitrans}( $inword , $lgparm , \%vnotes , $vbconj , $vbsubs ) ;
     print $ccsubs{mk_notex}( $inword , \%vnotes , \%ccsubs ) ;
@@ -102,6 +117,7 @@ if ( ! defined $inword ) {
 	print $ccsubs{mk_showall}(  \%vnotes , $vbconj , $vbsubs , $adjustone , $adjusttwo , $adjusttre ) ;
     }
 }
+print $ddsubs{mk_ricota}();
 print $ddsubs{mk_foothtml}("../config/navbar-footer.html");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -110,3 +126,45 @@ print $ddsubs{mk_foothtml}("../config/navbar-footer.html");
 
 ##  SUBROUTINES
 ##  ===========
+
+##  fix URL encodings
+sub fixurl {
+
+    my $encode = $_[0];
+    $encode =~ s/%25([89ABC][023489ABCE])/%$1/gi;
+
+    my $decode = $encode ;
+    
+    $decode =~ s/%C3%80/À/gi;
+    $decode =~ s/%C3%88/È/gi;
+    $decode =~ s/%C3%8C/Ì/gi;
+    $decode =~ s/%C3%92/Ò/gi;
+    $decode =~ s/%C3%99/Ù/gi;
+
+    $decode =~ s/%C3%A0/à/gi;
+    $decode =~ s/%C3%A8/è/gi;
+    $decode =~ s/%C3%AC/ì/gi;
+    $decode =~ s/%C3%B2/ò/gi;
+    $decode =~ s/%C3%B9/ù/gi;
+
+    $decode =~ s/%C3%82/Â/gi;
+    $decode =~ s/%C3%8A/Ê/gi;
+    $decode =~ s/%C3%8E/Î/gi;
+    $decode =~ s/%C3%94/Ô/gi;
+    $decode =~ s/%C3%9B/Û/gi;
+    
+    $decode =~ s/%C3%A2/â/gi;
+    $decode =~ s/%C3%AA/ê/gi;
+    $decode =~ s/%C3%AE/î/gi;
+    $decode =~ s/%C3%B4/ô/gi;
+    $decode =~ s/%C3%BB/û/gi;
+    
+    return $decode; 
+}
+
+##  À à  Â â   ##  %C3%80  %C3%A0  %C3%82  %C3%A2
+##  È è  Ê ê   ##  %C3%88  %C3%A8  %C3%8A  %C3%AA
+##  Ì ì  Î î   ##  %C3%8C  %C3%AC  %C3%8E  %C3%AE
+##  Ò ò  Ô ô   ##  %C3%92  %C3%B2  %C3%94  %C3%B4
+##  Ù ù  Û û   ##  %C3%99  %C3%B9  %C3%9B  %C3%BB
+

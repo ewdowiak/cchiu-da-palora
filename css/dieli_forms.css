@@ -1,0 +1,73 @@
+/*  ==================================================  */
+/*                                                      */  
+/*  "dieli_forms.css" -- CSS for HTML form elements     */
+/*                                                      */
+/*  Eryk Wdowiak                                        */
+/*  20 June 2019                                        */
+/*                                                      */
+/*  ==================================================  */  
+
+/*  INPUT  BOX     */
+/*  =====  ===     */
+/*                 */
+/*  adapted from:  */
+/*  https://www.w3schools.com/css/css_form.asp  */
+
+/*  create text area */
+
+input[type=text], textarea {
+    border: 1px solid rgb(2, 78, 168);
+    background-color: #f8f8f8; 
+    border-radius: 4px;
+    /* font-size: 12px; */
+    padding: 3px 1px 3px 3px;
+}
+
+/*  highlight text area  */
+
+input[type=text]:focus, textarea:focus {
+    border: 1px solid rgb(122, 122, 244);
+    background-color: #d8d8f8;
+}
+
+/*  ==================================================  */
+
+/*  SELECT MENU    */
+/*  ====== ====    */
+/*                 */
+/*  adapted from:  */
+/*  https://www.w3schools.com/css/css_form.asp  */
+
+select, option {
+    background-color: #d8d8f8;
+    color: rgb(2, 48, 88);
+    border: 1px solid rgb(2, 78, 168);
+    border-radius: 4px;
+    font-size: 14px; 
+    font-weight: normal;
+    padding: 2px 5px;
+    margin: 2px 1px;
+    /* cursor: pointer; */ 
+}
+
+/*  ==================================================  */  
+
+/*  SUBMIT BUTTON  */
+/*  ====== ======  */
+/*                 */
+/*  adapted from:  */
+/*  https://www.w3schools.com/css/css_form.asp  */
+
+/* submit button */
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #d8d8f8;
+    color: rgb(2, 48, 88);
+    border: 1px solid rgb(2, 78, 168);
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: normal ;
+    padding: 6px 12px;
+    text-decoration: none;
+    margin: 2px 1px;
+    cursor: pointer;
+}

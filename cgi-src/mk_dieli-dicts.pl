@@ -27,6 +27,7 @@
 
 use strict;
 use warnings;
+no warnings qw( uninitialized );
 use IO::Zlib;
 use Storable qw( nstore ) ;
 

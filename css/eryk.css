@@ -18,8 +18,8 @@
 /*                                                                            */
 /*  ========================================================================  */  
 
-/*  last updated:  05 May 2018   */
-/*  ===========================  */
+/*  last updated:  04 Feb 2019  */
+/*  ==========================  */
 
 /*  backgrounds  */
 body{background-image: url(../config/bricks.jpg)}
@@ -75,15 +75,15 @@ table.message{
 p.code { 
     font-family: monospace; 
     font-size: 1.10em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    margin: 0.2em 0px 0.2em 65px; 
+    text-indent:  -35px;
 }
 
 /*  ====================  */
 
 /*  writing code */
 
-p.code, pre.code{ margin: 0px 0px 0px 30px; }
+pre.code{ margin: 0px 0px 0px 30px; }
 span.code{ font-family: monospace; font-size: 1.1em; }
 span.darkred{ color: darkred; }
 
@@ -180,10 +180,13 @@ li.dropdown:hover .dropdown-content, a.dropbtn { display: block; }
     }
     a.dbright { text-align: right; }
     a.dbleft { text-align: left; }
+    a.dbctr { text-align: center; }
     div.dcright {position: relative; right: 0px;}
     div.dcleft {position: relative; left: 0px; }
+    div.dcctr {position: relative; center: 0px; }
     div.dcright a.topnav{ text-align: right; }
     div.dcleft a.topnav{ text-align: left; }
+    div.dcctr a.topnav{ text-align: center; }
     #mainitem { width: 99%; padding: 0px; margin: 0px auto;
         text-align: center;
     }

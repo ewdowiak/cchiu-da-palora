@@ -32,11 +32,11 @@ use Storable qw( retrieve ) ;
 #  ##  ##  ##  ##  ##  ##  ##  ##
 
 ##  input and output files
-my $infile = "sicilian_2018-10-18_v1.csv";
-my $otfile = "sicilian_2018-10-18_v1.pl";
+my $infile = "sicilian_2019-07-06.csv";
+my $otfile = "sicilian_2019-07-06.pl";
 
 ##  retrieve aiutami list
-my $amlsrf = retrieve('bkp-lib/aiutu-list_2018-10-18' );
+my $amlsrf = retrieve('bkp-lib/aiutu-list_2019-07-06' );
 my %amlist = %{ $amlsrf } ;
 
 ##  retrieve hashes and subroutines
@@ -69,6 +69,27 @@ while(<INFILE>){
     $line =~ s/Ã²/~oG~/g; 
     $line =~ s/Ã¹/~uG~/g; 
 
+    $line =~ s/Ã€/~AG~/g;
+    $line =~ s/Ãˆ/~EG~/g;
+    $line =~ s/ÃŒ/~IG~/g;
+    $line =~ s/Ã’/~OG~/g;
+    $line =~ s/Ã™/~UG~/g;
+
+    $line =~ s/Ã¢/~aH~/g; 
+    $line =~ s/Ãª/~eH~/g; 
+    $line =~ s/Ã®/~iH~/g; 
+    $line =~ s/Ã´/~oH~/g; 
+    $line =~ s/Ã»/~uH~/g; 
+
+    $line =~ s/Ã‚/~AH~/g; 
+    $line =~ s/ÃŠ/~EH~/g; 
+    $line =~ s/ÃŽ/~IH~/g; 
+    $line =~ s/Ã”/~OH~/g; 
+    $line =~ s/Ã›/~UH~/g; 
+
+    ##  remove all non ASCII
+    $line =~ s/[^\x00-\x7F]/ /g;
+    
     ##  now read the CSV fields
     my @cols = read_csv($line) ;
 
@@ -79,6 +100,24 @@ while(<INFILE>){
     s/~oG~/ò/g for @cols;
     s/~uG~/ù/g for @cols;
 
+    s/~AG~/À/g for @cols; 
+    s/~EG~/È/g for @cols; 
+    s/~IG~/Ì/g for @cols; 
+    s/~OG~/Ò/g for @cols; 
+    s/~UG~/Ù/g for @cols; 
+    
+    s/~aH~/â/g for @cols; 
+    s/~eH~/ê/g for @cols; 
+    s/~iH~/î/g for @cols; 
+    s/~oH~/ô/g for @cols; 
+    s/~uH~/û/g for @cols; 
+    
+    s/~AH~/Â/g for @cols; 
+    s/~EH~/Ê/g for @cols; 
+    s/~IH~/Î/g for @cols; 
+    s/~OH~/Ô/g for @cols; 
+    s/~UH~/Û/g for @cols; 
+    
     ##  assign column names
     my %ch ; 
     foreach my $i (0..$#cols) {	
@@ -222,7 +261,7 @@ sub mk_vbhash {
     foreach my $listing (@dieli_it) { $ottxt .= '"' . $listing . '",';};
     $ottxt .= '],' . "\n";
     if ( $poetry ne "NULL" ) {
-	$ottxt .= '    notex => ["'. $poetry .'",],' . "\n";
+	$ottxt .= '    #poetry => ["'. $poetry .'",],' . "\n";
     } else {
 	$ottxt .= '    ##  notex => ["","",],' . "\n";
     }
@@ -363,7 +402,7 @@ sub mk_vbhash {
     }
     
     $ottxt .= ' 	},' . "\n";
-    $ottxt .= '     },);' . "\n";
+    $ottxt .= '    },);' . "\n";
 
 
     my $rid_irrg = ' 	irrg => \{' ."\n". ' 	\},' ."\n";
@@ -438,7 +477,7 @@ sub mk_nnhash {
     foreach my $listing (@dieli_it) { $ottxt .= '"' . $listing . '",';};
     $ottxt .= '],' . "\n";
     if ( $poetry ne "NULL" ) {
-	$ottxt .= '    notex => ["'. $poetry .'",],' . "\n";
+	$ottxt .= '    #poetry => ["'. $poetry .'",],' . "\n";
     } else {
 	$ottxt .= '    ##  notex => ["","",],' . "\n";
     }
@@ -473,7 +512,7 @@ sub mk_nnhash {
 	$ottxt .= '    noun => {' . "\n";
 	$ottxt .= ' 	gender => "' . $gender . '",' . "\n";
 	$ottxt .= ' 	plend => "'  . $plend_ngp  . '",' . "\n";
-	$ottxt .= ' 	##  plural => "",' . "\n";
+	## $ottxt .= ' 	##  plural => "",' . "\n";
 	$ottxt .= '    },);' . "\n";
     }    
     
@@ -512,7 +551,7 @@ sub mk_ajhash {
     foreach my $listing (@dieli_it) { $ottxt .= '"' . $listing . '",';};
     $ottxt .= '],' . "\n";
     if ( $poetry ne "NULL" ) {
-	$ottxt .= '    notex => ["'. $poetry .'",],' . "\n";
+	$ottxt .= '    #poetry => ["'. $poetry .'",],' . "\n";
     } else {
 	$ottxt .= '    ##  notex => ["","",],' . "\n";
     }    
@@ -532,10 +571,14 @@ sub mk_ajhash {
 	$ottxt .= '    },);' . "\n";
     } else {
 	( $femsi_form = $femsi ) =~ s/FEMSI_// ;
-	
-	$ottxt .= '    adj => {' . "\n";
-	$ottxt .= '	femsi => "'    . $femsi_form . '",' . "\n";
-	$ottxt .= '    },);' . "\n";
+
+	if ( ( $dieli =~ /u$/ && $femsi_form =~ /a$/ ) || ( $dieli =~ /i$/ && $femsi_form =~ /i$/ )  ) {
+	    $ottxt .= '    );' . "\n";
+	} else {	
+	    $ottxt .= '    adj => {' . "\n";
+	    $ottxt .= '	femsi => "'    . $femsi_form . '",' . "\n";
+	    $ottxt .= '    },);' . "\n";
+	}
     }
 
     return( $ottxt , $femsi_form ); 
@@ -570,7 +613,7 @@ sub mk_othash {
     foreach my $listing (@dieli_it) { $ottxt .= '"' . $listing . '",';};
     $ottxt .= '],' . "\n";
     if ( $poetry ne "NULL" ) {
-	$ottxt .= '    notex => ["'. $poetry .'",],' . "\n";
+	$ottxt .= '    #poetry => ["'. $poetry .'",],' . "\n";
     } else {
 	$ottxt .= '    ##  notex => ["","",],' . "\n";
     }  
