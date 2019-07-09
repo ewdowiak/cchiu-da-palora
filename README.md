@@ -47,7 +47,7 @@ Grazzi pi l'aiutu!
 
 To develop a rule-based machine translator for the Sicilian language, we need a dictionary that writes the Sicilian language and we need a dictionary that translates the Sicilian language.
 
-To seed the project, I used [Arthur Dieli](https://www.dieli.net/)'s vocabulary lists to create a [basic dictionary](https://www.napizia.com/cgi-bin/sicilian.pl).  Dr. Dieli's work was one of the first Sicilian vocabulary lists on the internet.  It contains over 12,000 Sicilian words and phrases, part of speech and translations into English and Italian.
+To seed the project, I used [Arthur Dieli](http://www.dieli.net/)'s vocabulary lists to create a [basic dictionary](https://www.napizia.com/cgi-bin/sicilian.pl).  Dr. Dieli's work was one of the first Sicilian vocabulary lists on the internet.  It contains over 12,000 Sicilian words and phrases, part of speech and translations into English and Italian.
 
 To write the Sicilian language, I created the set of Perl hashes described below. The [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) tool uses those hashes to conjugate Sicilian verbs and to create the singular and plural forms of nouns and adjectives. The tool is based on the grammar rules listed in Kirk Bonner's _Introduction_.
 
@@ -61,7 +61,7 @@ Below is a description of the information that I am collecting on each Sicilian 
 
 ### Perl hashes
 
-Some people learn a language by creating an index card for each word that they learn. The Perl hashes that we're creating here are similar to that index card. For the preposition [_dintra_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=dintra_prep>), I created this "index card:"
+Some people learn a language by creating an index card for each word that they learn. The Perl hashes that we're creating here are similar to that index card. For the preposition [_dintra_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=dintra_prep), I created this "index card:"
 
 ```perl
 %{ $vnotes{"dintra_prep"} } = (
