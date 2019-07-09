@@ -10,7 +10,7 @@ If you do, please provide the _minimum_ amount of information necessary.  Please
 
 In the case of verbs, we want the computer to automatically conjugate each verb.  To the greatest extent possible, we must avoid telling the computer what the conjugation is.  We want the computer to create the conjugations for us, so that then (one day in the future) we can ask the computer to provide a conjugation for each dialect of the Sicilian language.
 
-The Perl scripts are able to conjugate a verb properly with a minimal amount of information because -- after accounting for "[boot and stem](https://www.napizia.com/archive/sicilian/sicilian-verbs.shtml)" patterns -- there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.
+The Perl scripts are able to conjugate a verb properly with a minimal amount of information because -- after accounting for "[boot and stem](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml)" patterns -- there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.
 
 We hope that you will contribute to our project, so that we can all share a great Sicilian dictionary.
 
@@ -20,12 +20,16 @@ Grazzi pi l'aiutu!
 
 * [_Manifestu dûn Giùvini Sicilianu_](https://www.wdowiak.me/archive/sicilian/giuvini-sicilianu.shtml)
 * [_Young Sicilian Manifesto_](https://www.wdowiak.me/archive/sicilian/young-sicilian.shtml)
+
 * [_Dizziunariu di Dieli_](https://www.napizia.com/cgi-bin/sicilian.pl)
 * [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl)
 * [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl)
-* [dictionary specification](https://www.napizia.com/archive/sicilian/index.shtml)
-* [boot and stem theory](https://www.napizia.com/archive/sicilian/sicilian-verbs.shtml)
-* [bibliography](https://www.napizia.com/archive/sicilian/bibliography.shtml)
+* [poets' page](https://www.napizia.com/pages/sicilian/poets.shtml)
+
+* [introduction](https://www.napizia.com/pages/sicilian/intro-en.shtml)
+* [dictionary specification](https://www.napizia.com/pages/sicilian/index.shtml)
+* [boot and stem theory](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml)
+* [bibliography](https://www.napizia.com/pages/sicilian/bibliography.shtml)
 
 ## to do
 
@@ -78,7 +82,7 @@ For that task, we want to give the computer the _least_ amount of information ne
 
 Specifically, we do not want to tell the computer what the conjugation is. We want the computer to create the conjugations for us, so that (one day in the future) we can ask the computer to provide a conjugation for each dialect of the Sicilian language.
 
-Fortunately, there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.  For example, after accounting for [boot and stem](https://www.napizia.com/archive/sicilian/sicilian-verbs.shtml) patterns, the verb [_jiri_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=jiri) only has four irregular forms -- the infinitive and three in the present tense (the first-person singular, third-person singular and third-person plural), so we might create the following hash:
+Fortunately, there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.  For example, after accounting for [boot and stem](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml) patterns, the verb [_jiri_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=jiri) only has four irregular forms -- the infinitive and three in the present tense (the first-person singular, third-person singular and third-person plural), so we might create the following hash:
 
 ```perl
 %{ $vnotes{"jiri"} } = (
