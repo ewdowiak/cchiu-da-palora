@@ -66,7 +66,7 @@ my %amlist = %{ $amlsrf } ;
 ## prepare connection to the database
 my $dbuser = "USERNAME" ; 
 my $dbpass = "PASSWORD" ; 
-my $connection = 'CONNECTION' ; 
+my $connection = 'CONNECTION';
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
