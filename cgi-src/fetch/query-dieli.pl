@@ -34,9 +34,9 @@ if ( ! defined $lang || ! defined $deep  || $lang !~ /^sc$|^en$|^it$/ || $deep !
 }
 
 ##  retrieve dictionaries
-my %dieli_sc = %{ retrieve('/home/eryk/website/napizia/cgi-lib/dieli-sc-dict' ) } ;
-my %dieli_en = %{ retrieve('/home/eryk/website/napizia/cgi-lib/dieli-en-dict' ) } ;
-my %dieli_it = %{ retrieve('/home/eryk/website/napizia/cgi-lib/dieli-it-dict' ) } ;
+my %dieli_sc = %{ retrieve('../../cgi-lib/dieli-sc-dict' ) } ;
+my %dieli_en = %{ retrieve('../../cgi-lib/dieli-en-dict' ) } ;
+my %dieli_it = %{ retrieve('../../cgi-lib/dieli-it-dict' ) } ;
 
 ##  generate search results
 my $ottext ;

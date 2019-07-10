@@ -318,6 +318,14 @@ ${$dieli_sc{"voscu"}[3]}{"sc_part"} = '{m}';
   push( @{ $dieli_sc{$search} } , \%th ) ;
 }
 
+## $ ./query-dieli.pl sc strittu Sicilia
+## 	0  ==  Sicilia {f} --> <br> {} --> Sicily {n}
+{ my $i = 0;
+  my $search = "Sicilia";
+  ${$dieli_sc{$search}[$i]}{"it_word"} = 'Sicilia';
+  ${$dieli_sc{$search}[$i]}{"it_part"} = '{f}';
+}
+
 { my $search = "Sardigna"; 
   my %th ;  
   $th{"sc_word"} = $search    ; $th{"sc_part"} = "{f}";

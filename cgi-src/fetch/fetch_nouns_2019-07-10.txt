@@ -2155,7 +2155,7 @@
 ##      display_as => "Sicilia",
 ##      dieli => ["Sicilia",],
 ##      dieli_en => ["Sicily",],
-##      dieli_it => [],
+##      dieli_it => ["Sicilia",],
 ##      ## notex => ["","",],
 ##      part_speech => "noun",
 ##      noun => {

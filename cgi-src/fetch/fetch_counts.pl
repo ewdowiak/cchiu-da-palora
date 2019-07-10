@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Storable qw( retrieve ) ;
 
-my $vnhash = retrieve('/home/eryk/website/napizia/cgi-lib/vocab-notes' );
+my $vnhash = retrieve('../../cgi-lib/vocab-notes' );
 my %vnotes = %{ $vnhash } ;
 
 my $otfile = "fetch_counts_" . datestamp() . ".txt" ;

@@ -1,5 +1,5 @@
 
-fetch_info_2019-07-09.txt
+fetch_info_2019-07-10.txt
 counts of parts of speech and missing parts of speech in Dieli dictionary
 -------------------------------------------------------------------------
 
@@ -22,15 +22,15 @@ counts of parts of speech and missing parts of speech in Dieli dictionary
            15  -- {p}
            10  -- {pl}
             6  -- {intj}
-            2  -- {vi}
             2  -- {excl}
-            1  -- {art}
-            1  -- {r}
-            1  -- {f}p}
-            1  -- {m
-            1  -- {vt}
-            1  -- n{}
+            2  -- {vi}
             1  -- {npl}
             1  -- {nm}
+            1  -- {f}p}
+            1  -- {m
             1  -- {pro}
+            1  -- {art}
+            1  -- {vt}
+            1  -- {r}
+            1  -- n{}
 
