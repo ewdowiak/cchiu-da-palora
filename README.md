@@ -22,7 +22,7 @@ Grazzi pi l'aiutu!
 * [_Young Sicilian Manifesto_](https://www.wdowiak.me/archive/sicilian/young-sicilian.shtml)
 * [_Dizziunariu di Dieli_](https://www.napizia.com/cgi-bin/sicilian.pl)
 * [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl)
-* [_Sumigghianza Cosina_](https://www.napizia.com/cgi-bin/cosine-sim.pl)
+* [_Cosenu di Sumigghianza_](https://www.napizia.com/cgi-bin/cosine-sim.pl)
 * [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl)
 * [poets' page](https://www.napizia.com/pages/sicilian/poets.shtml)
 * [introduction](https://www.napizia.com/pages/sicilian/intro-en.shtml)
