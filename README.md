@@ -37,8 +37,8 @@ Grazzi pi l'aiutu!
 
 ### immediate agenda
 
-* contribute nouns and adjectives to Sicilian Wiktionary
 * add poetry to the dictionary, so that the dictionary sings the Sicilian language
+* contribute nouns and adjectives to Sicilian Wiktionary
 
 ### long-term agenda
 
@@ -71,7 +71,7 @@ Some people learn a language by creating an index card for each word that they l
     dieli => ["dintra"],
     dieli_en => ["inside","into","within",],
     dieli_it => ["dentro","dentro a","in",],
-    proverb => ["Dintra nu biccheri d'acqua t'anniasti.",],
+    proverb => ["Dintra nu biccheri d'acqua t'anniasti. (Rapisarda)",],
     part_speech => "prep",
     );
 ```
