@@ -47,17 +47,17 @@ Grazzi pi l'aiutu!
 
 ## Sicilian dictionary specification
 
-To develop a rule-based machine translator for the Sicilian language, we need a dictionary that writes the Sicilian language and we need a dictionary that translates the Sicilian language.
+A good dictionary of the Sicilian language should be more than a simple vocabulary list. It should provide information about grammar. And it should contain examples from poetry, proverbs and prose.
 
 To seed the project, I used [Arthur Dieli](http://www.dieli.net/)'s vocabulary lists to create a [basic dictionary](https://www.napizia.com/cgi-bin/sicilian.pl).  Dr. Dieli's work was one of the first Sicilian vocabulary lists on the internet.  It contains over 12,000 Sicilian words and phrases, part of speech and translations into English and Italian.
 
 To write the Sicilian language, I created the set of Perl hashes described below. The [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) tool uses those hashes to conjugate Sicilian verbs and to create the singular and plural forms of nouns and adjectives. The tool is based on the grammar rules listed in Kirk Bonner's _Introduction_.
 
-The structure is flexible, so if there is interest, we could include other information too, for example:  related words, learner examples, usage notes and/or dialectical differences.
+The structure is flexible, so if there is interest, we could include other information too. For example: related words, learner examples, usage notes and etymology.
 
 To write a Perl hash for each Sicilian word, the [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl) tool asks visitors for grammatical information about each word and to contribute poetry or proverbs for each word.
 
-Finally, if we can teach a computer the Sicilian language, we can teach the computer any language, so I hope that this project will also be useful to people outside of the Sicilian community.
+Finally, if we can write a dictionary of the Sicilian language, we can write a dictionary of any language, so I hope that this project will also be useful to people outside of the Sicilian community.
 
 Below is a description of the information that I am collecting on each Sicilian word and how I am storing that information. Following the description is a slightly more formal specification of the information collected.
 
