@@ -23,15 +23,15 @@ Grazzi pi l'aiutu!
 * [_Dizziunariu di Dieli_](https://www.napizia.com/cgi-bin/sicilian.pl)
 * [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl)
 * [_Trova na Palora_](https://www.napizia.com/cgi-bin/trova-palora.pl)
-* [_Cosenu di Sumigghianza_](https://www.napizia.com/cgi-bin/cosine-sim.pl)
+* [_Tradutturi Sicilianu_](https://translate.napizia.com/)
 * [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl)
-* [poets' page](https://www.napizia.com/pages/sicilian/poets.shtml)
-* [introduction](https://www.napizia.com/pages/sicilian/intro-en.shtml)
-* [dictionary specification](https://www.napizia.com/pages/sicilian/index.shtml)
-* [boot and stem theory](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml)
-* [find a word](https://www.napizia.com/pages/sicilian/trova-palora.shtml)
-* [cosine similarity](https://www.napizia.com/pages/sicilian/cosine-sim.shtml)
-* [bibliography](https://www.napizia.com/pages/sicilian/bibliography.shtml)
+* [Poets' Page](https://www.napizia.com/pages/sicilian/poets.shtml)
+* [Introduction](https://www.napizia.com/pages/sicilian/intro-en.shtml)
+* [Boot and Stem Theory](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml)
+* [Find a Word](https://www.napizia.com/pages/sicilian/trova-palora.shtml)
+* [Sicilian Translator](https://www.napizia.com/pages/sicilian/translator.shtml)
+* [Dictionary Specification](https://www.napizia.com/pages/sicilian/index.shtml)
+* [Bibliography](https://www.napizia.com/pages/sicilian/bibliography.shtml)
 
 ## to do
 
