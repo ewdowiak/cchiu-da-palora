@@ -37,7 +37,6 @@ Grazzi pi l'aiutu!
 
 ### immediate agenda
 
-* add poetry to the dictionary, so that the dictionary sings the Sicilian language
 * contribute nouns and adjectives to Sicilian Wiktionary
 
 ### long-term agenda
