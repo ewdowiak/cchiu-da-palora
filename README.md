@@ -1,12 +1,8 @@
-# Cchiù dâ Palora
+# Chiù dâ Palora
 
-[_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) uses a set of Perl hashes to annotate a Sicilian dictionary with examples, usage notes, verb conjugations and noun and adjective declensions.
+[_Chiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) uses a set of Perl hashes to annotate a Sicilian dictionary with examples, usage notes, verb conjugations and noun and adjective declensions.
 
-We also hope you will contribute to the project.  The [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl) tool provides a simple way to contribute grammatical information, poetry and proverbs for each word.
-
-If you would like to help edit the dictionary, please read the specification below.  We have tried to make it easy for you to contribute by making prototypes available in the `/cgi-src/fetch/` directory.  You can copy-paste those prototypes into the source files, edit them appropriately and then run `make_cchiu.sh` to recreate the storables.
-
-If you do, please provide the _minimum_ amount of information necessary.  Please provide the minimum amount of information necessary to conjugate verb or to decline a noun or adjective.
+The specification below focuses on the _minimum_ -- the minimum amount of information necessary to conjugate verb or to decline a noun or adjective.
 
 In the case of verbs, we want the computer to automatically conjugate each verb.  To the greatest extent possible, we must avoid telling the computer what the conjugation is.  We want the computer to create the conjugations for us, so that then (one day in the future) we can ask the computer to provide a conjugation for each dialect of the Sicilian language.
 
@@ -14,35 +10,25 @@ The Perl scripts are able to conjugate a verb properly with a minimal amount of 
 
 We hope that you will contribute to our project, so that we can all share a great Sicilian dictionary.
 
-Grazzi pi l'aiutu! 
+Grazzii pi l'aiutu! 
 
 ## project pages
 
 * [_Manifestu dûn Giùvini Sicilianu_](https://www.wdowiak.me/archive/sicilian/giuvini-sicilianu.shtml)
 * [_Young Sicilian Manifesto_](https://www.wdowiak.me/archive/sicilian/young-sicilian.shtml)
-* [_Dizziunariu di Dieli_](https://www.napizia.com/cgi-bin/sicilian.pl)
-* [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl)
-* [_Trova na Palora_](https://www.napizia.com/cgi-bin/trova-palora.pl)
+* [_Dizziunariu Dieli_](https://www.napizia.com/cgi-bin/sicilian.pl)
 * [_Tradutturi Sicilianu_](https://translate.napizia.com/)
-* [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl)
+* [_Trova na Palora_](https://www.napizia.com/cgi-bin/trova-palora.pl)
+* [_Chiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl)
+* [_Dizziunariu Traina_](https://www.napizia.com/cgi-bin/traina.pl)
 * [Poets' Page](https://www.napizia.com/pages/sicilian/poets.shtml)
 * [Introduction](https://www.napizia.com/pages/sicilian/intro-en.shtml)
-* [Boot and Stem Theory](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml)
-* [Find a Word](https://www.napizia.com/pages/sicilian/trova-palora.shtml)
 * [Sicilian Translator](https://www.napizia.com/pages/sicilian/translator.shtml)
-* [Dictionary Specification](https://www.napizia.com/pages/sicilian/index.shtml)
+* [Find a Word](https://www.napizia.com/pages/sicilian/trova-palora.shtml)
+* [Boot and Stem Theory](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml)
+* [Next Steps](https://www.napizia.com/pages/sicilian/next-steps.shtml)
 * [Bibliography](https://www.napizia.com/pages/sicilian/bibliography.shtml)
-
-## to do
-
-### immediate agenda
-
-* contribute nouns and adjectives to Sicilian Wiktionary
-
-### long-term agenda
-
-* create a proper Perl module for verb conjugations and noun-adjective inflections
-* convert to a Modern Perl web application framework (e.g. Mojolicious)
+* [Dictionary Specification](https://www.napizia.com/pages/sicilian/index.shtml)
 
 ## Sicilian dictionary specification
 
@@ -50,13 +36,9 @@ A good dictionary of the Sicilian language should be more than a simple vocabula
 
 To seed the project, I used [Arthur Dieli](http://www.dieli.net/)'s vocabulary lists to create a [basic dictionary](https://www.napizia.com/cgi-bin/sicilian.pl).  Dr. Dieli's work was one of the first Sicilian vocabulary lists on the internet.  It contains over 12,000 Sicilian words and phrases, part of speech and translations into English and Italian.
 
-To write the Sicilian language, I created the set of Perl hashes described below. The [_Cchiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) tool uses those hashes to conjugate Sicilian verbs and to create the singular and plural forms of nouns and adjectives. The tool is based on the grammar rules listed in Kirk Bonner's _Introduction_.
+To write the Sicilian language, I created the set of Perl hashes described below. The [_Chiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) tool uses those hashes to conjugate Sicilian verbs and to create the singular and plural forms of nouns and adjectives. The tool is based on the grammar rules listed in Kirk Bonner's _Introduction_.
 
 The structure is flexible, so if there is interest, we could include other information too. For example: related words, learner examples, usage notes and etymology.
-
-To write a Perl hash for each Sicilian word, the [_Aiùtami!_](https://www.napizia.com/cgi-bin/aiutami.pl) tool asks visitors for grammatical information about each word and to contribute poetry or proverbs for each word.
-
-Finally, if we can write a dictionary of the Sicilian language, we can write a dictionary of any language, so I hope that this project will also be useful to people outside of the Sicilian community.
 
 Below is a description of the information that I am collecting on each Sicilian word and how I am storing that information. Following the description is a slightly more formal specification of the information collected.
 

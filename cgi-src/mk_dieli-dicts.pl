@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 ##  "mk_dieli-dicts.pl" -- makes storable versions of the Dieli dictionary
-##  Copyright (C) 2018 Eryk Wdowiak
+##  Copyright (C) 2018-2026 Eryk Wdowiak
 ##
 ##  This program is free software: you can redistribute it and/or modify
 ##  it under the terms of the GNU General Public License as published by
@@ -26,16 +26,19 @@
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 use strict;
-use warnings;
-no warnings qw( uninitialized );
+#use warnings;
+#no warnings qw( uninitialized );
+
+use utf8;
+
 use IO::Zlib;
 use Storable qw( nstore ) ;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
 ##  read infiles into a hash that will hold the dictionary
-my $sc_dict = "dieli/dieli_sc_utf8.txt.gz" ;
-## my $en_dict = "dieli/dieli_en_utf8.txt.gz" ;
+my $sc_dict = "./dieli/dieli_sc_utf8.txt.gz" ;
+## my $en_dict = "./dieli/dieli_en_utf8.txt.gz" ;
 
 ##  read SiCilian dictionary
 my %dieli_sc = read_sc_dict( $sc_dict ) ; 
@@ -120,9 +123,15 @@ sub read_sc_dict {
 
     ##  array to hold the translations as we read them
     my @holdarray ;
-    my $scdhnd = new IO::Zlib;
-    $scdhnd->open($sc_dict, "rb") || die "could not read:  $sc_dict";
-    while(<$scdhnd>){
+
+    # my $scdhnd = new IO::Zlib;
+    # $scdhnd->open($sc_dict , "<:encoding(utf-8)" , "rb") || die "could not read:  $sc_dict";
+    # while(<$scdhnd>){
+
+    $sc_dict =~ s/\.gz$//;
+    open(my $fh_scdict , "<:encoding(utf-8)" , $sc_dict) || die "could not read:  $sc_dict";
+    while(<$fh_scdict>){
+	
 	chomp;
 	my $line = $_ ; 
 	$line =~ s/&#821[67];/_SQUOTE_/g ;
@@ -171,7 +180,8 @@ sub read_sc_dict {
 	    push( @holdarray , $entry ) ;
 	}
     }
-    $scdhnd->close ; 
+    ## $scdhnd->close ; 
+    close $fh_scdict; 
 
     return %dict ;
 }

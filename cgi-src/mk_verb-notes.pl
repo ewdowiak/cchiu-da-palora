@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 ##  "mk_verb-notes.pl" -- makes hash of verbs and adds "linkto"s to the Dieli dictionary
-##  Copyright (C) 2018 Eryk Wdowiak
+##  Copyright (C) 2018-2026 Eryk Wdowiak
 ##
 ##  This program is free software: you can redistribute it and/or modify
 ##  it under the terms of the GNU General Public License as published by
@@ -17,9 +17,14 @@
 ##  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 use strict;
-use warnings;
+#use warnings;
+#no warnings qw( uninitialized );
+
+use utf8;
+
 use Storable qw( retrieve nstore ) ;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  

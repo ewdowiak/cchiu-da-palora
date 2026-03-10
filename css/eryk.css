@@ -1,7 +1,7 @@
 /*  ========================================================================  */
 /*                                                                            */  
 /*  "eryk.css" -- Eryk's general CSS                                          */
-/*  Copyright (C) 2018 Eryk Wdowiak                                           */
+/*  Copyright (C) 2018-2026 Eryk Wdowiak                                      */
 /*                                                                            */
 /*  This program is free software: you can redistribute it and/or modify      */
 /*  it under the terms of the GNU General Public License as published by      */
@@ -18,8 +18,41 @@
 /*                                                                            */
 /*  ========================================================================  */  
 
-/*  last updated:  04 Feb 2019  */
-/*  ==========================  */
+/*  fonts  */
+
+@font-face {
+  font-family: 'Caligo'; font-weight: normal; font-style: normal;
+  src: url(/config/fonts/Caligo.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Sans'; font-weight: normal; font-style: normal;
+  src: url(/config/fonts/DroidSans.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Sans'; font-weight: bold; font-style: normal;
+  src: url(/config/fonts/DroidSans-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Mono'; font-weight: normal; font-style: normal;
+  src: url(/config/fonts/DroidSansMono.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Serif'; font-weight: normal; font-style: normal;
+  src: url(/config/fonts/DroidSerif-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Serif'; font-weight: bold; font-style: normal;
+  src: url(/config/fonts/DroidSerif-Bold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Serif'; font-weight: normal; font-style: italic;
+  src: url(/config/fonts/DroidSerif-Italic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Droid Serif'; font-weight: bold; font-style: italic;
+  src: url(/config/fonts/DroidSerif-BoldItalic.ttf) format('truetype');
+}
+
 
 /*  backgrounds  */
 body{background-image: url(../config/bricks.jpg)}
@@ -31,14 +64,25 @@ table {
     margin-right: auto;
 }
 
+div#outer-table {
+    background-color: white;
+    max-width: 810px;
+    border: 0px;
+    margin-left: auto; 
+    margin-right: auto;
+}
+div#outer-margin {
+    padding: 5px;
+}
+
 /*  center headers */
 h1,h2,h3,h4,h5,h6{
     text-align: center; 
 }
 
 /*  font-family  */
-body,h1,h2,h5,p,em{font-family: Georgia, "Liberation Serif", serif;}
-h3,h4,h6{font-family: Arial, "Liberation Sans", sans-serif;}
+body,h1,h2,h5,p,em{font-family: "Droid Serif", Georgia, "Liberation Serif", "Times New Roman", serif;}
+h3,h4,h6{font-family: "Droid Sans", "Liberation Sans", Arial, sans-serif;}
 
 /*  font-weight  */
 body,h4,h5,h6,p,em{font-weight: normal;}
@@ -71,7 +115,14 @@ table.message{
     padding: 2px 5px; 
     spacing: 0px;
 }
-
+div.message{
+    background-color: rgb(255, 255, 204);
+    width: 97.5%;
+    margin: auto;
+    border: 1px solid black;
+    padding: 2px 5px; 
+    spacing: 0px;
+}
 p.code { 
     font-family: monospace; 
     font-size: 1.10em;
@@ -128,12 +179,12 @@ li.navhead {
     font-style: italic;
 }
 
-li.navhead, a.wdowiak { font-family: Georgia, "Liberation Serif", serif; }
+li.navhead, a.wdowiak { font-family:  "Droid Serif", Georgia, "Liberation Serif", "Times New Roman", serif; }
 
 li.navhead, a.navbar { font-size: 1.00em; }
 
 a.navbar, a.dropbtn, a.topnav {
-    font-family: Arial, "Liberation Sans", sans-serif;
+    font-family: "Droid Sans", "Liberation Sans", Arial, sans-serif;
 }
 
 a.navbar, a.dropbtn {
@@ -229,7 +280,16 @@ img {
 [class*="col-"] {
     float: left; 
     width: 100%;
-    padding: 0px 5px;
+    /* padding: 0px 5px; */
+    padding: 0px 0px;
+}
+
+/* but put some padding back into the navbar */
+@media only screen and (max-width: 479px) {
+    div.navbar {
+	padding: 0px 5px;
+	margin: 0px auto;
+    }
 }
 
 /*  for tablets  */

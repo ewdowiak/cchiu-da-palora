@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 ##  "mk_adj-notes.pl" -- makes hash of adjectives and adds "linkto"s to the Dieli dictionary
-##  Copyright (C) 2018 Eryk Wdowiak
+##  Copyright (C) 2018-2026 Eryk Wdowiak
 ##
 ##  This program is free software: you can redistribute it and/or modify
 ##  it under the terms of the GNU General Public License as published by
@@ -19,8 +19,11 @@
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 use strict;
-use warnings;
+#use warnings;
+#no warnings qw( uninitialized );
 use Storable qw( retrieve nstore ) ;
+
+use utf8;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 

@@ -1,7 +1,22 @@
-/*  "eryk_theme-blue.css"  by  Eryk Wdowiak  */
-/*  last updated:  24 Mar 2018               */
-
-/*  =======================================  */
+/*  ========================================================================  */
+/*                                                                            */
+/*  "eryk_theme-blue.css"                                                     */
+/*  Copyright (C) 2018-2026 Eryk Wdowiak                                      */
+/*                                                                            */
+/*  This program is free software: you can redistribute it and/or modify      */
+/*  it under the terms of the GNU General Public License as published by      */
+/*  the Free Software Foundation, either version 3 of the License, or         */
+/*  (at your option) any later version.                                       */
+/*                                                                            */
+/*  This program is distributed in the hope that it will be useful,           */
+/*  but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/*  GNU General Public License for more details.                              */
+/*                                                                            */
+/*  You should have received a copy of the GNU General Public License         */
+/*  along with this program.  If not, see <https://www.gnu.org/licenses/>.    */
+/*                                                                            */
+/*  ========================================================================  */  
 
 /*  font color  */
 body,h1,h2,h3,h4,h5,h6,p,em{ color: rgb(2, 2, 102); }
@@ -25,6 +40,11 @@ li.navbar a:hover, li.dropdown:hover .dropbtn, li.dropdown a:hover, .dropdown-co
     border: 1px solid rgb(5, 91, 28); 
 }
 
+/*  navigation color (again) */
+div.navbar {
+    background-color: rgb(7,35,115); 
+}
+
 /*  =======================================  */
 
 /*  the menu items names at Napizia are too long */
@@ -38,15 +58,16 @@ li.navbar a:hover, li.dropdown:hover .dropbtn, li.dropdown a:hover, .dropdown-co
 /*  social media -- appear on top row -- phones and tablets  */
 @media only screen and (max-width: 599px) {
     div.socialvanish { display: none; }
-    p.socialappear { margin-top: 0em; 
+    p.socialappear { margin-top: 0.2em; 
 		     margin-bottom: 0.2em; 
 		     margin-left: 6px;
     }
 }
 /*  word vanish -- large phone, tablet or computer  */
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 480px) and (max-width: 775px) {
     span.wordvanish  { display: none; }
 }
+
 /*  social media -- vanish from top row -- tablets and computers  */
 @media only screen and (min-width: 600px) {
     div.socialappear { display: none; }
@@ -54,7 +75,7 @@ li.navbar a:hover, li.dropdown:hover .dropbtn, li.dropdown a:hover, .dropdown-co
 
 /*  social media -- appear on bottom row -- tablets and computers  */
 @media only screen and (min-width: 600px) {
-    p.socialvanish { margin-top:    4.5em; margin-bottom:  0em;}
+    p.socialvanish { margin-top:    7.25em; margin-bottom:  0em;}
 }
 /*
  * @media only screen and (min-width: 600px) and (max-width: 725px) {

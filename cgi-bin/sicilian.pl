@@ -16,192 +16,329 @@
 ##  You should have received a copy of the GNU General Public License
 ##  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 use strict;
 #use warnings;
-##no warnings qw(uninitialized);
-use CGI qw(:standard);
+#no warnings qw(uninitialized);
+
+use utf8;
+
 use Storable qw( retrieve ) ;
 #{   no warnings;             
     ## $Storable::Deparse = 1;  
     $Storable::Eval    = 1;  
 #}
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+use URI::Escape;
 
-##  what are we looking for?
-my $lgparm = ( ! defined param('langs') ) ? "SCEN" : param('langs') ;
-my $rquest = param('langs') ;
-my $insearch = param('search') ;
+use lib "/home/eryk/perl5/lib/perl5" , "../cgi-lib";
+use Mojolicious::Lite -signatures;
 
-##  which dictionary to retrieve?
-my %dieli ; 
-if ( $rquest =~ /SCEN|SCIT/ ) {  %dieli = %{ retrieve('../cgi-lib/dieli-sc-dict') };
-} elsif ( $rquest =~ /ENSC/ ) {  %dieli = %{ retrieve('../cgi-lib/dieli-en-dict') };
-} elsif ( $rquest =~ /ITSC/ ) {  %dieli = %{ retrieve('../cgi-lib/dieli-it-dict') };
-} else {  my $blah = "retrieve nothing -- no language requested" ;
-} 
+# use lib "../cgi-lib";
+use Napizia::TextTools;
+use Napizia::Utils;
+use Napizia::HtmlDieli;
 
-##  retrieve subroutines
-my $vthash  = retrieve('../cgi-lib/verb-tools' );
-my %vbsubs  = %{ $vthash->{vbsubs} } ;
+##  retrieve storables
+my $stor_dieli_en = retrieve('../cgi-lib/dieli-en-dict');
+my $stor_dieli_sc = retrieve('../cgi-lib/dieli-sc-dict');
+my $stor_dplus_sc = retrieve('../cgi-lib/dieliplus-sc-dict');
+my $stor_dplus_en = retrieve('../cgi-lib/dieliplus-en-dict');
+my $stor_dplus_it = retrieve('../cgi-lib/dieliplus-it-dict');
 
-my $cchash = retrieve('../cgi-lib/cchiu-tools' );
-my %ddsubs = %{ $cchash->{ddsubs} } ;
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  searches split by vertical bar
-my @searches = split( "_OR_" , $insearch ) ; 
-s/^\s*// for @searches ; 
-s/\s*$// for @searches ; 
-s/'/_SQUOTE_/g for @searches ; 
+get '/' => sub ($c) {
+    my $par_search = $c->param('search');
+    my $par_langs  = $c->param('langs');
+    my $output = mk_htmlpage( $par_search , $par_langs );
+    $c->render(text => $output);
+};
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+post '/' => sub ($c) {
+    my $par_search = $c->param('search');
+    my $par_langs  = $c->param('langs');
+    my $output = mk_htmlpage( $par_search , $par_langs );
+    $c->render(text => $output);
+};
 
-##  we need to make a webpage, so let's get some HTML
-my $tophtml  = $ddsubs{mk_ddtophtml}( "../config/topnav.html", $lgparm , $insearch );
-my $newform  = $ddsubs{mk_newform}( $lgparm , $insearch );
-my $thanks   = $ddsubs{thank_dieli}();
-my $ricota   = $ddsubs{mk_ricota}();
-my $foothtml = $ddsubs{mk_foothtml}("../config/navbar-footer.html");
+app->start;
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  initialize output HTML
-my $otline ; 
-$otline .= "\n" ; 
+##  CREATE WEBPAGE
+##  ====== =======
 
-##  translate and pass output to HTML
-foreach my $search (@searches) {
+sub mk_htmlpage{ 
 
-    ##  if "collection" ...
-    if ( $search =~ /^COLL_/ ) {
-	my %collections = mk_collections() ;
-	my @whichcolls = grep( /$search/ , keys( %collections ) ); 
-	foreach my $collection (@whichcolls) {
+    ##  in arguments
+    my $par_search = $_[0];
+    my $par_langs  = $_[1];
 
-	    ##  get the reference
-	    my $cref   = $collections{$collection} ;
-	    my $slang = ${${$cref}[0]}[0] ;
+    ##  what are we looking for?
+    my $insearch = $par_search ;
+    my $rquest   = $par_langs ;
+    my $lgparm   = ( ! defined $par_langs ) ? "SCEN" : $par_langs ;
+
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+
+    ##  searches split by vertical bar
+    my @searches = split( "_OR_" , $insearch ) ; 
+    s/^\s*// for @searches ; 
+    s/\s*$// for @searches ; 
+    s/'/_SQUOTE_/g for @searches ; 
+    
+    ##  which dictionary to retrieve?
+    my $dieli_slang ; 
+    if ( $insearch =~ /^COLL_have$/ ) {
+	$dieli_slang = $stor_dieli_en ;
+    } elsif ( $insearch =~ /^COLL_/ ) {
+	$dieli_slang = $stor_dieli_sc ;
+    } elsif ( $rquest =~ /SCEN|SCIT/ ) {
+	$dieli_slang = $stor_dplus_sc ;
+    } elsif ( $rquest =~ /ENSC/ ) {
+	$dieli_slang = $stor_dplus_en ;
+    } elsif ( $rquest =~ /ITSC/ ) {
+	$dieli_slang = $stor_dplus_it ;
+    } else {
+	my $blah = "retrieve nothing -- no language requested" ;
+    }
+    ## my %dieli = %{$dieli_slang}; 
+
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+
+    ##  we need to make a webpage, so let's get some HTML
+    my $tophtml  = mk_ddtophtml( "../config/eryk2-topnav.html", $lgparm , $insearch );
+    my $newform  = mk_newform( $lgparm , $insearch );
+    my $thanks   = thank_dieli();
+    my $ricota   = mk_ricota();
+    my $foothtml = mk_foothtml("../config/eryk2-navbar.html");
+    
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+    
+    ##  initialize output HTML
+    my $otline ; 
+    $otline .= "\n";
+    
+    ##  translate and pass output to HTML
+    foreach my $search (@searches) {
+	
+	##  if "collection" ...
+	if ( $search =~ /^COLL_/ ) {
+	    my %collections = mk_collections() ;
+	    my @whichcolls = grep( /$search/ , keys( %collections ) ); 
+	    foreach my $collection (@whichcolls) {
+		
+		##  get the reference
+		my $cref  = $collections{$collection};
+		my $slang = ${${$cref}[0]}[0] ;
+		
+		for my $i (1..$#{$cref}) { 
+		    $otline .= '<br>' . "\n" ; 
+		    my $pclass = ' class="zero"' ;
+		    $otline .= '<div align="center">'."\n";
+		    $otline .= mk_search($slang , \@{${$cref}[$i]} , $dieli_slang , $lgparm , $pclass ,"BeNice");
+		    $otline .= '</div>' . "\n" ; 	
+		}
+	    }
 	    
-	    ##  if more then one collection requested, then dictionaries load more than once
-	    ##  but I'm not providing any links that we make more than one collection request
-	    my $dieli_slang ; 
+	    
+	} elsif ( $rquest =~ /SCEN|SCIT|ENSC|ITSC/ ) { 
+	    ##  no collection was requested, so 
+	    ##  check if language specified in request
+	    ##  if language not specified, then there is no request
+	    
+	    if ( length($insearch) < 5 ) {
+		###  ( $rquest =~ /SCEN|SCIT/ && 
+		###    ( length($insearch) < 2 || 
+		###      $search =~ /lu|la|li|ca|cu|di|nna|nni|nta|ntra|pi|pri/ ) )  
+		##  
+		##  search string less than five
+		##  search string small, but broaden results by dropping accents
 
-	    if ( $slang =~ /SCEN|SCIT/ ) {  $dieli_slang = retrieve('../cgi-lib/dieli-sc-dict');
-	    } elsif ( $slang =~ /ENSC/ ) {  $dieli_slang = retrieve('../cgi-lib/dieli-en-dict');
-	    } elsif ( $slang =~ /ITSC/ ) {  $dieli_slang = retrieve('../cgi-lib/dieli-it-dict');
-	    } else {  my $blah = "retrieve nothing -- no language requested" ;
-	    }
-
-	    for my $i (1..$#{$cref}) { 
-		$otline .= '<br>' . "\n" ; 
-		my $pclass = ' class="zero"' ;
-		$otline .= '<div align="center">' . "\n" ; 
-		for my $j (0..$#{${$cref}[$i]}) {
-		    $otline .= $ddsubs{mk_search}( $slang , ${${$cref}[$i]}[$j] , $dieli_slang , \%ddsubs , $lgparm , $pclass , "BeNice" ) ; 
+		my @subsearches ; 
+		foreach my $key (sort keys(%{$dieli_slang}) ) {
+		    my $sch_noa = rid_accents( scn_lowercase( $search ));
+		    my $key_noa = rid_accents( scn_lowercase( $key ));
+		    $key_noa =~ s/[\(\)]//g;  $key_noa =~ s/'/_SQUOTE_/g;  $key_noa =~ s/_squote_/_SQUOTE_/g;
+		    $sch_noa =~ s/[\(\)]//g;  $sch_noa =~ s/'/_SQUOTE_/g;  $sch_noa =~ s/_squote_/_SQUOTE_/g;
+		    if ( $key_noa eq $sch_noa ) {
+			push( @subsearches , $key ) ;
+		    }
 		}
-		$otline .= '</div>' . "\n" ; 	
-	    }
-	}
-
-
-    } elsif ( $rquest =~ /SCEN|SCIT|ENSC|ITSC/ ) { 
-	##  no collection was requested, so 
-	##  check if language specified in request
-	##  if language not specified, then there is no request
-
-	if ( length($insearch) < 5 ) {
-	    ###  ( $rquest =~ /SCEN|SCIT/ && 
-	    ###    ( length($insearch) < 2 || 
-	    ###      $search =~ /lu|la|li|ca|cu|di|nna|nni|nta|ntra|pi|pri/ ) )  
-	    ##  
-	    ##  search string less than five
-	    ##  search string small, but broaden results by dropping accents
-
-	    my @subsearches ; 
-	    foreach my $key (sort keys(%dieli) ) {
-		my $sch_noa = $vbsubs{rid_accents}( $search ) ;
-		my $key_noa = $vbsubs{rid_accents}( $key ) ;  
-		$key_noa =~ s/[\(\)]//g;  $key_noa =~ s/'/_SQUOTE_/g;
-		$sch_noa =~ s/[\(\)]//g;  $sch_noa =~ s/'/_SQUOTE_/g;
-		if ( $key_noa eq $sch_noa ) {
-		    push( @subsearches , $key ) ;
-		}
-	    }
-	    if ( $#subsearches > -1 ) {
-		foreach my $subsearch ($ddsubs{uniq}(@subsearches)) {
-		    my $pclass = ' style="margin-top: 0em; margin-bottom: 0.35em;"' ; 
-		    $otline .= '<div align="center" style="margin-bottom: 0.5em; margin-top: 1.0em;">' . "\n" ; 
-		    $otline .= $ddsubs{mk_search}( $rquest, $subsearch , \%dieli , \%ddsubs , $lgparm , $pclass , "BeNice" ) ; 
+		@subsearches = uniq(@subsearches);
+		
+		if ( $#subsearches > -1 ) {
+		    my $pclass = ' style="margin-top: 0em; margin-bottom: 0.35em;"';
+		    $otline .= '<div align="center" style="margin-bottom: 0.5em; margin-top: 1.0em;">'."\n";
+		    $otline .= mk_search( $rquest, \@subsearches , $dieli_slang , $lgparm , $pclass , "BeNice");
+		    $otline .= '</div>'."\n";
+		    
+		} else {
+		    my $rsrch = $search ;
+		    $rsrch =~ s/_SQUOTE_/'/g;
+		    $otline .= '<div align="center">' . "\n" ; 
+		    $otline .= "<p>nun c'è na traduzzioni dâ palora: " . '&nbsp; <b>' . $rsrch . '</b></p>';
 		    $otline .= '</div>' . "\n" ; 
 		}
+		
 	    } else {
-		my $rsrch = $search ;
-		$rsrch =~ s/_SQUOTE_/'/g;
-		$otline .= '<div align="center">' . "\n" ; 
-		$otline .= "<p>nun c'è na traduzzioni dâ palora: " . '&nbsp; <b>' . $rsrch . '</b></p>';
-		$otline .= '</div>' . "\n" ; 
-	    }
-	    
-	} else {
-	    ##  search string five characters or more, so let's broaden search further
-	    ##  drop accents and check for matching word within key
-	    my @subsearches ; 
-	    foreach my $key (sort keys(%dieli) ) {
-		my $sch_noa = $vbsubs{rid_accents}( $search ) ;
-		my $key_noa = $vbsubs{rid_accents}( $key ) ;  
-		$key_noa =~ s/[\(\)]//g;
-		$key_noa =~ s/'/_SQUOTE_/g;
+		##  search string five characters or more, so let's broaden search further
+		##  drop accents and check for matching word within key
+		my @subsearches ; 
+		foreach my $key (sort keys(%{$dieli_slang}) ) {
+		    my $sch_noa = rid_accents( scn_lowercase( $search ));
+		    my $key_noa = rid_accents( scn_lowercase( $key ));
+		    $key_noa =~ s/[\(\)]//g;  $key_noa =~ s/'/_SQUOTE_/g;  $key_noa =~ s/_squote_/_SQUOTE_/g;
+		    $sch_noa =~ s/[\(\)]//g;  $sch_noa =~ s/'/_SQUOTE_/g;  $sch_noa =~ s/_squote_/_SQUOTE_/g;
 
-		if ( $key_noa =~ /$sch_noa/ ) {
-		    ##  found search term in key
-		    ##  does search term match a word in key?
-		    my @key_wds = split( / /, $key_noa ) ;
-		    foreach my $keyword (@key_wds) {
-			##  need to match on keyword beginning and ending,
-			##  otherwise excess (bad) results
-			if ( $sch_noa =~ /^$keyword$/ || ( $sch_noa =~ / / && $sch_noa =~ /$keyword/ )  ) {
-			## if ( $sch_noa =~ /^$keyword$/ ) {
-			    push( @subsearches , $key ) ;
+		    if ( $key_noa =~ /$sch_noa/ ) {
+			##  found search term in key
+			##  does search term match a word in key?
+			my @key_wds = split( / /, $key_noa ) ;
+			foreach my $keyword (@key_wds) {
+			    ##  need to match on keyword beginning and ending,
+			    ##  otherwise excess (bad) results
+			    if ( $sch_noa =~ /^$keyword$/ || ( $sch_noa =~ / / && $sch_noa =~ /$keyword/ )  ) {
+				## if ( $sch_noa =~ /^$keyword$/ ) {
+				push( @subsearches , $key ) ;
+			    }
 			}
 		    }
 		}
-	    }
-	    if ( $#subsearches > -1 ) {
-		foreach my $subsearch ($ddsubs{uniq}(@subsearches)) {
-		    my $pclass = ' style="margin-top: 0em; margin-bottom: 0.35em;"' ; 
-		    $otline .= '<div align="center" style="margin-bottom: 0.5em; margin-top: 1.0em;">' . "\n" ; 
-		    $otline .= $ddsubs{mk_search}( $rquest, $subsearch , \%dieli , \%ddsubs , $lgparm , $pclass , "BeNice" ) ; 
-		    $otline .= '</div>' . "\n" ; 
+		@subsearches = uniq(@subsearches);
+		
+		if ( $#subsearches > -1 ) {
+		    my $pclass = ' style="margin-top: 0em; margin-bottom: 0.35em;"';
+		    $otline .= '<div align="center" style="margin-bottom: 0.5em; margin-top: 1.0em;">'."\n";
+		    $otline .= mk_search( $rquest, \@subsearches , $dieli_slang , $lgparm , $pclass ,"BeNice");
+		    $otline .= '</div>'."\n";
+		    
+		} else {
+		    my $rsrch = $search ;
+		    $rsrch =~ s/_SQUOTE_/'/g;
+		    $otline .= '<div align="center">'."\n";
+		    $otline .= "<p>nun c'è na traduzzioni dâ palora: ".'&nbsp; <b>'. $rsrch .'</b></p>';
+		    $otline .= '</div>'."\n";
 		}
-	    } else {
-		my $rsrch = $search ;
-		$rsrch =~ s/_SQUOTE_/'/g;
-		$otline .= '<div align="center">' . "\n" ; 
-		$otline .= "<p>nun c'è na traduzzioni dâ palora: " . '&nbsp; <b>' . $rsrch . '</b></p>';
-		$otline .= '</div>' . "\n" ; 
-	    }
-	} 
+	    } 
+	}
     }
+    
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+    
+    ##  make webpage
+    my $htmlpage ;
+    $htmlpage .= $tophtml ;
+    $htmlpage .= $newform ;
+    $htmlpage .= $otline  ;
+    $htmlpage .= $thanks  ;
+    $htmlpage .= $ricota  ;
+
+    ##  print the social media shares
+    my $text_url   = 'https://www.napizia.com/cgi-bin/sicilian.pl';
+    my $text_title;
+    if ( ! defined $insearch ) {
+	my $blah  = 'do nothing';
+    } else { 
+	$text_url .= '?search='. $insearch ;
+	if ( $insearch !~ /^COLL_/ ) {
+	    $text_url .= '&langs='. $lgparm ;
+	}
+	$text_title = fetch_pagetitle($insearch, $lgparm);
+    }
+    $text_title  .= 'Dizziunariu Dieli :: Napizia';
+    
+    my $url   = uri_escape($text_url);
+    my $title = uri_escape($text_title);
+    $htmlpage .= mk_share( $url , $title );
+    
+    ##  print footer
+    $htmlpage .= $foothtml ;
+
+
+    ##  return the HTML page
+    return $htmlpage;
 }
-
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
-##  make webpage
-print $tophtml ;
-print $newform ;
-print $otline  ;
-print $thanks  ;
-print $ricota  ;
-print $foothtml ;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  SUBROUTINES
-##  ===========
+##  OTHER SUBROUTINES
+##  ===== ===========
+
+##  subroutine to fetch page title for social media shares
+sub fetch_pagetitle {
+
+    ##  the word searched for, and only if single-item
+    my $search = $_[0];
+    $search = ( ! defined $search ) ? "" : $search ;
+    $search =~ s/_SQUOTE_/'/g;
+    $search =~ s/_OR_.*$//;
+    
+    ##  language parameter
+    my $lgtext = $_[1] ;
+    $lgtext = ( ! defined $lgtext ) ? "" : $lgtext ;
+    $lgtext =~ s/ENSC/En-Sc/;
+    $lgtext =~ s/ITSC/It-Sc/;
+    $lgtext =~ s/SCEN/Sc-En/;
+    $lgtext =~ s/SCIT/Sc-It/;
+
+    ##  clean collections
+    $search =~ s/COLL_aviri/ricota - aviri/; 
+    $search =~ s/COLL_have/ricota - to have/;
+    $search =~ s/COLL_essiri/ricota - essiri/;
+    $search =~ s/COLL_fari/ricota - fari/;
+    $search =~ s/COLL_places/ricota - munnu/;
+    $search =~ s/COLL_italy/ricota - Italia/;
+    $search =~ s/COLL_timerel/ricota - tempu/;
+    $search =~ s/COLL_daysweek/ricota - jorna/;
+    $search =~ s/COLL_months/ricota - misi/;
+    $search =~ s/COLL_holidays/ricota - festi/;
+    $search =~ s/COLL_seasons/ricota - staggiuni/;
+    $search =~ s/COLL_/ricota - /;
+	    
+    ##  text of title
+    my $ot_title = ( $search eq "" ) ? "" : $search .' ('. $lgtext .') :: ';
+    
+    ##  return the title
+    return $ot_title;
+}
+
+##  subroutine to make social media shares
+sub mk_share {
+
+    my $url   = uri_escape($_[0]);
+    my $title = uri_escape($_[1]);
+    
+    my $html ;
+    
+    $html .= '<div class="message" style="margin: 0.10em auto 0em auto; width: 100%;">'."\n";
+    $html .= '<p style="text-align: center; margin-top: 0.15em; margin-bottom: 0.25em;">'."\n";
+    $html .= '<a href="https://www.facebook.com/sharer/sharer.php?u='. $url .'"'."\n";
+    $html .= '   class="fa fa-facebook" style="color:white;"'."\n";
+    $html .= '   target="_blank"></a>'."\n";
+    $html .= '<a href="https://bsky.app/intent/compose?text='. $title .'%0A'. $url .'"'."\n";
+    $html .= '   class="fa fa-bluesky" style="color:white;"'."\n";
+    $html .= '   target="_blank"></a>'."\n";
+    $html .= '<a href="https://www.linkedin.com/sharing/share-offsite/?url='. $url .'"'."\n";
+    $html .= '   class="fa fa-linkedin" style="color:white;"'."\n";
+    $html .= '   target="_blank"></a>'."\n";
+    $html .= '<a href="mailto:?subject='. $title .'&body=' . $url .'"'."\n";
+    $html .= '   class="fa fa-envelope" style="color:white;"'."\n";
+    $html .= '   target="_blank"></a>'."\n";
+    $html .= '</p>'."\n";
+    $html .= '</div>'."\n";
+
+    return $html ;
+}
 
 ##  make collections
 sub mk_collections {
@@ -402,8 +539,9 @@ sub mk_collections {
 	);
     
     ## COLL_places
-    @{ $othash{"COLL_places"} } = ( 
+    @{ $othash{"COLL_italy"} } = (
 	["SCEN"],
+	["Italia",],
 	["Sicilia","Calabbria","Pugghia",],
 	["Sardigna","Lucania","Campania","Abbruzzu","Mulisi",
 	 "Lazziu","Umbria","Marchi","Tuscana","Emilia","Rumagna","Liguria",
@@ -417,6 +555,11 @@ sub mk_collections {
 	 "Roma","Perugia","Ancona","Firenzi","Bulogna","Gènuva",
 	 "Vinezzia","Triesti","Trentu","Buzzanu",
 	 "Aosta","Milanu","Turinu",], 
+	);
+    
+    ## COLL_places
+    @{ $othash{"COLL_places"} } = ( 
+	["SCEN"],
 	["munnu",],
 	["Arabbia Saudita","Australia","Austria","Belgiu","Bolivia","Brasili","Bulgaria",
 	 "Cecoslovacchia","Cile","Cina","Colombia","Cuba","Danimarca","Ecuaturi","Egittu",

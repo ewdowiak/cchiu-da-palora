@@ -1,13 +1,13 @@
 #!/bin/bash
 
 ##  "make_cchiu.sh" -- a quick little script to assemble the pieces
-##  Copyright (C) 2018 Eryk Wdowiak
+##  Copyright (C) 2026 Eryk Wdowiak
 ##
 ##  This program is free software: you can redistribute it and/or modify
 ##  it under the terms of the GNU General Public License as published by
 ##  the Free Software Foundation, either version 3 of the License, or
 ##  (at your option) any later version.
-##  
+##
 ##  This program is distributed in the hope that it will be useful,
 ##  but WITHOUT ANY WARRANTY; without even the implied warranty of
 ##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
@@ -34,9 +34,19 @@
 ##  English and Italian dictionaries generated here, so must do this last
 ./mk_other-notes.pl
 
-##  make tools for web interface
-./mk_cchiu-tools.pl
+##  make sample index
+./mk_sample-index.pl
 
-##  make tools to solicit annotations
-./mk_aiutu-list.pl
-./mk_aiutu-tools.pl
+##  ##  ##  ##  ##  ##  ##  ##  ##
+
+##  make Traina hashes
+./mk_traina.pl
+
+# ##  add Traina to Chiu da Palora
+./mk_traina-into-chiu.pl
+
+# ##  make list of Traina dictionary
+./mk_traina-list.pl
+
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##
