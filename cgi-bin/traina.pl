@@ -75,6 +75,8 @@ my $ttline = retrieve('../cgi-lib/traina_line-to-traina' );
 ##  what word do we wish to see?
 ##  which collection are we looking for?
 
+app->mode('production');
+
 get '/' => sub ($c) {
     my $par_palora = $c->param('palora');
     my $par_coll   = $c->param('coll');

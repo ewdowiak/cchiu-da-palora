@@ -51,6 +51,8 @@ my $stor_dplus_it = retrieve('../cgi-lib/dieliplus-it-dict');
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
+app->mode('production');
+
 get '/' => sub ($c) {
     my $par_search = $c->param('search');
     my $par_langs  = $c->param('langs');

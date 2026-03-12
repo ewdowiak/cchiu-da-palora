@@ -72,6 +72,8 @@ $example .= '</ul>' ."\n";
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
+app->mode('production');
+
 get '/' => sub ($c) {
     my $par_palori = $c->param('palori');
     my $par_autori = $c->param('autori');

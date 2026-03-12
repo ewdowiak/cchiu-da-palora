@@ -80,6 +80,8 @@ foreach my $small (@ttarry) {
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
+app->mode('production');
+
 get '/' => sub ($c) {
     my $par_palora = $c->param('palora');
     my $par_langs  = $c->param('langs');
