@@ -1,6 +1,6 @@
 # Chiù dâ Palora
 
-[_Chiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) uses a set of Perl hashes to annotate a Sicilian dictionary with examples, usage notes, verb conjugations and noun and adjective declensions.
+[_Chiù dâ Palora_](https://dizziunariu.napizia.com/chiu/) uses a set of Perl hashes to annotate a Sicilian dictionary with examples, usage notes, verb conjugations and noun and adjective declensions.
 
 The specification below focuses on the _minimum_ -- the minimum amount of information necessary to conjugate verb or to decline a noun or adjective.
 
@@ -16,11 +16,11 @@ Grazzii pi l'aiutu!
 
 * [_Manifestu dûn Giùvini Sicilianu_](https://www.wdowiak.me/archive/sicilian/giuvini-sicilianu.shtml)
 * [_Young Sicilian Manifesto_](https://www.wdowiak.me/archive/sicilian/young-sicilian.shtml)
-* [_Dizziunariu Dieli_](https://www.napizia.com/cgi-bin/sicilian.pl)
+* [_Dizziunariu Dieli_](https://dizziunariu.napizia.com/dieli/)
 * [_Tradutturi Sicilianu_](https://translate.napizia.com/)
-* [_Trova na Palora_](https://www.napizia.com/cgi-bin/trova-palora.pl)
-* [_Chiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl)
-* [_Dizziunariu Traina_](https://www.napizia.com/cgi-bin/traina.pl)
+* [_Trova na Palora_](https://dizziunariu.napizia.com/trova/)
+* [_Chiù dâ Palora_](https://dizziunariu.napizia.com/chiu/)
+* [_Dizziunariu Traina_](https://dizziunariu.napizia.com/traina/)
 * [Poets' Page](https://www.napizia.com/pages/sicilian/poets.shtml)
 * [Introduction](https://www.napizia.com/pages/sicilian/intro-en.shtml)
 * [Sicilian Translator](https://www.napizia.com/pages/sicilian/translator.shtml)
@@ -34,9 +34,9 @@ Grazzii pi l'aiutu!
 
 A good dictionary of the Sicilian language should be more than a simple vocabulary list. It should provide information about grammar. And it should contain examples from poetry, proverbs and prose.
 
-To seed the project, I used [Arthur Dieli](http://www.dieli.net/)'s vocabulary lists to create a [basic dictionary](https://www.napizia.com/cgi-bin/sicilian.pl).  Dr. Dieli's work was one of the first Sicilian vocabulary lists on the internet.  It contains over 12,000 Sicilian words and phrases, part of speech and translations into English and Italian.
+To seed the project, I used [Arthur Dieli](http://www.dieli.net/)'s vocabulary lists to create a [basic dictionary](https://dizziunariu.napizia.com/dieli/).  Dr. Dieli's work was one of the first Sicilian vocabulary lists on the internet.  It contains over 12,000 Sicilian words and phrases, part of speech and translations into English and Italian.
 
-To write the Sicilian language, I created the set of Perl hashes described below. The [_Chiù dâ Palora_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl) tool uses those hashes to conjugate Sicilian verbs and to create the singular and plural forms of nouns and adjectives. The tool is based on the grammar rules listed in Kirk Bonner's _Introduction_.
+To write the Sicilian language, I created the set of Perl hashes described below. The [_Chiù dâ Palora_](https://dizziunariu.napizia.com/chiu/) tool uses those hashes to conjugate Sicilian verbs and to create the singular and plural forms of nouns and adjectives. The tool is based on the grammar rules listed in Kirk Bonner's _Introduction_.
 
 The structure is flexible, so if there is interest, we could include other information too. For example: related words, learner examples, usage notes and etymology.
 
@@ -44,7 +44,7 @@ Below is a description of the information that I am collecting on each Sicilian 
 
 ### Perl hashes
 
-Some people learn a language by creating an index card for each word that they learn. The Perl hashes that we're creating here are similar to that index card. For the preposition [_dintra_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=dintra_prep), I created this "index card:"
+Some people learn a language by creating an index card for each word that they learn. The Perl hashes that we're creating here are similar to that index card. For the preposition [_dintra_](https://dizziunariu.napizia.com/chiu/?palora=dintra_prep), I created this "index card:"
 
 ```perl
 %{ $vnotes{"dintra_prep"} } = (
@@ -65,7 +65,7 @@ For that task, we want to give the computer the _least_ amount of information ne
 
 Specifically, we do not want to tell the computer what the conjugation is. We want the computer to create the conjugations for us, so that (one day in the future) we can ask the computer to provide a conjugation for each dialect of the Sicilian language.
 
-Fortunately, there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.  For example, after accounting for [boot and stem](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml) patterns, the verb [_jiri_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=jiri) only has four irregular forms -- the infinitive and three in the present tense (the first-person singular, third-person singular and third-person plural), so we might create the following hash:
+Fortunately, there are very few irregular verbs in the Sicilian language and the irregularities that do exist are few.  For example, after accounting for [boot and stem](https://www.napizia.com/pages/sicilian/sicilian-verbs.shtml) patterns, the verb [_jiri_](https://dizziunariu.napizia.com/chiu/?palora=jiri) only has four irregular forms -- the infinitive and three in the present tense (the first-person singular, third-person singular and third-person plural), so we might create the following hash:
 
 ```perl
 %{ $vnotes{"jiri"} } = (
@@ -86,7 +86,7 @@ Fortunately, there are very few irregular verbs in the Sicilian language and the
     },);
 ```
 
-Similarly, the verb [_mèttiri_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=m%C3%A8ttiri) only has a few irregular forms -- the past participle and four in the past tense:
+Similarly, the verb [_mèttiri_](https://dizziunariu.napizia.com/chiu/?palora=m%C3%A8ttiri) only has a few irregular forms -- the past participle and four in the past tense:
 
 ```perl
 %{ $vnotes{"mèttiri"} } = (
@@ -106,7 +106,7 @@ Similarly, the verb [_mèttiri_](https://www.napizia.com/cgi-bin/cchiu-da-palora
     },);
 ```
 
-But many verbs are built by adding a prefix to the verb _mèttiri_, so we can conjugate the reflexive verb [_intromèttirisi_](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=introm%C3%A8ttirisi) by creating a hidden hash of _intromèttiri_:
+But many verbs are built by adding a prefix to the verb _mèttiri_, so we can conjugate the reflexive verb [_intromèttirisi_](https://dizziunariu.napizia.com/chiu/?palora=introm%C3%A8ttirisi) by creating a hidden hash of _intromèttiri_:
 
 ```perl
 %{ $vnotes{"intromèttiri"} } = (
@@ -154,7 +154,7 @@ reflex  -- scalar  -- hash key of the non-reflexive verb
 
 parts of speech:  `verb`, `noun`, `adj`, `adv`, `prep`, `pron`, `conj`
 
-The verbs  [vìviri](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=viviri_drink) and [vìviri](https://www.napizia.com/cgi-bin/cchiu-da-palora.pl?palora=viviri_live) need different hash keys.  But they both `display_as` "vìviri".
+The verbs  [vìviri](https://dizziunariu.napizia.com/chiu/?palora=viviri_drink) and [vìviri](https://dizziunariu.napizia.com/chiu/?palora=viviri_live) need different hash keys.  But they both `display_as` "vìviri".
 
 The additional information to include for verbs, nouns and adjectives is described in the tables below.
 

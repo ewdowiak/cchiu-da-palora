@@ -1,0 +1,58 @@
+/*  ========================================================================  */  
+/*                                                                            */
+/*  "napizia_res-code.css"                                                    */
+/*  Copyright (C) 2018-2026 Eryk Wdowiak                                      */
+/*                                                                            */
+/*  This program is free software: you can redistribute it and/or modify      */
+/*  it under the terms of the GNU General Public License as published by      */
+/*  the Free Software Foundation, either version 3 of the License, or         */
+/*  (at your option) any later version.                                       */
+/*                                                                            */
+/*  This program is distributed in the hope that it will be useful,           */
+/*  but WITHOUT ANY WARRANTY; without even the implied warranty of            */
+/*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             */
+/*  GNU General Public License for more details.                              */
+/*                                                                            */
+/*  You should have received a copy of the GNU General Public License         */
+/*  along with this program.  If not, see <https://www.gnu.org/licenses/>.    */
+/*                                                                            */
+/*  ========================================================================  */  
+
+/*  float resources to the right on large screen */
+@media only screen and (min-width: 601px) {
+    div.res-wrap { float: right; }
+    div.res-box { 
+        width: 350px; 
+	margin:  0px 10px;
+      	padding: 0px 10px;
+    }
+}
+/*  add some margin */
+div.res-box{
+    margin: 0px auto 10px auto;
+}
+
+h3.resources {
+    margin-top: 0.5em; 
+    margin-bottom: 0.5em;
+}
+ul.resources {
+    margin-top: 0.5em; 
+    margin-bottom: 0.5em; 
+}
+/*  reduce UL padding on small screens  */
+@media only screen and (min-width: 701px) and (max-width: 750px) {
+    ul.resources { padding-left: 30px; }
+}
+@media only screen and (max-width: 700px) {
+    ul.resources { padding-left: 20px; }
+    table.resources { padding: 2px 0px; }
+}
+
+/*  add space between lines of code */
+@media only screen and (max-width: 800px) {
+    br.code { margin-bottom: 0.5em; }
+}
+@media only screen and (min-width: 801px) {
+    br.code { margin-bottom: 0.25em; }
+}

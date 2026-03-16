@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Napizia - Dizziunariu dâ Lingua Siciliana</title>
+    <meta name="DESCRIPTION" 
+	  content="A Napizia, annutamu la lingua siciliana pi costruiri
+		   un dizziunariu e criari un tradutturi miccanicu.">
+    <meta name="KEYWORDS" content="Napizia, sicilianu, lingua siciliana, natural language processing, natural language, NLP">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Author" content="Eryk Wdowiak">
+    <meta property="og:title" content="Napizia - Dizziunariu dâ Lingua Siciliana">
+    <meta property="og:image" content="https://www.napizia.com/pics/napizia-mainpage.jpg">
+    <meta property="og:description"
+	  content="A Napizia, annutamu la lingua siciliana pi costruiri
+		   un dizziunariu e criari un tradutturi miccanicu.">
+    <meta property="og:url" content="https://www.napizia.com/index.shtml">
+    <meta property="og:type" content="website">   
+    <meta name="twitter:title" content="Napizia - Dizziunariu dâ Lingua Siciliana">
+    <meta name="twitter:image" content="https://www.napizia.com/pics/napizia-mainpage.jpg">
+    <meta name="twitter:description"
+	  content="A Napizia, annutamu la lingua siciliana pi costruiri
+		   un dizziunariu e criari un tradutturi miccanicu.">
+    <meta name="twitter:url" content="https://www.napizia.com/index.shtml">
+    <meta name="twitter:site" content="@ProjectNapizia">
+    <meta name="twitter:card" content="summary_large_image"> 
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="SC-EN Dieli Dict"
+          href="https://dizziunariu.napizia.com/search/dieli_sc-en.xml">
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="SC-IT Dieli Dict"
+          href="https://dizziunariu.napizia.com/search/dieli_sc-it.xml">
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="EN-SC Dieli Dict"
+          href="https://dizziunariu.napizia.com/search/dieli_en-sc.xml">
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="IT-SC Dieli Dict"
+          href="https://dizziunariu.napizia.com/search/dieli_it-sc.xml">
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Trova na Palora"
+          href="https://dizziunariu.napizia.com/search/trova-palora.xml">
+    <link rel="stylesheet" type="text/css" href="/css/eryk.css">
+    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-blue.css">
+    <link rel="stylesheet" type="text/css" href="/css/napizia-ensc.css">
+    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/w3-fa-styles.css">
+    <style>
+    /*  float picture to the right, but only on large screen */
+    @media only screen and (min-width: 601px) {
+        #lpic-wrap { float: right; }
+        #lpic-main { 
+	    max-width: 410px;
+	    margin: 0px;
+	    padding: 0px 0px 0px 10px; 
+        }
+    }
+    /*  and on small screen, add some margin */
+    #lpic-main{
+        margin: 0px auto 10px auto;
+    }
+    </style>
+    <link rel="icon" type="image/png" href="/config/napizia-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+
+  <!-- begin outer table --> 
+<div id="outer-table">
+
+  <!-- begin row div -->
+  <div class="row">
+    <div class="col-12 col-m-12">
+      <ul class="topnav">
+  
+	<!-- home -->
+	<li class="dropdown" id="mainitem">
+	  <!-- <a class="dropbtn" href="https://www.napizia.com/index.shtml"><b>Napizia</b></a> -->
+	  <a href="#" class="dropbtn dbctr"><b>Napizia</b></a>
+	  <div class="dropdown-content dcctr">
+	    <a class="topnav" href="https://www.napizia.com/index.shtml">paggina principali</a>
+	    <a class="topnav" href="https://www.napizia.com/index-en.shtml">site in english</a>
+	    <a class="topnav" href="https://magazine.napizia.com/">napizia magazine</a>
+	    <a class="topnav" href="https://www.napizia.com/pages/rhapsody/index.shtml">sicilian rhapsody</a>
+	    <a class="topnav" href="https://www.napizia.com/pages/about/index.shtml">viniti a napizia</a>
+	  </div>
+	</li>
+	
+	<!-- dictionary -->
+	<li class="dropdown">
+	  <a href="#" class="dropbtn dbright">dizziunariu</a>
+	  <div class="dropdown-content dcright">
+	    <a class="topnav" href="/dieli/">dizziunariu dieli</a>
+	    <a class="topnav" href="https://translate.napizia.com/">tradutturi sicilianu</a>
+	    <!-- <a class="topnav" href="https://www.napizia.com/cgi-bin/cosine-sim.pl">sumigghianza</a> -->
+	    <a class="topnav" href="/trova/">trova na palora</a>
+	    <a class="topnav" href="/chiu/">chiù dâ palora</a>
+	    <!-- <a class="topnav" href="https://www.napizia.com/cgi-bin/aiutami.pl">aiùtami!</a> -->
+	    <a class="topnav" href="/traina/">dizziunariu traina</a>
+	    <a class="topnav" href="https://www.napizia.com/pages/sicilian/poets-sc.shtml">paggina dî pueti</a>
+	  </div>
+	</li>
+	
+	<!-- documentation -->
+	<li class="dropdown">
+	  <a href="#" class="dropbtn dbleft">documentazioni</a>
+	  <div class="dropdown-content dcleft">
+	    <a class="topnav" href="https://www.napizia.com/pages/sicilian/intro-sc.shtml">introduzioni</a>
+	    <a class="topnav" href="https://www.napizia.com/pages/sicilian/translator-sc.shtml">tradutturi sicilianu</a>
+	    <!-- <a class="topnav" href="https://www.napizia.com/pages/sicilian/cosine-sim.shtml">cosine similarity</a> -->
+	    <a class="topnav" href="https://www.napizia.com/pages/sicilian/trova-palora-sc.shtml">trova na palora</a>
+	    <a class="topnav" href="https://www.napizia.com/pages/sicilian/sicilian-verbs-sc.shtml">stivali e ràdica</a>
+	    <!-- <a class="topnav" href="https://www.napizia.com/pages/sicilian/index.shtml">specification</a> -->
+	    <a class="topnav" href="https://www.napizia.com/pages/sicilian/next-steps-sc.shtml">prossimi passi</a>
+	    <a class="topnav" href="https://www.napizia.com/pages/sicilian/bibliography-sc.shtml">bibliografia</a>
+	  </div>
+	</li>
+	
+      </ul>
+    </div>
+  </div>
+  <!-- end row div -->
+    
+<!-- outer table div continues --> 
+
+<!-- begin outer margin div -->
+<div id="outer-margin">  
+ 
+
+
+  <!-- begin row div -->
+  <div class="row">
+
+    <h1 style="margin-top: 0.5em; margin-bottom: 0em;">Napizia</h1>
+    <h3 style="margin-top: 0em; margin-bottom: 0.75em; font-size: 1.10em;
+	       font-family: 'Liberation Sans', Arial;">Dizziunariu dâ Lingua Siciliana</h3>
+
+    <div id="pic-wrap">
+      <img src="/pics/025_corso-garibaldi_v1.jpg" id="lpic-main" 
+	   title="Cursu Garibaldi, Pizzu Calabbru">
+    </div>
+
+    <a name="texttop"></a>
+    
+    <table id="showeng"><tbody><tr>
+	  <td style="background-color: rgb(2,78,168); color: yellow; padding: 3px 10px;">Sicilianu</td>
+	  <td style="padding: 3px 10px;">
+	    <a href="https://www.napizia.com/index-en.shtml#texttop" style="text-decoration: none;">English</a>
+	  </td>
+    </tr></tbody></table>
+          
+    <p style="margin-top: 0em;">Benvinuti a <a href="https://www.napizia.com/pages/about/index.shtml">Napizia</a>,
+      unni sviluppamu un <a href="/dieli/">dizziunariu</a>
+      e un <a href="https://translate.napizia.com">tradutturi</a>
+      pi la lingua dâ puisia, la lingua parrata dî genti dâ Sicilia, dâ Calabbria e dâ Pugghia.</p>
+    
+      <p>Li paisani ccà parranu
+	<a href="http://www.pizzocalabro.com/Orlando/Dizionario%20Napitino/bozza_di_studio_per_un_dizionario%20napitino.htm"
+	   target="_blank"><i>napitinu</i></a>, un dialettu calabbrisi dâ lingua siciliana ca
+	annutamu cu grammatica, pruverbi, puisia, prosa e esempi.</p>
+	<!-- <a href="/chiu/">lingua siciliana</a> ca -->
+	<!-- <a href="https://www.napizia.com/pages/sicilian/index.shtml">annutamu</a> cu -->
+	<!-- <a href="https://www.napizia.com/pages/sicilian/sicilian-verbs-sc.shtml">grammatica</a>, -->
+      
+      <p>Li dialetti parrati in Sicilia, in Calabbria e in Pugghia
+	hannu soni assai diversi, ma la lingua è&nbsp;una.
+	Nta sti paggini prisintamu la lingua e li parrati.</p>
+
+      <p>Putiti circari la nostra ricota cû strumentu 
+	<a href="/trova/"><i>Trova na Palora</i></a>.
+	Reggistramu ogni puisia <!-- e pruverbiu --> esattamenti comu fu scritta ntâ fonti originali,
+	accussì ca ogni parrata dâ lingua veni reggistrata nta sti paggini.</p>
+      
+      <p>Tutti li puisii sunnu attribuiti ê sò 
+	<a href="https://www.napizia.com/pages/sicilian/poets-sc.shtml">auturi</a>.
+	Salvu diversa indicazioni, li proverbi provenunu dû dizziunariu di Nicotra (1883).
+	<!-- It also includes proverbs from Mortillaro's (1876) dictionary. -->
+	E lu nostru <a href="/dieli/">dizziunariu</a>
+	si basa supra lu vocabbulariu di 
+	<a href="http://www.dieli.net/SicilyPage/SicilianLanguage/Vocabulary.html"
+	   target="_blank">Arthur Dieli</a>.</p>
+      
+      <p>Lu nostru <a href="https://translate.napizia.com"><i>Tradutturi Sicilianu</i></a>
+	ora traduci assai beni. E
+	<a href="https://www.napizia.com/pages/sicilian/translator-sc.shtml">lu sviluppiremu ancora</a>.
+	La qualità cuntinuerà a migghiurari comu ricugghiemu
+	chiù esempi dî quali la machina pò mparari.</p>
+      
+      <p><a href="https://arbasicula.org/" target="_blank">Arba Sicula</a> e
+	<a href="http://www.dieli.net/" target="_blank">Arthur Dieli</a>
+	furneru li dati di addestramentu assemi ô sò sustegnu e assistenza generusa.
+      <!-- </p> <p> -->
+	Vi nvitamu a aiutarinni. <!-- <a href="https://www.napizia.com/cgi-bin/aiutami.pl">aiutarinni</a>. -->
+	La maggiuranza dî nostri risorsi linguistici pruveni dâ Sicilia,
+	quinni apprizzamu in manera particulari
+	campiuni dî dialetti parrati in Calabbria e in Pugghia.</p>
+      
+      <p>Nvitamu a tutti a <a href="https://www.napizia.com/pages/about/index.shtml">viniri a Napizia</a>
+	ed a unirisi a nui ntô studiu dâ lingua.</p>
+          
+  </div>
+  <!-- end row div -->
+
+  <p style="text-align: center; margin-top: 0.35em; margin-bottom: 0.15em;">
+  <small>Copyright &copy; 2018-2026 Eryk Wdowiak</small>
+</p>
+
+  <div class="message" style="margin: 0.10em auto 0em auto; width: 100%;">
+<p style="text-align: center; margin-top: 0.15em; margin-bottom: 0.25em;">
+<a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.napizia.com%2Findex.shtml"
+   class="fa fa-facebook" style="color:white;"
+   target="_blank"></a>
+<a href="https://bsky.app/intent/compose?text=Napizia%20-%20Dizziunariu%20d%C3%A2%20Lingua%20Siciliana%0Ahttps%3A%2F%2Fwww.napizia.com%2Findex.shtml"
+   class="fa fa-bluesky" style="color:white;"
+   target="_blank"></a>
+<a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.napizia.com%2Findex.shtml"
+   class="fa fa-linkedin" style="color:white;"
+   target="_blank"></a>
+<a href="mailto:?subject=Napizia%20-%20Dizziunariu%20d%C3%A2%20Lingua%20Siciliana&body=https%3A%2F%2Fwww.napizia.com%2Findex.shtml"
+   class="fa fa-envelope" style="color:white;"
+   target="_blank"></a>
+</p>
+</div>
+
+  <!-- end outer margin div -->
+</div>  
+
+<!-- outer table div continues -->
+
+<!-- begin navbar -->
+<div class="navbar">
+    
+  <!-- begin row div -->
+  <div class="row">
+    <div class="col-m-4 col-4"></div>
+    <div class="col-m-4 col-4">
+      <ul class="navbar">
+	<li class="navbar">
+	  <a class="wdowiak" href="https://www.napizia.com/index.shtml">Napizia</a>
+	</li>
+      </ul>
+    </div>
+    <div class="col-m-4 col-4"></div>
+  </div>
+  <!-- end row div -->
+  
+  
+  <!-- begin row div -->
+  <div class="row"> 
+    
+    <!-- begin hidden div for "preview" picture -->
+    <div style="display: none;">
+      <img src="/config/napizia_logo_v3.jpg">
+    </div>
+    <!-- end hidden div -->
+    
+    <!-- begin social media column for large screens -->
+    <div class="col-2">
+      <div class="socialvanish">
+	<p class="socialvanish">
+	  <a href="https://www.facebook.com/napizia/"
+	     target="_blank"><img src="/config/facebook_sq-064px.png" 
+				  style="width: 32px; display: inline;"></a>
+	  <a href="https://arbasicula.org/"
+	     target="_blank"><img src="/config/arba-sicula_sq-064px.png" 
+				  style="width: 32px; display: inline;"></a>
+	  <!--
+	      <a href="https://twitter.com/ProjectNapizia" 
+		 target="_blank"><img src="/config/twitter_sq-064px.png" 
+				      style="width: 32px; display: inline;"></a>
+	  -->
+	  <!--
+	      <a href="https://t.me/s/napizia" 
+		 target="_blank"><img src="/config/telegram_sq-064px.png" 
+				      style="width: 32px; display: inline;"></a>
+	  -->
+	</p>
+      </div>
+    </div>
+    <!-- end social media column for large screens -->
+      
+    <!-- begin first -->
+    <div class="col-m-4 col-3">
+      <ul class="navbar">
+	<li class="navhead">dizziunariu</li>
+	<li class="navbar">
+	  <a class="navbar" href="/dieli/">dizz<span class="wordvanish">iunariu</span>
+	    dieli</a>
+	</li>
+	<li class="navbar">
+	  <a class="navbar" href="https://translate.napizia.com/">tradutturi
+	    <span class="wordvanish">sicilianu</span></a>
+	</li>
+	<!-- <li class="navbar"><a class="navbar" href="https://www.napizia.com/cgi-bin/cosine-sim.pl">sumigghianza</a></li> -->
+	<li class="navbar"><a class="navbar" href="/trova/">trova na palora</a></li>
+	<li class="navbar"><a class="navbar" href="/chiu/">chiù dâ palora</a></li>
+	<!-- <li class="navbar"><a class="navbar" href="https://www.napizia.com/cgi-bin/aiutami.pl">aiùtami!</a></li> -->
+	<li class="navbar"><a class="navbar" href="/traina/">dizz<span class="wordvanish">iunariu</span>
+	    traina</a></li>
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/poets-sc.shtml">paggina dî pueti</a></li>
+      </ul>
+    </div>
+    <!-- end first -->
+    
+    <!-- begin second -->
+    <div class="col-m-4 col-3">
+      <ul class="navbar">
+	<!-- -->
+	<li class="navhead">documentazioni</li>
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/intro-sc.shtml">introduzioni</a></li>
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/translator-sc.shtml">tradutturi
+	    <span class="wordvanish">sicilianu</span></a></li>
+	<!-- <li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/cosine-sim.shtml">cosine similarity</a></li> -->
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/trova-palora-sc.shtml">trova na palora</a></li>
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/sicilian-verbs-sc.shtml">stivali e ràdica</a></li>
+	<!-- <li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/index.shtml">specification</a></li> -->
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/next-steps-sc.shtml">prossimi passi</a></li>
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/sicilian/bibliography-sc.shtml">bibliografia</a></li>	  
+      </ul>
+    </div>
+    <!-- end second -->
+    
+    <!-- begin third -->
+    <div class="col-m-4 col-3">
+      <ul class="navbar">
+	<li class="navhead">puisia e prosa</li>
+	<li class="navbar"><a class="navbar" href="https://magazine.napizia.com/">napizia magazine</a></li>
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/rhapsody/index.shtml">sicilian rhapsody</a></li>
+	<li class="navhead">supra stu prujettu</li>
+	<li class="navbar"><a class="navbar" href="https://www.napizia.com/pages/about/index.shtml">viniti a napizia</a></li>
+	<!-- <li class="navbar"><a href="https://www.doviak.net/pages/ml-sicilian/index.shtml"
+			      class="navbar">sicilian nlp</a></li> -->
+	<li class="navhead">autori</li>
+	<li class="navbar"><a class="navbar" target="_blank" href="https://www.wdowiak.me">eryk wdowiak</a></li>
+      </ul>
+    </div>
+    <!-- end third -->
+    
+    <!-- begin empty -->
+    <div class="col-1"></div> 
+    <!-- end empty -->
+    
+  </div>
+  <!-- end row div -->
+  
+  <!-- begin social media row for small screens -->
+  <div class="socialappear">
+    <p class="socialappear">
+      <a href="https://www.facebook.com/napizia/"
+	 target="_blank"><img src="/config/facebook_sq-064px.png" 
+			      style="width: 32px; display: inline;"></a>
+      <a href="https://arbasicula.org/"
+	 target="_blank"><img src="/config/arba-sicula_sq-064px.png" 
+			      style="width: 32px; display: inline;"></a>
+      <!--
+	  <a href="https://twitter.com/ProjectNapizia" 
+	     target="_blank"><img src="/config/twitter_sq-064px.png" 
+				  style="width: 32px; display: inline;"></a>
+      -->
+      <!--
+	  <a href="https://t.me/s/napizia" 
+	   target="_blank"><img src="/config/telegram_sq-064px.png" 
+				style="width: 32px; display: inline;"></a>
+      -->
+    </p>
+  </div>
+  <!-- end social media row for small screens -->
+  
+</div>	    
+<!-- end navbar -->
+
+
+</div>
+<!-- end outer table div -->
+
+
+  </body>
+</html>
