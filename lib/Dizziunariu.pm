@@ -13,12 +13,19 @@ sub startup ($self) {
   # Router
   my $r = $self->routes;
 
-  # Normal route to controller
+  # Normal GET routes to controllers
   $r->get('/')->to('main#welcome');
   $r->get('/dieli/')->to('dieli#welcome');
   $r->get('/chiu/')->to('chiu#welcome');
   $r->get('/trova/')->to('trova#welcome');
   $r->get('/traina/')->to('traina#welcome');
+
+  # Normal POST routes to controllers
+  $r->post('/')->to('main#welcome');
+  $r->post('/dieli/')->to('dieli#welcome');
+  $r->post('/chiu/')->to('chiu#welcome');
+  $r->post('/trova/')->to('trova#welcome');
+  $r->post('/traina/')->to('traina#welcome');
 }
 
 1;
