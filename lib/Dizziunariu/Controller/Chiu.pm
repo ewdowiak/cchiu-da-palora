@@ -22,7 +22,6 @@ package Dizziunariu::Controller::Chiu;
 use strict;
 use warnings;
 #no warnings qw(uninitialized);
-
 use utf8;
 
 use Mojo::Base 'Mojolicious::Controller', -signatures;
@@ -43,10 +42,6 @@ use Napizia::HtmlTraina;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
-##  navigation panels
-my $topnav_html = '/home/eryk/website/dizziunariu/public/config/eryk2-topnav.html';
-my $navbar_html = '/home/eryk/website/dizziunariu/public/config/eryk2-navbar.html';
 
 ##  scalars to adjust length of columns (for appearances)
 my $adjustone =  -30 ;
@@ -80,6 +75,25 @@ foreach my $small (@ttarry) {
     $vnotes_sml{$small} = $vnotes{$small};
 }
 
+##  for HEAD of HTML page
+my $card_image = 'https://dizziunariu.napizia.com/pics/chiu-da-palora.jpg';
+
+##  for HEADLINE (h1) of HTML page
+my $page_hline = 'Chiù dâ Palora';
+
+##  for STYLE of HTML page
+my $page_style;
+$page_style .= '<style>'."\n";
+$page_style .= '  p.cchiu { margin-top: 0em; margin-bottom: 0em; }'."\n";
+$page_style .= '  @media only screen and (max-width: 600px) { '."\n";
+$page_style .= '        p.cchiu { margin-top: 0.5em; margin-bottom: 0.5em; }'."\n";
+$page_style .= '  }'."\n";
+$page_style .= '  div.transconj { position: relative; margin: auto; width: 50%;}'."\n";
+$page_style .= '  @media only screen and (max-width: 835px) {'."\n";
+$page_style .= '      div.transconj { position: relative; margin: auto; width: 90%;}'."\n";
+$page_style .= '  }'."\n";
+$page_style .= '</style>'."\n";
+
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
@@ -96,8 +110,27 @@ sub welcome ($self) {
     $par_langs  = ( $par_langs  eq '') ? undef : $par_langs  ;
     $par_traina = ( $par_traina eq '') ? undef : $par_traina ;
 
+    ##  for HEAD of this HTML page
+    my %topinfo  = mk_cctopinfo( $par_palora , \%vnotes , $vbconj );
+    my $card_title    = $topinfo{"card_title"};
+    my $card_url      = $topinfo{"card_url"};
+    my $card_descrip  = $topinfo{"card_descrip"};
+    my $card_keywords = $topinfo{"card_keywords"};
+    
+    ##  prepare HTML page
     my $otpage = mk_htmlpage( $par_palora , $par_langs , $par_traina );
-    $self->render( htmlpage => $otpage );
+
+    ##  and render it
+    $self->render(
+	card_title    => $card_title ,
+	card_descrip  => $card_descrip , 
+	card_keywords => $card_keywords ,
+	card_url      => $card_url ,
+	card_image    => $card_image , 
+	page_style    => $page_style ,
+	page_hline    => $page_hline ,
+	htmlpage      => $otpage
+	);
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -176,16 +209,14 @@ sub mk_htmlpage{
     
     ##  make webpage; if input word not defined, cannot conjugate/decline, so show all
     if ( ! defined $inword || ! defined $vnotes{ $inword } ) {
-	## make top
-	$htmlpage .= mk_cctophtml($topnav_html , "" , \%vnotes , $vbconj );
+	## make form
 	$htmlpage .= mk_newform( $lgparm );
 	
 	## show all
 	$htmlpage .= mk_showall(  \%vnotes_sml , $vbconj , $adjustone , $adjusttwo , $adjusttre );
 	
     } else { 
-	## make top
-	$htmlpage .= mk_cctophtml($topnav_html , $inword , \%vnotes , $vbconj );
+	## make form
 	$htmlpage .= mk_newform( $lgparm );
 	
 	##  print translations and notes
@@ -273,10 +304,6 @@ sub mk_htmlpage{
     my $url   = uri_escape($text_url);
     my $title = uri_escape($text_title);
     $htmlpage .= mk_share( $url , $title );
-    
-    ##  print footer
-    $htmlpage .= mk_foothtml($navbar_html);
-
 
     ##  return the HTML page
     return $htmlpage;

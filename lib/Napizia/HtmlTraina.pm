@@ -15,8 +15,7 @@ package Napizia::HtmlTraina;
 ##  You should have received a copy of the GNU General Public License
 ##  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
 use strict;
 use warnings;
@@ -34,8 +33,7 @@ sub fix_accents { Napizia::TextTools::fix_accents( $_[0] );}
 require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = ("make_link","make_alfa_index","make_alfa_welcome",
-    "make_alfa_coll","mk_amkcontent","print_traina",
-    "mk_foothtml","mk_amtophtml");
+    "make_alfa_coll","mk_amkcontent","print_traina","mk_topinfo");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -426,45 +424,16 @@ sub print_traina {
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-##  navigation footer
-sub mk_foothtml {
+sub mk_topinfo {
 
-    ##  footer navigation
-    my $footnav = $_[0] ; 
-
-    ##  prepare output
-    my $othtml ;
-
-    open( my $fh_footnav , "<:encoding(utf-8)" , $footnav ); ## || die "could not read:  $footnav";
-    while(<$fh_footnav>){ chomp;  $othtml .= $_ ."\n";};
-    close $fh_footnav ;
-    
-    $othtml .= "  </body>"."\n";
-    $othtml .= "</html>"."\n";
-
-    return $othtml ;
-}
-
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
-sub mk_amtophtml {
-
-    my $topnav = $_[0] ;
-    my $headword = $_[1] ;
+    my $headword = $_[0] ;
     my $title_insert = $headword ;
     $title_insert = ( $title_insert ne "" ) ? $title_insert .' :: ' : "" ;
 
-    my $ottxt ;
-    ## $ottxt .= "Content-type: text/html\n\n";
-    $ottxt .= '<!DOCTYPE html>'."\n";
-    $ottxt .= '<html>'."\n";
-    $ottxt .= '  <head>'."\n";
-
+    ##  and here's the TITLE
     my $title_concat = $title_insert . 'Dizziunariu Traina :: Napizia';
-    $ottxt .= '    <title>'. $title_concat .'</title>'."\n";
-    $ottxt .= '    <meta property="og:title" content="'. $title_concat .'">'."\n";
-    $ottxt .= '    <meta name="twitter:title" content="'. $title_concat .'">'."\n";
 
+    ##  prepare the description
     my $descrip ;
     if ( ! defined $headword || $headword eq "" ) {
 	$descrip .= 'lu dizziunariu di Antonio Traina.';
@@ -476,18 +445,10 @@ sub mk_amtophtml {
 	$descrip .= 'ntô dizziunariu di Antonio Traina.';
     }
 
-    $ottxt .= '    <meta name="DESCRIPTION" content="'. $descrip .'">'."\n";
-    $ottxt .= '    <meta property="og:description" content="'. $descrip .'">'."\n";
-    $ottxt .= '    <meta name="twitter:description" content="'. $descrip .'">'."\n";
-
-    ##  continue header
-    $ottxt .= '    <meta name="KEYWORDS" content="Sicilian, language, dictionary">'."\n";
-
-    ##  search information to add to URL
+    ##  form the URL
+    my $urlref = 'https://dizziunariu.napizia.com/traina/';
     if ( ! defined $headword || $headword eq "" ) {
-	my $urlref = 'https://dizziunariu.napizia.com/traina/';
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
+	my $blah = "do nothing";
 
     } elsif ( $headword =~ /^ìnnici p/ ) {
 
@@ -495,158 +456,25 @@ sub mk_amtophtml {
 	my $collection = $headword ;
 	$headword =~ s/^ìnnici p/alfa_p/;
 	
-	##  search to add to the URL
+	##  collection to add to the URL
 	my $addtourl = '?coll='. $headword ;
-
-	##  add it to the URL
-	my $urlref = 'https://dizziunariu.napizia.com/traina/';
 	$urlref .= $addtourl ;
-
-	##  append to the HTML
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
 
     } else {
 	##  search to add to the URL
 	my $addtourl = '?palora='. $headword ;
-
-	##  add it to the URL
-	my $urlref = 'https://dizziunariu.napizia.com/traina/';
 	$urlref .= $addtourl ;
-
-	##  append to the HTML
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
     }
 
-    ##  image, og:type and twitter card
-    # my $logopic = 'https://dizziunariu.napizia.com/config/napizia_logo-w-descrip.jpg';
-    my $logopic = 'https://dizziunariu.napizia.com/pics/antonino-traina.jpg';
-    $ottxt .= '    <meta property="og:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta name="twitter:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta property="og:type" content="website">'."\n";
-    $ottxt .= '    <meta name="twitter:site" content="@ProjectNapizia">'."\n";
-    $ottxt .= '    <meta name="twitter:card" content="summary_large_image">'."\n";
-
-    ##  continue header
-    $ottxt .= '    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">'."\n";
-    $ottxt .= '    <meta name="Author" content="Eryk Wdowiak">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-blue.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_widenme.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/cchiu_forms.css">'."\n";
-
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/w3-fa-styles.css">'."\n";
-
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-EN Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-en.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-IT Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-it.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="EN-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_en-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="IT-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_it-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="Trova na Palora"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/trova-palora.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim Skipgram"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_skip.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim CBOW"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_cbow.xml">'."\n";
-    $ottxt .= '    <link rel="icon" type="image/png" href="/config/napizia-icon.png">'."\n";
-    $ottxt .= '    <meta name="viewport" content="width=device-width, initial-scale=1">'."\n";
-
-    ##  extra CSS
-    $ottxt .= '    <style>'."\n";
+    ##  prepare hash to return
+    my %otinfo = (
+	"card_title"    => $title_concat ,
+	"card_descrip"  => $descrip ,
+	"card_url"      => $urlref
+	);
     
-    ##  DIV -- for top and bottom borders
-    $ottxt .= '      div.btop { background-color: rgb(255, 255, 204);'."\n"; 
-    $ottxt .= '                 width: 80%;  margin: 0em auto 0em auto;'."\n";
-    $ottxt .= '                 padding: 7px 0px 7px 0px;'."\n";
-    $ottxt .= '                 border-top: 1px solid rgb(2, 2, 102);}'."\n";
-
-    $ottxt .= '      @media only screen and (max-width: 500px) { '."\n";
-    $ottxt .= '          div.btop { width: 95%; }'."\n";
-    $ottxt .= '      }'."\n";
-    $ottxt .= '      div.bbot { border-bottom: 1px solid rgb(2, 2, 102); }'."\n";
-    $ottxt .= '      div.bside { border-left: 1px solid rgb(2, 2, 102);'."\n";
-    $ottxt .= '                  border-right: 1px solid rgb(2, 2, 102); }'."\n";
-    
-    ## ##  zero and half paragraph spacing
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '      p.zero { margin-top: 0em; margin-bottom: 0em; }'."\n";
-    ## $ottxt .= '      p.half { margin-top: 0.5em; margin-bottom: 0.5em; }'."\n";
-
-    ##  form text -- larger, different font
-    $ottxt .= '      p.formtext { font-size: 1.05em; font-family: Arial, "Liberation Sans", sans-serif; }'."\n";
-
-    ##  DIV -- "tbleft", "tbright" and center them on small screens
-    $ottxt .= '      @media only screen and (min-width: 480px) { '."\n";
-    $ottxt .= '          div.tbright { text-align: right; }'."\n";
-    $ottxt .= '      }'."\n";
-    $ottxt .= '      @media only screen and (min-width: 480px) { '."\n";
-    $ottxt .= '          div.tbleft { text-align: left; }'."\n";
-    $ottxt .= '      }'."\n";
-    $ottxt .= '      @media only screen and (max-width: 479px) { '."\n";
-    $ottxt .= '          div.tbright, div.tbleft { text-align: center; }'."\n";
-    $ottxt .= '      }'."\n";
-
-    ##  DIV -- translations and conjugations
-    $ottxt .= '      div.transconj { position: static; margin: auto; width: 50%;}'."\n";
-    $ottxt .= '      @media only screen and (max-width: 835px) { '."\n";
-    $ottxt .= '          div.transconj { position: relative; margin: auto; width: 90%;}'."\n";
-    $ottxt .= '      }'."\n";
-
-    ##  for the lists of words
-    $ottxt .= '      p.cchiu { margin-top: 0.1em; margin-bottom: 0.1em; }'."\n";
-    $ottxt .= '      @media only screen and (max-width: 600px) {'."\n";
-    $ottxt .= '          p.cchiu { margin-top: 0.5em; margin-bottom: 0.5em; }'."\n";
-    $ottxt .= '      }'."\n";
-    
-    ## ##  DIV -- suggestions
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '      div.cunzigghiu { position: relative; margin: auto; width: 50%;}'."\n";
-    ## $ottxt .= '      @media only screen and (max-width: 835px) { '."\n";
-    ## $ottxt .= '          div.cunzigghiu { position: relative; margin: auto; width: 90%;}'."\n";
-    ## $ottxt .= '      }'."\n";
-
-    ## ##  spacing for second column of Dieli collections
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '    ul.ddcoltwo { margin-top: 0em; }'."\n";
-    ## $ottxt .= '    @media only screen and (min-width: 600px) { '."\n";
-    ## $ottxt .= '        ul.ddcoltwo { margin-top: 2.25em; }'."\n";
-    ## $ottxt .= '    }'."\n";
-
-    ##  close CSS -- close head
-    $ottxt .= '    </style>'."\n";
-    $ottxt .= '  </head>'."\n";
-    $ottxt .= '  <body>'."\n";
-
-    open( my $fh_topnav , "<:encoding(utf-8)" , $topnav ); ## || die "could not read:  $topnav";
-    while(<$fh_topnav>){ chomp;  $ottxt .= $_ ."\n"; };
-    close $fh_topnav ;
-
-    $ottxt .= '  <!-- begin row div -->'."\n";
-    $ottxt .= '  <div class="row">'."\n";
-    $ottxt .= '    <div class="col-m-12 col-12">'."\n";
-    $ottxt .= '      <h1 style="margin-bottom: 0.5em;">Dizziunariu Traina</h1>'."\n";
-    ## $ottxt .= '      <h2>di Eryk Wdowiak</h2>'."\n";
-    $ottxt .= '    </div>'."\n";
-    $ottxt .= '  </div>'."\n";
-    $ottxt .= '  <!-- end row div -->'."\n";
-    $ottxt .= '  '."\n";
-    $ottxt .= '  <!-- begin row div -->'."\n";
-    $ottxt .= '  <div class="row">'."\n";
-    
-    return $ottxt ;
+    ##  and return it
+    return %otinfo ;
 }
-
 
 1;

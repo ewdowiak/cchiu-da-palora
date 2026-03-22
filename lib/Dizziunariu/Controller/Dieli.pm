@@ -22,7 +22,6 @@ package Dizziunariu::Controller::Dieli;
 use strict;
 use warnings;
 #no warnings qw(uninitialized);
-
 use utf8;
 
 use Mojo::Base 'Mojolicious::Controller', -signatures;
@@ -39,16 +38,31 @@ use Napizia::TextTools;
 use Napizia::Utils;
 use Napizia::HtmlDieli;
 
-##  navigation panels
-my $topnav_html = '/home/eryk/website/dizziunariu/public/config/eryk2-topnav.html';
-my $navbar_html = '/home/eryk/website/dizziunariu/public/config/eryk2-navbar.html';
-
 ##  retrieve storables
 my $stor_dieli_en = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieli-en-dict');
 my $stor_dieli_sc = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieli-sc-dict');
 my $stor_dplus_sc = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieliplus-sc-dict');
 my $stor_dplus_en = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieliplus-en-dict');
 my $stor_dplus_it = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieliplus-it-dict');
+
+##  for HEAD of HTML page
+my $card_descrip = 'Sicilian-Italian-English Dictionary by Arthur Dieli';
+my $card_keywords = 'Sicilian, language, dictionary, Dieli, Arthur Dieli';
+my $card_image = 'https://dizziunariu.napizia.com/pics/dizziunariu-dieli.jpg';
+
+##  for HEADLINE (h1) of HTML page
+my $page_hline = 'Dizziunariu Dieli';
+
+##  for STYLE of HTML page
+my $page_style = '';
+## this style now handled by "eryk_widenme.css"
+# $page_style .= '<style>'."\n";
+# $page_style .= 'p.zero { margin-top: 0em; margin-bottom: 0em; }'."\n";
+# $page_style .= 'div.cunzigghiu { position: relative; margin: auto; width: 50%;}'."\n";
+# $page_style .= '@media only screen and (max-width: 835px) {'."\n";
+# $page_style .= 'div.cunzigghiu { position: relative; margin: auto; width: 90%;}'."\n";
+# $page_style .= '}'."\n";
+# $page_style .= '</style>'."\n";
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -58,12 +72,29 @@ my $stor_dplus_it = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieliplus-
 
 sub welcome ($self) {
 
+    ##  retrieve parameters
     my $par_search = $self->param('search') || '';
     my $par_langs  = $self->param('langs')  || '';
 
+    ##  for HEAD of this HTML page
+    my %topinfo  = mk_ddtopinfo( $par_search , $par_langs );
+    my $card_title = $topinfo{"card_title"};
+    my $card_url = $topinfo{"card_url"};
+
+    ##  prepare HTML page
     my $otpage = mk_htmlpage( $par_search , $par_langs );
 
-    $self->render( htmlpage => $otpage );
+    ##  and render it
+    $self->render(
+	card_title    => $card_title ,
+	card_descrip  => $card_descrip , 
+	card_keywords => $card_keywords ,
+	card_url      => $card_url ,
+	card_image    => $card_image , 
+	page_style    => $page_style ,
+	page_hline    => $page_hline ,
+	htmlpage      => $otpage
+	);
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -108,17 +139,8 @@ sub mk_htmlpage{
     } else {
 	my $blah = "retrieve nothing -- no language requested" ;
     }
-    ## my %dieli = %{$dieli_slang}; 
 
     ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
-    ##  we need to make a webpage, so let's get some HTML
-    my $tophtml  = mk_ddtophtml( $topnav_html , $lgparm , $insearch );
-    my $newform  = mk_newform( $lgparm , $insearch );
-    my $thanks   = thank_dieli();
-    my $ricota   = mk_ricota();
-    my $foothtml = mk_foothtml( $navbar_html );
-    
     ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
     
     ##  initialize output HTML
@@ -232,16 +254,8 @@ sub mk_htmlpage{
     
     ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
     ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-    
-    ##  make head and body of webpage
-    my $htmlpage ;
-    $htmlpage .= $tophtml;
-    $htmlpage .= $newform ;
-    $htmlpage .= $otline  ;
-    $htmlpage .= $thanks  ;
-    $htmlpage .= $ricota  ;
 
-    ##  print the social media shares
+    ##  prepare the social media shares
     my $text_url   = 'https://dizziunariu.napizia.com/dieli/';
     my $text_title;
     if ( ! defined $insearch ) {
@@ -257,11 +271,18 @@ sub mk_htmlpage{
     
     my $url   = uri_escape($text_url);
     my $title = uri_escape($text_title);
-    $htmlpage .= mk_share( $url , $title );
-    
-    ##  print footer
-    $htmlpage .= $foothtml ;
+    my $share = mk_share( $url , $title );
 
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+    ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+    
+    ##  make HTML page
+    my $htmlpage ;
+    $htmlpage .= mk_newform( $lgparm , $insearch );
+    $htmlpage .= $otline  ;
+    $htmlpage .= thank_dieli();
+    $htmlpage .= mk_ricota();
+    $htmlpage .= $share;
 
     ##  return the HTML page
     return ( $htmlpage );

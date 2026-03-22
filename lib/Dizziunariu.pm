@@ -14,14 +14,14 @@ sub startup ($self) {
   my $r = $self->routes;
 
   # Normal GET routes to controllers
-  $r->get('/')->to('main#welcome');
+  $r->get('/')->to('dieli#welcome');
   $r->get('/dieli/')->to('dieli#welcome');
   $r->get('/chiu/')->to('chiu#welcome');
   $r->get('/trova/')->to('trova#welcome');
   $r->get('/traina/')->to('traina#welcome');
 
   # Normal POST routes to controllers
-  $r->post('/')->to('main#welcome');
+  $r->post('/')->to('dieli#welcome');
   $r->post('/dieli/')->to('dieli#welcome');
   $r->post('/chiu/')->to('chiu#welcome');
   $r->post('/trova/')->to('trova#welcome');

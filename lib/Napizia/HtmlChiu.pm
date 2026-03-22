@@ -15,8 +15,7 @@ package Napizia::HtmlChiu;
 ##  You should have received a copy of the GNU General Public License
 ##  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
 use strict;
 use warnings;
@@ -35,7 +34,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = ("mk_nounhtml","mk_adjhtml", "mk_conjhtml",
 	       "mk_dielitrans","mk_notex","mk_notex_list","mk_showall",
-	       "mk_vnkcontent","mk_cctophtml"); ## "ask_help",
+	       "mk_vnkcontent","mk_cctopinfo"); ## "ask_help"
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -43,35 +42,6 @@ our @EXPORT = ("mk_nounhtml","mk_adjhtml", "mk_conjhtml",
 
 ##  SUBROUTINES  for  CHIU-DA-PALORA
 ##  ===========  ===  ==============
-
-## sub ask_help {
-##
-##     ##  pass in the hash key and vocabulary notes
-##     my $palora  =   $_[0];
-##     my %vnotes  = %{$_[1]};
-##
-##     ##  strip part of speech identifier
-##     my $strip = $palora;
-##     $strip =~ s/_[a-z]*$//;
-##
-##     ##  what is the display?
-##     my $display = ( ! defined $vnotes{$palora}{display_as} ) ? $strip : $vnotes{$palora}{display_as} ; 
-##    
-##     ##  prepare request text
-##     my $request = '<i>Poi dirimi chiù dâ palora:</i> '. $display .'<i>? Clicca ccà!</i>';
-##
-##     ##  prepare output
-##     my $ot;
-##    
-##     ##  DIV to limit width
-##     $ot .= '<div class="transconj">'."\n";
-##     $ot .= '<p style="margin-bottom: 0.5em;"><a href="/cgi-bin/aiutami.pl?palora='. $palora .'">' ; 
-##     $ot .= $request . '</a></p>'."\n";
-##     $ot .= '</div>'."\n";
-##
-##     ##  ask for help!
-##     return $ot;
-## }
 
 sub mk_nounhtml { 
     my $palora  =    $_[0]   ;  ( my $singular = $palora ) =~ s/_noun$// ; 
@@ -162,7 +132,9 @@ sub mk_nounhtml {
     return $ot ; 
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
 sub mk_adjhtml { 
     my $palora  =    $_[0]   ;  ( my $singular = $palora ) =~ s/_adj$// ; 
@@ -231,7 +203,9 @@ sub mk_adjhtml {
     return $ot ; 
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
 sub mk_conjhtml {
     
@@ -388,7 +362,9 @@ sub mk_conjhtml {
     return $ot ; 
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
 sub mk_dielitrans {
 
@@ -479,7 +455,9 @@ sub mk_dielitrans {
     return $ot ; 
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
 sub mk_notex {
 
@@ -531,7 +509,9 @@ sub mk_notex {
     return $othtml ;
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
 sub mk_notex_list {
 
@@ -563,7 +543,9 @@ sub mk_notex_list {
     return $othtml ;
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
 sub mk_showall {
 
@@ -659,7 +641,9 @@ sub mk_showall {
     return $othtml ; 
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
 sub mk_vnkcontent {
 
@@ -729,15 +713,15 @@ sub mk_vnkcontent {
     return $othtml ; 
 }
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 
-sub mk_cctophtml {
+sub mk_cctopinfo {
 
-    my $topnav = $_[0] ;
-    my $palora = $_[1] ;
-
-    my %vnotes = %{ $_[2] };
-    my $vbcref =    $_[3]  ;
+    my $palora =    $_[0]  ;
+    my %vnotes = %{ $_[1] };
+    my $vbcref =    $_[2]  ;
 
     ##  holder for display and part of speech
     my $display ;
@@ -787,158 +771,78 @@ sub mk_cctophtml {
     my $descrip_fmt = ( $display ne "" ) ? $display . ' ' . $part_fmt : "";
     my $english_fmt = ( ! defined $vnotes{ $palora }{part_speech} ) ? "" : '(' . $vnotes{ $palora }{part_speech} . ')';
     
-    my $ottxt ;
-    ## $ottxt .= "Content-type: text/html\n\n";
-    $ottxt .= '<!DOCTYPE html>'."\n";
-    $ottxt .= '<html>'."\n";
-    $ottxt .= '  <head>'."\n";
-
+    ##  and here's the TITLE
     my $title_concat = $title_fmt . 'Chiù dâ Palora :: Napizia';
-    $ottxt .= '    <title>'. $title_concat .'</title>'."\n";
-    $ottxt .= '    <meta property="og:title" content="'. $title_concat .'">'."\n";
-    $ottxt .= '    <meta name="twitter:title" content="'. $title_concat .'">'."\n";
 
+    ##  prepare the description
+    my $descrip ;
     if ( $descrip_fmt ne "" ) { 
-	my $descrip ;
+
 	$descrip .= 'Chiù dâ palora: '. $descrip_fmt .'. More about the Sicilian word: ';
 	$descrip .= $display .' '. $english_fmt .'.';
-
-	$ottxt .= '    <meta name="DESCRIPTION" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta property="og:description" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta name="twitter:description" content="'. $descrip .'">'."\n";
-
     } else {
-	my $descrip = 'Annotazzioni a nu dizziunariu sicilianu. Annotations to a Sicilian dictionary.';
+	$descrip = 'Annotazzioni a nu dizziunariu sicilianu. Annotations to a Sicilian dictionary.';
 
-	$ottxt .= '    <meta name="DESCRIPTION" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta property="og:description" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta name="twitter:description" content="'. $descrip .'">'."\n";
     }
 
-    $ottxt .= '    <meta name="KEYWORDS" content="'; 
+    ##  prepare keywords
+    my $keywords;
     if ( $display ne "" ) { 
-	$ottxt .= $display .', ';
+	$keywords .= $display .', ';
     }
-    $ottxt .= 'Sicilian dictionary, dizziunariu sicilianu, dizionario siciliano">'."\n";
-
-
+    $keywords .= 'Sicilian dictionary, dizziunariu sicilianu, dizionario siciliano';
+    
+    ##  form the URL
+    my $urlref = 'https://dizziunariu.napizia.com/chiu/';
     if ( ! defined $palora || $palora eq "" ) {
-	my $urlref = 'https://dizziunariu.napizia.com/chiu/';
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
-
+	my $blah = 'do nothing';
     } else {
-	my $urlref = 'https://dizziunariu.napizia.com/chiu/';
 	$urlref .= '?palora='. $palora ;
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
     }
-
-    ## my $logopic = 'https://dizziunariu.napizia.com/config/napizia_logo-w-descrip.jpg';
-    my $logopic = 'https://dizziunariu.napizia.com/pics/chiu-da-palora.jpg';
-    $ottxt .= '    <meta property="og:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta name="twitter:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta property="og:type" content="website">'."\n";
-    $ottxt .= '    <meta name="twitter:site" content="@ProjectNapizia">'."\n";
-    $ottxt .= '    <meta name="twitter:card" content="summary_large_image">'."\n";
     
-    $ottxt .= '    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">'."\n";
-    $ottxt .= '    <meta name="Author" content="Eryk Wdowiak">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-blue.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_widenme.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/dieli_forms.css">'."\n";
-
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/w3-fa-styles.css">'."\n";
+    ##  prepare hash to return
+    my %otinfo = (
+	"card_title"    => $title_concat ,
+	"card_descrip"  => $descrip ,
+	"card_keywords" => $keywords ,
+	"card_url"      => $urlref
+	);
     
-    $ottxt .= '    <link rel="icon" type="image/png" href="/config/napizia-icon.png">'."\n";
-    $ottxt .= "\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-EN Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-en.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-IT Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-it.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="EN-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_en-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="IT-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_it-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="Trova na Palora"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/trova-palora.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim Skipgram"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_skip.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim CBOW"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_cbow.xml">'."\n";
-    $ottxt .= "\n";
-    $ottxt .= '    <meta name="viewport" content="width=device-width, initial-scale=1">'."\n";
-
-    ##  extra CSS
-    $ottxt .= '    <style>'."\n";
-
-    ##  show/hide future and conditional
-    #$ottxt .= '      #fticoi {  display: none; }'."\n";
-    #$ottxt .= '      #fticoi:target {  display: block; }'."\n";
-    #$ottxt .= '      #closeme {  display: none; }'."\n";
-    #$ottxt .= '      #closeme:target {  display: block; }'."\n";
-
-    ##  small entry spacing on desktops, large entry spacing on mobile
-    $ottxt .= '      p.cchiu { margin-top: 0em; margin-bottom: 0em; }'."\n";
-    $ottxt .= '      @media only screen and (max-width: 600px) { '."\n";
-    $ottxt .= '            p.cchiu { margin-top: 0.5em; margin-bottom: 0.5em; }'."\n";
-    $ottxt .= '      }'."\n";
-    
-    ## ##  zero paragraph spacing
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '      p.zero { margin-top: 0em; margin-bottom: 0em; }'."\n";
-
-    ##  DIV -- translations and conjugations
-    $ottxt .= '      div.transconj { position: relative; margin: auto; width: 50%;}'."\n";
-    $ottxt .= '      @media only screen and (max-width: 835px) { '."\n";
-    $ottxt .= '          div.transconj { position: relative; margin: auto; width: 90%;}'."\n";
-    $ottxt .= '      }'."\n";
-
-    ## ##  DIV -- suggestions
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '      div.cunzigghiu { position: relative; margin: auto; width: 50%;}'."\n";
-    ## $ottxt .= '      @media only screen and (max-width: 835px) { '."\n";
-    ## $ottxt .= '          div.cunzigghiu { position: relative; margin: auto; width: 90%;}'."\n";
-    ## $ottxt .= '      }'."\n";
-
-    ## ## spacing for second column of Dieli collections
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '    ul.ddcoltwo { margin-top: 0em; }'."\n";
-    ## $ottxt .= '    @media only screen and (min-width: 600px) { '."\n";
-    ## $ottxt .= '        ul.ddcoltwo { margin-top: 2.25em; }'."\n";
-    ## $ottxt .= '    }'."\n";
-
-    ##  close CSS -- close head
-    $ottxt .= '    </style>'."\n";
-    $ottxt .= '  </head>'."\n";
-    $ottxt .= '  <body>'."\n";
-
-    open( my $fh_topnav , "<:encoding(utf-8)" , $topnav ); ## || die "could not read:  $topnav";
-    while(<$fh_topnav>){ chomp;  $ottxt .= $_ . "\n" ; };
-    close $fh_topnav ;
-
-    $ottxt .= '  <!-- begin row div -->'."\n";
-    $ottxt .= '  <div class="row">'."\n";
-    $ottxt .= '    <div class="col-m-12 col-12">'."\n";
-    $ottxt .= '      <h1>Chiù dâ Palora</h1>'."\n";
-    ## $ottxt .= '      <h2>di Eryk Wdowiak</h2>'."\n";
-    $ottxt .= '    </div>'."\n";
-    $ottxt .= '  </div>'."\n";
-    $ottxt .= '  <!-- end row div -->'."\n";
-    $ottxt .= '  '."\n";
-    $ottxt .= '  <!-- begin row div -->'."\n";
-    $ottxt .= '  <div class="row">'."\n";
-    
-    return $ottxt ;
+    ##  and return it
+    return %otinfo ;
 }
+
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
+
+## sub ask_help {
+##
+##     ##  pass in the hash key and vocabulary notes
+##     my $palora  =   $_[0];
+##     my %vnotes  = %{$_[1]};
+##
+##     ##  strip part of speech identifier
+##     my $strip = $palora;
+##     $strip =~ s/_[a-z]*$//;
+##
+##     ##  what is the display?
+##     my $display = ( ! defined $vnotes{$palora}{display_as} ) ? $strip : $vnotes{$palora}{display_as} ; 
+##    
+##     ##  prepare request text
+##     my $request = '<i>Poi dirimi chiù dâ palora:</i> '. $display .'<i>? Clicca ccà!</i>';
+##
+##     ##  prepare output
+##     my $ot;
+##    
+##     ##  DIV to limit width
+##     $ot .= '<div class="transconj">'."\n";
+##     $ot .= '<p style="margin-bottom: 0.5em;"><a href="/cgi-bin/aiutami.pl?palora='. $palora .'">' ; 
+##     $ot .= $request . '</a></p>'."\n";
+##     $ot .= '</div>'."\n";
+##
+##     ##  ask for help!
+##     return $ot;
+## }
 
 1;

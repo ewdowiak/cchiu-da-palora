@@ -15,8 +15,7 @@ package Napizia::HtmlDieli;
 ##  You should have received a copy of the GNU General Public License
 ##  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
 use strict;
 use warnings;
@@ -31,8 +30,8 @@ sub rid_accents { Napizia::TextTools::rid_accents( $_[0] );}
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = ("mk_search","translate","mk_ddtophtml",## "mk_ddtopnav",
-	       "mk_newform","thank_dieli","mk_ricota","mk_foothtml");
+our @EXPORT = ("mk_search","translate","mk_ddtopinfo",
+	       "mk_newform","thank_dieli","mk_ricota");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -231,16 +230,18 @@ sub translate {
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
-sub mk_ddtophtml {
+sub mk_ddtopinfo {
 
-    ##  top navigation panel
-    my $topnav = $_[0] ;
+    ##  the word searched for and the language parameter
+    my $search = $_[0];
+    my $lgtext = $_[1];
 
-    ##  language parameter
-    my $lgtext = $_[1] ;
+    ##  if not defined
+    $search = ( ! defined $search ) ? "" : $search ;
     $lgtext = ( ! defined $lgtext ) ? "" : $lgtext ;
 
-    ##  hold that parameter
+    ##  hold the word searched for and the language parameter
+    my $param_search = $search;
     my $param_lgtext = ( $lgtext =~ /^ENSC$|^ITSC$|^SCEN$|^SCIT$/) ? "" : $lgtext ;
     
     ##  clean up the text
@@ -248,13 +249,6 @@ sub mk_ddtophtml {
     $lgtext =~ s/ITSC/It-Sc/;
     $lgtext =~ s/SCEN/Sc-En/;
     $lgtext =~ s/SCIT/Sc-It/;
-
-    ##  the word searched for
-    my $search = $_[2];
-    $search = ( ! defined $search ) ? "" : $search ;
-
-    ##  hold that search
-    my $param_search = $search;
     
     ##  the word searched for -- only if single-item
     $search =~ s/_SQUOTE_/'/g;
@@ -276,126 +270,29 @@ sub mk_ddtophtml {
     ##  text to insert into the title
     my $title_insert = ( $search eq "" ) ? "" : $search .' ('. $lgtext .') :: ';
 
-    my $ottxt ;
-    ## $ottxt .= "Content-type: text/html\n\n";
-    $ottxt .= '<!DOCTYPE html>' . "\n" ;
-    $ottxt .= '<html>' . "\n" ;
-    $ottxt .= '  <head>' . "\n" ;
-
+    ##  and here's the TITLE
     my $title_concat = $title_insert . 'Dizziunariu Dieli :: Napizia';
-    $ottxt .= '    <title>'. $title_concat .'</title>'."\n";
-    $ottxt .= '    <meta property="og:title" content="'. $title_concat .'">'."\n";
-    $ottxt .= '    <meta name="twitter:title" content="'. $title_concat .'">'."\n";
 
-    my $descrip = 'Sicilian-Italian-English Dictionary by Arthur Dieli';
-    $ottxt .= '    <meta name="DESCRIPTION" content="'. $descrip .'">'."\n";
-    $ottxt .= '    <meta property="og:description" content="'. $descrip .'">'."\n";
-    $ottxt .= '    <meta name="twitter:description" content="'. $descrip .'">'."\n";
-
-    $ottxt .= '    <meta name="KEYWORDS" content="Sicilian, language, dictionary, Dieli, Arthur Dieli">' . "\n" ;
-
+    ##  form the URL
+    my $urlref = 'https://dizziunariu.napizia.com/dieli/';
     if ( $param_search eq "" ) {
-	my $urlref = 'https://dizziunariu.napizia.com/dieli/';
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
-
+	my $blah = 'do nothing';
     } else {
-	my $urlref = 'https://dizziunariu.napizia.com/dieli/';
 	$urlref .= '?search='. $param_search ;
-	$urlref .= ($param_lgtext eq "") ? "" : "&langs=". $param_lgtext ;
-	
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
+	$urlref .= ($param_lgtext eq "") ? "" : "&langs=". $param_lgtext ;	
     }
 
-    ## my $logopic = 'https://dizziunariu.napizia.com/config/napizia_logo-w-descrip.jpg';
-    my $logopic = 'https://dizziunariu.napizia.com/pics/dizziunariu-dieli.jpg';
-    $ottxt .= '    <meta property="og:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta name="twitter:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta property="og:type" content="website">'."\n";
-    $ottxt .= '    <meta name="twitter:site" content="@ProjectNapizia">'."\n";
-    $ottxt .= '    <meta name="twitter:card" content="summary_large_image">'."\n";
+    ##  prepare hash to return
+    my %otinfo = (
+	"card_title" => $title_concat ,
+	"card_url" => $urlref
+	);
     
-    $ottxt .= '    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">' . "\n" ;
-    $ottxt .= '    <meta name="Author" content="Eryk Wdowiak">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk.css">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-blue.css">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_widenme.css">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/dieli_forms.css">' . "\n" ;
-
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/w3-fa-styles.css">'."\n";
-    
-    $ottxt .= '    <link rel="icon" type="image/png" href="/config/napizia-icon.png">' . "\n" ;
-    $ottxt .= "\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-EN Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-en.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-IT Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-it.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="EN-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_en-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="IT-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_it-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="Trova na Palora"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/trova-palora.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim Skipgram"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_skip.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim CBOW"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_cbow.xml">'."\n";
-    $ottxt .= "\n";
-    $ottxt .= '    <meta name="viewport" content="width=device-width, initial-scale=1">' . "\n" ;
-    $ottxt .= '    <style>' . "\n" ;
-    $ottxt .= '    p.zero { margin-top: 0em; margin-bottom: 0em; }' . "\n" ;
-    $ottxt .= '    div.cunzigghiu { position: relative; margin: auto; width: 50%;}' . "\n" ;
-    $ottxt .= '    @media only screen and (max-width: 835px) { ' . "\n" ;
-    $ottxt .= '        div.cunzigghiu { position: relative; margin: auto; width: 90%;}' . "\n" ;
-    $ottxt .= '    }' . "\n" ;
-
-    ## ##  spacing for second column of Dieli collections
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '    ul.ddcoltwo { margin-top: 0em; }' . "\n" ;
-    ## $ottxt .= '    @media only screen and (min-width: 600px) { ' . "\n" ;
-    ## $ottxt .= '        ul.ddcoltwo { margin-top: 2.25em; }' . "\n" ;
-    ## $ottxt .= '    }' . "\n" ;
-    
-    $ottxt .= '    </style>' . "\n" ;
-    $ottxt .= '  </head>' . "\n" ;
-
-    ##     return $ottxt ;
-    ## }
-    ## sub mk_ddtopnav {
-    ##     ##  top navigation panel
-    ##     my $topnav = $_[0] ;
-    ##     my $ottxt ;
-
-    $ottxt .= '  <body>'."\n";
-
-    open( my $fh_topnav , "<:encoding(utf-8)" , $topnav ); ## || die "could not read:  $topnav";
-    while(<$fh_topnav>){ chomp;  $ottxt .= $_ . "\n" ; };
-    close $fh_topnav ;
-    
-    $ottxt .= '  <!-- begin row div -->' . "\n" ;
-    $ottxt .= '  <div class="row">' . "\n" ;
-    $ottxt .= '    <div class="col-m-12 col-12">' . "\n" ;
-    ## $ottxt .= '      <h1>Dizziunariu Sicilianu</h1> <h2>di Arthur Dieli</h2>' . "\n" ;
-    $ottxt .= '      <h1>Dizziunariu Dieli</h1>'."\n";
-    $ottxt .= '    </div>' . "\n" ;
-    $ottxt .= '  </div>' . "\n" ;
-    $ottxt .= '  <!-- end row div -->' . "\n" ;
-    $ottxt .= '  ' . "\n" ;
-    $ottxt .= '  <!-- begin row div -->' . "\n" ;
-    $ottxt .= '  <div class="row">' . "\n" ;
-    
-    return $ottxt ;
+    ##  and return it
+    return %otinfo ;
 }
 
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 sub mk_newform {
@@ -414,53 +311,53 @@ sub mk_newform {
     my $ottxt ;
     # $ottxt .= '<form enctype="multipart/form-data" action="/dieli/" method="post">'."\n";
     $ottxt .= '<form enctype="multipart/form-data" action="/dieli/" method="get">'."\n";
-    $ottxt .= '<table style="max-width:500px;"><tbody>' . "\n" ;
+    $ottxt .= '<table style="max-width:500px;"><tbody>'."\n";
     $ottxt .= '<tr><td colspan="2">' ; 
     $ottxt .= '<input type=text name="search" value="'. $sc_search .'" size=36 maxlength=72>' ; 
-    $ottxt .= '</td></tr>' . "\n" ;
-    $ottxt .= '<tr><td>' . "\n" ; 
+    $ottxt .= '</td></tr>'."\n";
+    $ottxt .= '<tr><td>'."\n"; 
 
-    $ottxt .= '<select name="langs">' . "\n" ;
+    $ottxt .= '<select name="langs">'."\n";
     if ( $lgparm =~ /SCEN|ENSC/ ) {
-	$ottxt .= '<option value="SCEN">Sicilianu-Nglisi'  . "\n" ;
-	$ottxt .= '<option value="SCIT">Sicilianu-Talianu' . "\n" ;
+	$ottxt .= '<option value="SCEN">Sicilianu-Nglisi' ."\n";
+	$ottxt .= '<option value="SCIT">Sicilianu-Talianu'."\n";
     } else {
-	$ottxt .= '<option value="SCIT">Sicilianu-Talianu' . "\n" ;
-	$ottxt .= '<option value="SCEN">Sicilianu-Nglisi'  . "\n" ;
+	$ottxt .= '<option value="SCIT">Sicilianu-Talianu'."\n";
+	$ottxt .= '<option value="SCEN">Sicilianu-Nglisi' ."\n";
     }
     
-    $ottxt .= '</select>' . "\n" ;
-    $ottxt .= '</td>' . "\n" ;
-    $ottxt .= '<td align="right">' . '<input type="submit" value="Traduci">' . "\n" ;
-    ## $ottxt .= '<input type=reset value="Clear Form">' . "\n" ; 
-    $ottxt .= '</td></tr>' . "\n" ;
-    $ottxt .= '</tbody></table>' . "\n" ;
-    $ottxt .= '</form>' . "\n" ;
+    $ottxt .= '</select>'."\n";
+    $ottxt .= '</td>'."\n";
+    $ottxt .= '<td align="right">' . '<input type="submit" value="Traduci">'."\n";
+    ## $ottxt .= '<input type=reset value="Clear Form">'."\n"; 
+    $ottxt .= '</td></tr>'."\n";
+    $ottxt .= '</tbody></table>'."\n";
+    $ottxt .= '</form>'."\n";
 
     ## $ottxt .= '<form enctype="multipart/form-data" action="/dieli/" method="post">'."\n";
     $ottxt .= '<form enctype="multipart/form-data" action="/dieli/" method="get">'."\n";
-    $ottxt .= '<table style="max-width:500px;"><tbody>' . "\n" ;
+    $ottxt .= '<table style="max-width:500px;"><tbody>'."\n";
     $ottxt .= '<tr><td colspan="2">' ;
     $ottxt .= '<input type=text name="search" value="'. $ie_search .'" size=36 maxlength=72>' ; 
-    $ottxt .= '</td></tr>' . "\n" ;
-    $ottxt .= '<tr><td>' . "\n" ; 
+    $ottxt .= '</td></tr>'."\n";
+    $ottxt .= '<tr><td>'."\n"; 
 
-    $ottxt .= '<select name="langs">' . "\n" ;
+    $ottxt .= '<select name="langs">'."\n";
     if ( $lgparm =~ /SCEN|ENSC/ ) {
-	$ottxt .= '<option value="ENSC">Nglisi-Sicilianu'  . "\n" ;
-	$ottxt .= '<option value="ITSC">Talianu-Sicilianu' . "\n" ;
+	$ottxt .= '<option value="ENSC">Nglisi-Sicilianu' ."\n";
+	$ottxt .= '<option value="ITSC">Talianu-Sicilianu'."\n";
     } else {
-	$ottxt .= '<option value="ITSC">Talianu-Sicilianu' . "\n" ;
-	$ottxt .= '<option value="ENSC">Nglisi-Sicilianu'  . "\n" ;
+	$ottxt .= '<option value="ITSC">Talianu-Sicilianu'."\n";
+	$ottxt .= '<option value="ENSC">Nglisi-Sicilianu' ."\n";
     }
     
-    $ottxt .= '</select>' . "\n" ;
-    $ottxt .= '</td>' . "\n" ;
-    $ottxt .= '<td align="right">' . '<input type="submit" value="Traduci">' . "\n" ;
-    ## $ottxt .= '<input type=reset value="Clear Form">' . "\n" ; 
-    $ottxt .= '</td></tr>' . "\n" ;
-    $ottxt .= '</tbody></table>' . "\n" ;
-    $ottxt .= '</form>' . "\n" ;
+    $ottxt .= '</select>'."\n";
+    $ottxt .= '</td>'."\n";
+    $ottxt .= '<td align="right">' . '<input type="submit" value="Traduci">'."\n";
+    ## $ottxt .= '<input type=reset value="Clear Form">'."\n"; 
+    $ottxt .= '</td></tr>'."\n";
+    $ottxt .= '</tbody></table>'."\n";
+    $ottxt .= '</form>'."\n";
         
     return $ottxt ;
 }
@@ -471,7 +368,7 @@ sub thank_dieli {
     my $ot ;
     $ot .= '<p style="margin-top: 1.5em; margin-bottom: 0.50em; text-align: center;">Grazzii a ';
     $ot .= '<b><a href="http://www.dieli.net/" target="_blank">' ;
-    $ot .= 'Arthur Dieli</a></b> pi cumpilari stu dizziunariu.</p>' . "\n" ; 
+    $ot .= 'Arthur Dieli</a></b> pi cumpilari stu dizziunariu.</p>'."\n"; 
     return $ot ;
 }
 
@@ -484,7 +381,7 @@ sub mk_ricota {
     my $othtml ;
 
     ##  open project DIV
-    $othtml .= '<div class="row" style="margin: 2px 0px; border: 1px solid black; background-color: rgb(255,255,204);">'."\n";
+    $othtml .= '<div class="row" style="margin: 7px 0px 2px 0px; border: 1px solid black; background-color: rgb(255,255,204);">'."\n";
     
     ## $othtml .= '  <div class="minicol"></div>'."\n";
     ## $othtml .= '  <div class="minicol"></div>'."\n";
@@ -539,34 +436,14 @@ sub mk_ricota {
     ##  close project DIV
     
     ##  let's keep this thing wide on large screens
-    $othtml .= '<div class="widenme"></div>' . "\n" ; 
+    $othtml .= '<div class="widenme"></div>'."\n"; 
 
     ##  add some space on the bottom
-    ## $othtml .= '<br>' . "\n" ;
-
-    $othtml .= '  </div>' . "\n" ;
-    $othtml .= '  <!-- end row div -->' . "\n" ;
+    ## $othtml .= '<br>'."\n";
 
     return $othtml ;
 }
 
-##  navigation footer
-sub mk_foothtml {
-
-    ##  footer navigation
-    my $footnav = $_[0] ; 
-
-    ##  prepare output
-    my $othtml ;
-
-    open( my $fh_footnav , "<:encoding(utf-8)" , $footnav ); ## || die "could not read:  $footnav";
-    while(<$fh_footnav>){ chomp;  $othtml .= $_ . "\n" ; };
-    close $fh_footnav ;
-    
-    $othtml .= "  </body>"."\n";
-    $othtml .= "</html>"."\n";
-    
-    return $othtml ;
-}
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 1;

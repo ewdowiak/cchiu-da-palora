@@ -15,8 +15,7 @@ package Napizia::HtmlTrova;
 ##  You should have received a copy of the GNU General Public License
 ##  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
 use strict;
 use warnings;
@@ -29,7 +28,7 @@ sub rid_accents { Napizia::TextTools::rid_accents( $_[0] );}
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = ("mk_header","mk_ricota","mk_footer","mk_form","mk_wdheader",
+our @EXPORT = ("mk_hdinfo","mk_ricota","mk_form","mk_wdheader",
 	       "get_sample_author","find_poem_matches","mk_notex_list",
 	       "strip_line");
 
@@ -38,15 +37,12 @@ our @EXPORT = ("mk_header","mk_ricota","mk_footer","mk_form","mk_wdheader",
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 ##  make HTML header
-sub mk_header {
-
-    ##  top navigation panel
-    my $topnav = $_[0] ;
+sub mk_hdinfo {
 
     ##  the words, title and author searched for
-    my $palori_str = ( ! defined $_[1] ) ? "" : $_[1] ;
-    my $autori_str = ( ! defined $_[2] ) ? "" : $_[2] ;
-    my $titulu_str = ( ! defined $_[3] ) ? "" : $_[3] ;
+    my $palori_str = ( ! defined $_[0] ) ? "" : $_[0] ;
+    my $autori_str = ( ! defined $_[1] ) ? "" : $_[1] ;
+    my $titulu_str = ( ! defined $_[2] ) ? "" : $_[2] ;
 
     $palori_str = ( $palori_str !~ /[a-z]/ ) ? "" : "pa: " . $palori_str . ", ";
     $autori_str = ( $autori_str !~ /[a-z]/ ) ? "" : "au: " . $autori_str . ", ";
@@ -61,44 +57,23 @@ sub mk_header {
     ##  text to insert into the title
     my $title_insert = ( $search eq "" ) ? "" : $search .' :: ';
   
-    ##  prepare output HTML
-    my $ottxt ;
-    ## $ottxt .= "Content-type: text/html\n\n";
-    $ottxt .= '<!DOCTYPE html>' . "\n" ;
-    $ottxt .= '<html>' . "\n" ;
-    $ottxt .= '  <head>' . "\n" ;
-
+    ##  and here's the TITLE
     my $title_concat = $title_insert . 'Trova na Palora :: Napizia';
-    $ottxt .= '    <title>'. $title_concat .'</title>'."\n";
-    $ottxt .= '    <meta property="og:title" content="'. $title_concat .'">'."\n";
-    $ottxt .= '    <meta name="twitter:title" content="'. $title_concat .'">'."\n";
 
+    ##  prepare the description
+    my $descrip ;
     if ( $title_insert ne "") {
-	my $descrip ;
 	$descrip .= 'puisia e pruverbi pi: '. $search .', ';
 	$descrip .= 'poetry and proverbs for: '. $search ;
-	$ottxt .= '    <meta name="DESCRIPTION" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta property="og:description" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta name="twitter:description" content="'. $descrip .'">'."\n";
     } else {
-	my $descrip ;
 	$descrip .= 'Attrova na palora o na frasi ntra li pruverbi e versi di puisia. ';
 	$descrip .= 'Find a word or phrase within the proverbs and verses of poetry.';
-	$ottxt .= '    <meta name="DESCRIPTION" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta property="og:description" content="'. $descrip .'">'."\n";
-	$ottxt .= '    <meta name="twitter:description" content="'. $descrip .'">'."\n";	
     }
-
-    ##  continue header
-    $ottxt .= '    <meta name="KEYWORDS" content="poetry, proverbs, Sicilian, Sicilian language">' ."\n";
-
-    ##  search information to add to URL
+    
+    ##  form the URL
+    my $urlref = 'https://dizziunariu.napizia.com/trova/';
     if ( $palori_str !~ /[a-z]/ && $autori_str !~ /[a-z]/ && $titulu_str !~ /[a-z]/ ) {
-
-	my $urlref = 'https://dizziunariu.napizia.com/trova/';
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";
-
+	my $blah = "do nothing";
     } else {
 	##  searches to add to the URL
 	my $addtourl ;
@@ -108,93 +83,18 @@ sub mk_header {
 	$addtourl =~ s/^\&/?/;
 	
 	##  add them to the URL
-	my $urlref = 'https://dizziunariu.napizia.com/trova/';
 	$urlref .= $addtourl ;
-
-	##  append to the HTML
-	$ottxt .= '    <meta property="og:url" content="'. $urlref .'">'."\n";
-	$ottxt .= '    <meta name="twitter:url" content="'. $urlref .'">'."\n";	    
     }
-
-    ##  image, og:type and twitter card
-    ## my $logopic = 'https://dizziunariu.napizia.com/config/napizia_logo-w-descrip.jpg';
-    my $logopic = 'https://dizziunariu.napizia.com/pics/trova-palora.jpg';
-    $ottxt .= '    <meta property="og:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta name="twitter:image" content="'. $logopic .'">'."\n";
-    $ottxt .= '    <meta property="og:type" content="website">'."\n";
-    $ottxt .= '    <meta name="twitter:site" content="@ProjectNapizia">'."\n";
-    $ottxt .= '    <meta name="twitter:card" content="summary_large_image">'."\n";
-
-    ##  continue header
-    $ottxt .= '    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">' . "\n" ;
-    $ottxt .= '    <meta name="Author" content="Eryk Wdowiak">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk.css">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_theme-blue.css">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/eryk_widenme.css">' . "\n" ;
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/dieli_forms.css">' . "\n" ;
-
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">'."\n";
-    $ottxt .= '    <link rel="stylesheet" type="text/css" href="/css/w3-fa-styles.css">'."\n";
     
-    $ottxt .= '    <link rel="icon" type="image/png" href="/config/napizia-icon.png">' . "\n" ;
-    $ottxt .= "\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-EN Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-en.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="SC-IT Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_sc-it.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="EN-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_en-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="IT-SC Dieli Dict"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/dieli_it-sc.xml">'."\n";
-    $ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    $ottxt .= '          title="Trova na Palora"'."\n";
-    $ottxt .= '          href="https://dizziunariu.napizia.com/search/trova-palora.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim Skipgram"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_skip.xml">'."\n";
-    #$ottxt .= '    <link rel="search" type="application/opensearchdescription+xml"'."\n";
-    #$ottxt .= '          title="Cosine Sim CBOW"'."\n";
-    #$ottxt .= '          href="https://dizziunariu.napizia.com/search/cosine-sim_cbow.xml">'."\n";
-    $ottxt .= "\n";
-    $ottxt .= '    <meta name="viewport" content="width=device-width, initial-scale=1">' . "\n" ;
-    $ottxt .= '    <style>' . "\n" ;
-    $ottxt .= '    p.zero { margin-top: 0em; margin-bottom: 0em; }' . "\n" ;
-    $ottxt .= '    div.transconj { position: relative; margin: auto; width: 50%;}' . "\n" ;
-    $ottxt .= '    @media only screen and (max-width: 835px) { ' . "\n" ;
-    $ottxt .= '        div.transconj { position: relative; margin: auto; width: 90%;}' . "\n" ;
-    $ottxt .= '    }' . "\n" ;
-
-    ## ##  spacing for second column of Dieli collections
-    ## ##  now handled by "eryk_widenme.css"
-    ## $ottxt .= '    ul.ddcoltwo { margin-top: 0em; }' . "\n" ;
-    ## $ottxt .= '    @media only screen and (min-width: 600px) { ' . "\n" ;
-    ## $ottxt .= '        ul.ddcoltwo { margin-top: 2.25em; }' . "\n" ;
-    ## $ottxt .= '    }' . "\n" ;
+    ##  prepare hash to return
+    my %otinfo = (
+	"card_title"    => $title_concat ,
+	"card_descrip"  => $descrip ,
+	"card_url"      => $urlref
+	);
     
-    $ottxt .= '    </style>' . "\n" ;
-    $ottxt .= '  </head>' . "\n" ;
-    $ottxt .= '  <body>' . "\n" ;
-
-    open( my $fh_topnav , "<:encoding(utf-8)" , $topnav ); ## || die "could not read:  $topnav";
-    while(<$fh_topnav>){ chomp;  $ottxt .= $_ . "\n" ; };
-    close $fh_topnav ;
-
-    $ottxt .= '  <!-- begin row div -->' . "\n" ;
-    $ottxt .= '  <div class="row">' . "\n" ;
-    $ottxt .= '    <div class="col-m-12 col-12">' . "\n" ;
-    $ottxt .= '      <h1>Trova na Palora</h1>'."\n";
-    $ottxt .= '    </div>' . "\n" ;
-    $ottxt .= '  </div>' . "\n" ;
-    $ottxt .= '  <!-- end row div -->' . "\n" ;
-    $ottxt .= '  ' . "\n" ;
-    $ottxt .= '  <!-- begin row div -->' . "\n" ;
-    $ottxt .= '  <div class="row">' . "\n" ;
-    
-    return $ottxt ;
+    ##  and return it
+    return %otinfo ;
 }
 
 ##  make word collection
@@ -202,7 +102,7 @@ sub mk_ricota {
 
     ##  prepare output
     my $othtml ;
-    $othtml .= '<div class="row" style="margin: 2px 0px; border: 1px solid black; background-color: rgb(255,255,204);">'."\n";
+    $othtml .= '<div class="row" style="margin: 7px 0px 2px 0px; border: 1px solid black; background-color: rgb(255,255,204);">'."\n";
     $othtml .= '  <div class="minicol"></div>'."\n";
     $othtml .= '  <div class="col-t-2"></div>'."\n";
     $othtml .= '  <div class="col-m-10 col-3">'."\n";
@@ -249,34 +149,12 @@ sub mk_ricota {
 
     ##  add some space on the bottom
     ## $othtml .= '<br>'."\n";
-
-    $othtml .= '  </div>' . "\n" ;
-    $othtml .= '  <!-- end row div -->'."\n";
-
+    
     ##  return the collection
     return $othtml;
 }
 
-
-##  make footer
-sub mk_footer {
-
-    ##  footer navigation
-    my $footnav = $_[0] ; 
-
-    ##  prepare output
-    my $othtml ;
-    
-    open( my $fh_footnav , "<:encoding(utf-8)" , $footnav ); ## || die "could not read:  $footnav";
-    while(<$fh_footnav>){ chomp;  $othtml .= $_ . "\n" ; };
-    close $fh_footnav ;
-
-    $othtml .= "  </body>"."\n";
-    $othtml .= "</html>"."\n";
-    
-    return $othtml ;
-}
-
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 ##  make form

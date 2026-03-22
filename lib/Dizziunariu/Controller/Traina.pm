@@ -21,7 +21,6 @@ package Dizziunariu::Controller::Traina;
 use strict;
 use warnings;
 #no warnings qw( uninitialized );
-
 use utf8;
 
 use Mojo::Base 'Mojolicious::Controller', -signatures;
@@ -38,13 +37,30 @@ use Napizia::TextTools;
 use Napizia::HtmlTraina;
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
+##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
-##  HTML FILES
+##  HTML STUFF
 ##  ==== =====
 
-##  navigation panels
-my $topnav_html = '/home/eryk/website/dizziunariu/public/config/eryk2-topnav.html';
-my $navbar_html = '/home/eryk/website/dizziunariu/public/config/eryk2-navbar.html';
+##  for HEAD of HTML page
+my $card_image = 'https://dizziunariu.napizia.com/pics/antonino-traina.jpg';
+my $card_keywords = 'Sicilian language, Sicilian dictionary, Antonino Traina';
+
+##  for HEADLINE (h1) of HTML page
+my $page_hline = 'Dizziunariu Traina';
+
+##  for STYLE of HTML page
+my $page_style;
+$page_style .= '<style>'."\n";
+$page_style .= 'div.transconj { position: static; margin: auto; width: 50%;}'."\n";
+$page_style .= '@media only screen and (max-width: 835px) { '."\n";
+$page_style .= '    div.transconj { position: relative; margin: auto; width: 90%;}'."\n";
+$page_style .= '}'."\n";
+$page_style .= 'p.cchiu { margin-top: 0.1em; margin-bottom: 0.1em; }'."\n";
+$page_style .= '@media only screen and (max-width: 600px) {'."\n";
+$page_style .= '    p.cchiu { margin-top: 0.5em; margin-bottom: 0.5em; }'."\n";
+$page_style .= '}'."\n";
+$page_style .= '</style>'."\n";
 
 ##  PARAMETERS
 ##  ==========
@@ -88,8 +104,26 @@ sub welcome ($self) {
     $par_palora = ( $par_palora eq '') ? undef : $par_palora ;
     $par_coll   = ( $par_coll   eq '') ? undef : $par_coll ;
 
+    ##  for HEAD of this HTML page
+    my %topinfo  = mk_topinfo( $par_palora );
+    my $card_title    = $topinfo{"card_title"};
+    my $card_url      = $topinfo{"card_url"};
+    my $card_descrip  = $topinfo{"card_descrip"};
+    
+    ##  prepare HTML page
     my $otpage = mk_htmlpage( $par_palora , $par_coll );
-    $self->render( htmlpage => $otpage );
+
+    ##  and render it
+    $self->render(
+	card_title    => $card_title ,
+	card_descrip  => $card_descrip , 
+	card_keywords => $card_keywords ,
+	card_url      => $card_url ,
+	card_image    => $card_image , 
+	page_style    => $page_style ,
+	page_hline    => $page_hline ,
+	htmlpage      => $otpage
+	);
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -118,7 +152,6 @@ sub mk_htmlpage {
 	##     * no "collection" defined
 	
 	##  landing page with alphabetical list of lists
-	$othtml .= mk_amtophtml($topnav_html ,"");
 	
 	$othtml .= "\n";
 	$othtml .= '<img src="/pics/antonino-traina.jpg" style="max-width: 600px;"'."\n";
@@ -140,7 +173,6 @@ sub mk_htmlpage {
 	##  browsing words one page of collection     
 	my $title_insert = $coll;
 	$title_insert =~ s/alfa_/ìnnici /;
-	$othtml .= mk_amtophtml($topnav_html , $title_insert );
 	$othtml .= make_alfa_coll( $coll , $amlsrf , $nupages );
 	
 	
@@ -148,7 +180,6 @@ sub mk_htmlpage {
 	
 	##  ERRORS, so ...
 	##  print landing page with alphabetical list of lists
-	$othtml .= mk_amtophtml($topnav_html ,"");
 	
 	$othtml .= "\n";
 	$othtml .= '<img src="/pics/antonino-traina.jpg" style="max-width: 600px;"'."\n";
@@ -166,7 +197,6 @@ sub mk_htmlpage {
 	##  my %lt_hash = %{ $ttline };
 	##  my @lineidxs = @{$hl_hash{$uc_disp}} ;
 	
-	$othtml .= mk_amtophtml($topnav_html , $palora );
 	$othtml .= '<div><h3 style="margin-top: 0em;">'; 
 	$othtml .= 'Nuovo vocabolario siciliano-italiano (1868)';
 	$othtml .= '</h3></div>'."\n"; 
@@ -189,10 +219,7 @@ sub mk_htmlpage {
     ## $othtml .= 'Attribuzioni-SpartiÔStissuModu 4.0 Internaziunali</a>.</small></p>'."\n";
     $othtml .= '<a href="https://creativecommons.org/licenses/by-sa/4.0/">'."\n";
     $othtml .= 'CC BY-SA&nbsp;4.0</a>.</small></p>'."\n";
-
-    $othtml .= "</div>"."\n";
-
-
+    
     ##  print the social media shares
     my $text_url   = 'https://dizziunariu.napizia.com/traina/';
     my $text_title;
@@ -232,9 +259,6 @@ sub mk_htmlpage {
     my $url   = uri_escape($text_url);
     my $title = uri_escape($text_title);
     $othtml .= mk_share( $url , $title );
-    
-    ##  print the bottom navigation panel and close
-    $othtml .= mk_foothtml($navbar_html);
     
     ##  return the output html
     return $othtml;

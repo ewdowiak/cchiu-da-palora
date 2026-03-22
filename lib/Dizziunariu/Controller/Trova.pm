@@ -1,6 +1,6 @@
 package Dizziunariu::Controller::Trova;
 
-##  queries the samples index
+##  "trova-palora.pl" -- queries the samples index
 ##  Copyright (C) 2026 Eryk Wdowiak
 ##
 ##  This program is free software: you can redistribute it and/or modify
@@ -57,6 +57,26 @@ my %smtitle = %{ $sm_ref->{smtitle} };
 my $topnav_html = '/home/eryk/website/dizziunariu/public/config/eryk2-topnav.html';
 my $navbar_html = '/home/eryk/website/dizziunariu/public/config/eryk2-navbar.html';
 
+##  for HEAD of HTML page
+# my $card_descrip;
+# $card_descrip .= 'Attrova na palora o na frasi ntra li pruverbi e versi di puisia. ';
+# $card_descrip .= 'Find a word or phrase within the proverbs and verses of poetry.';
+my $card_keywords = 'poetry, proverbs, Sicilian, Sicilian language';
+my $card_image = 'https://dizziunariu.napizia.com/pics/trova-palora.jpg';
+
+##  for HEADLINE (h1) of HTML page
+my $page_hline = 'Trova na Palora';
+
+##  for STYLE of HTML page
+my $page_style ;
+$page_style .= '<style>'."\n";
+## $page_style .= 'p.zero { margin-top: 0em; margin-bottom: 0em; }'."\n";
+$page_style .= 'div.transconj { position: relative; margin: auto; width: 50%;}'."\n";
+$page_style .= '@media only screen and (max-width: 835px) {'."\n";
+$page_style .= '    div.transconj { position: relative; margin: auto; width: 90%;}'."\n";
+$page_style .= '}'."\n";
+$page_style .= '</style>'."\n";
+
 ##  example to offer
 my $example;
 $example .= '<p style="margin-top: 0.5em; margin-bottom: 0.25em;"><i>pi esempiu:</i></p>'."\n";
@@ -79,9 +99,27 @@ sub welcome ($self) {
     $par_palori = ( $par_palori eq '') ? undef : $par_palori ;
     $par_autori = ( $par_autori eq '') ? undef : $par_autori ;
     $par_titulu = ( $par_titulu eq '') ? undef : $par_titulu ;
+
+    ##  for HEAD of this HTML page
+    my %topinfo = mk_hdinfo( $par_palori , $par_autori , $par_titulu );
+    my $card_title    = $topinfo{"card_title"};
+    my $card_url      = $topinfo{"card_url"};
+    my $card_descrip  = $topinfo{"card_descrip"};
     
+    ##  prepare HTML page
     my $otpage = mk_htmlpage( $par_palori , $par_autori , $par_titulu );
-    $self->render( htmlpage => $otpage );
+    
+    ##  and render it
+    $self->render(
+	card_title    => $card_title ,
+	card_descrip  => $card_descrip , 
+	card_keywords => $card_keywords ,
+	card_url      => $card_url ,
+	card_image    => $card_image , 
+	page_style    => $page_style ,
+	page_hline    => $page_hline ,
+	htmlpage      => $otpage
+	);
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -118,12 +156,6 @@ sub mk_htmlpage{
     $titulu_str = substr( $titulu_str , 0 , 48 );  ## (48 is form limit)
     $autori_str = substr( $autori_str , 0 , 24 );  ## (24 is form limit)
     
-    ##  header, form and footer
-    my $html_head = mk_header($topnav_html, $palori_str , $autori_str , $titulu_str );
-    my $html_form = mk_form( $palori_str , $autori_str , $titulu_str );
-    my $html_rcta = mk_ricota();
-    my $html_foot = mk_footer($navbar_html);
-
     ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
     # ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
     ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -556,11 +588,7 @@ sub mk_htmlpage{
     ##  OUTPUT the HTML
     ##  ====== === ====
 
-    my $htmlpage;
-    $htmlpage .= $html_head;
-    $htmlpage .= $html_form;
-    $htmlpage .= $otlines;
-    $htmlpage .= $html_rcta;
+
     
     ##  print the social media shares
     my $text_url   = 'https://dizziunariu.napizia.com/trova/';
@@ -588,11 +616,13 @@ sub mk_htmlpage{
     ##  make the shares
     my $url   = uri_escape($text_url);
     my $title = uri_escape($text_title);
-    $htmlpage .= mk_share( $url , $title );
     
-    ##  print bottom navigation panel
-    $htmlpage .= $html_foot;
-
+    ##  prepare the HTML page
+    my $htmlpage;
+    $htmlpage .= mk_form( $palori_str , $autori_str , $titulu_str );
+    $htmlpage .= $otlines;
+    $htmlpage .= mk_ricota();
+    $htmlpage .= mk_share( $url , $title );
     
     ##  return the HTML page
     return $htmlpage;
