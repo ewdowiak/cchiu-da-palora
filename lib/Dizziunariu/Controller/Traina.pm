@@ -104,8 +104,12 @@ sub welcome ($self) {
     $par_palora = ( $par_palora eq '') ? undef : $par_palora ;
     $par_coll   = ( $par_coll   eq '') ? undef : $par_coll ;
 
+    ##  get the version of the word in Traina Dictionary
+    my $hl_palora = scn_ucfirst( $par_palora );
+    $hl_palora  = ( ! defined $hl_hash{$hl_palora} ) ? undef : $hl_palora ;
+    
     ##  for HEAD of this HTML page
-    my %topinfo  = mk_topinfo( $par_palora );
+    my %topinfo  = mk_topinfo( $hl_palora , $par_coll );
     my $card_title    = $topinfo{"card_title"};
     my $card_url      = $topinfo{"card_url"};
     my $card_descrip  = $topinfo{"card_descrip"};

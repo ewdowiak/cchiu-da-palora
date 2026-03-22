@@ -426,25 +426,32 @@ sub print_traina {
 
 sub mk_topinfo {
 
-    my $headword = $_[0] ;
-    my $title_insert = $headword ;
-    $title_insert = ( $title_insert ne "" ) ? $title_insert .' :: ' : "" ;
+    my $headword = $_[0];
+    my $collectn = $_[1];
 
-    ##  and here's the TITLE
-    my $title_concat = $title_insert . 'Dizziunariu Traina :: Napizia';
-
-    ##  prepare the description
+    ##  prepare the description and title
     my $descrip ;
-    if ( ! defined $headword || $headword eq "" ) {
+    my $title_concat ;
+    
+    if ( (! defined $headword || $headword eq "") && (! defined $collectn || $collectn eq "") ) {
 	$descrip .= 'lu dizziunariu di Antonio Traina.';
-    } elsif ( $headword =~ /^ìnnici p/ ) {
-	$descrip .= $headword ." ";
-	$descrip .= 'dû dizziunariu di Antonio Traina.';
-    } else {
-	$descrip .= $headword ." ";
-	$descrip .= 'ntô dizziunariu di Antonio Traina.';
-    }
+	$title_concat = 'Dizziunariu Traina :: Napizia';
+	
+    } elsif ( $headword ne "" ) {
+	$descrip .= $headword .' ntô dizziunariu di Antonio Traina.';
+	$title_concat = $headword .' :: Dizziunariu Traina :: Napizia';
 
+    } elsif ( $collectn =~ /^alfa_p[0-2][0-9][0-9]$/ ) {
+	my $pnum = $collectn;
+	$pnum =~ s/^alfa_//;
+	$descrip .= 'ìnnici '. $pnum .' dû dizziunariu di Antonio Traina.';
+	$title_concat = 'ìnnici '. $pnum .' dû Dizziunariu Traina :: Napizia';
+	
+    } else {
+	$descrip .= 'lu dizziunariu di Antonio Traina.';
+	$title_concat = 'Dizziunariu Traina :: Napizia';
+    }
+    
     ##  form the URL
     my $urlref = 'https://dizziunariu.napizia.com/traina/';
     if ( ! defined $headword || $headword eq "" ) {
