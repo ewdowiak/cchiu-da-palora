@@ -14,7 +14,7 @@ Grazzii pi l'aiutu!
 
 ## project pages
 
-* [_Manifestu dûn Giùvini Sicilianu_](https://www.wdowiak.me/archive/sicilian/giuvini-sicilianu.shtml)
+* [_Manifestu d'un Giùvini Sicilianu_](https://www.wdowiak.me/archive/sicilian/giuvini-sicilianu.shtml)
 * [_Young Sicilian Manifesto_](https://www.wdowiak.me/archive/sicilian/young-sicilian.shtml)
 * [_Dizziunariu Dieli_](https://dizziunariu.napizia.com/dieli/)
 * [_Tradutturi Sicilianu_](https://translate.napizia.com/)
