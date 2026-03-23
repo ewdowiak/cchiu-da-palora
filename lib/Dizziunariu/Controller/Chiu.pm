@@ -40,6 +40,8 @@ use Napizia::HtmlChiu;
 use Napizia::HtmlDieli;
 use Napizia::HtmlTraina;
 
+my $home = $ENV{HOME};
+
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
@@ -49,24 +51,24 @@ my $adjusttwo =  -70 ;
 my $adjusttre =    0 ;
 
 ##  retrieve hashes and subroutines
-my $vthash  = retrieve('/home/eryk/website/dizziunariu/lib/stor/verb-tools' );
+my $vthash  = retrieve("$home/website/dizziunariu/lib/stor/verb-tools");
 my $vbconj  = $vthash->{vbconj};
 my $nounpls = $vthash->{nounpls};
 
-my $vnhash = retrieve('/home/eryk/website/dizziunariu/lib/stor/vocab-notes-plus' );
+my $vnhash = retrieve("$home/website/dizziunariu/lib/stor/vocab-notes-plus");
 my %vnotes = %{ $vnhash };
 
 ##  retrieve Traina dictionary and tools
-my $ttline = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina_line-to-traina' );
+my $ttline = retrieve("$home/website/dizziunariu/lib/stor/traina_line-to-traina");
 my %lt_hash = %{ $ttline };
 
-my $tthead = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina_hdword-to-line' );
+my $tthead = retrieve("$home/website/dizziunariu/lib/stor/traina_hdword-to-line");
 my %hl_hash = %{ $tthead };
 
-my $ttspan = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina_span-to-hdword' );
+my $ttspan = retrieve("$home/website/dizziunariu/lib/stor/traina_span-to-hdword");
 my %sh_hash = %{ $ttspan };
 
-my $ttlist = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina-list' );
+my $ttlist = retrieve("$home/website/dizziunariu/lib/stor/traina-list");
 my @ttarry = @{ ${ $ttlist->{ttarry} }{old_chiu_arry} };
 
 ##  smaller (older) list
@@ -118,7 +120,9 @@ sub welcome ($self) {
     my $card_keywords = $topinfo{"card_keywords"};
     
     ##  prepare HTML page
-    my $otpage = mk_htmlpage( $par_palora , $par_langs , $par_traina );
+    my %othash  = mk_htmlpage( $par_palora , $par_langs , $par_traina );
+    my $otpage  = $othash{htmlpage};
+    my $socials = $othash{socials};
 
     ##  and render it
     $self->render(
@@ -129,7 +133,8 @@ sub welcome ($self) {
 	card_image    => $card_image , 
 	page_style    => $page_style ,
 	page_hline    => $page_hline ,
-	htmlpage      => $otpage
+	htmlpage      => $otpage ,
+	socials       => $socials 
 	);
 }
 
@@ -288,8 +293,8 @@ sub mk_htmlpage{
 	
     }
     
-    ##  print list of collections
-    $htmlpage .= mk_ricota();
+    ## ##  list of collections now handled by template
+    ## # $htmlpage .= mk_ricota();
     
     ##  print the social media shares
     my $text_url   = 'https://dizziunariu.napizia.com/chiu/';
@@ -303,10 +308,11 @@ sub mk_htmlpage{
     $text_title  .= 'Chiù dâ Palora :: Napizia';
     my $url   = uri_escape($text_url);
     my $title = uri_escape($text_title);
-    $htmlpage .= mk_share( $url , $title );
+    my $socials = mk_share( $url , $title );
 
-    ##  return the HTML page
-    return $htmlpage;
+    ##  return the HTML page and the Socials
+    my %othash = ( htmlpage => $htmlpage , socials => $socials );
+    return %othash ;
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##

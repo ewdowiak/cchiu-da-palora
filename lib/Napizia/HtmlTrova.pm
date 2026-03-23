@@ -28,9 +28,8 @@ sub rid_accents { Napizia::TextTools::rid_accents( $_[0] );}
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = ("mk_hdinfo","mk_ricota","mk_form","mk_wdheader",
-	       "get_sample_author","find_poem_matches","mk_notex_list",
-	       "strip_line");
+our @EXPORT = ("mk_hdinfo","mk_form","mk_wdheader","get_sample_author",
+	       "find_poem_matches","mk_notex_list","strip_line");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -95,63 +94,6 @@ sub mk_hdinfo {
     
     ##  and return it
     return %otinfo ;
-}
-
-##  make word collection
-sub mk_ricota {
-
-    ##  prepare output
-    my $othtml ;
-    $othtml .= '<div class="row" style="margin: 7px 0px 2px 0px; border: 1px solid black; background-color: rgb(255,255,204);">'."\n";
-    $othtml .= '  <div class="minicol"></div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-3">'."\n";
-    $othtml .= '    <p style="margin-top: 0.25em; margin-bottom: 0.25em; padding-left: 0px;"><b><i>ricota di palori:</i></b></p>'."\n";
-    $othtml .= '    <ul class="ricota-margin">'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_aviri">aviri</a> &amp; '."\n";
-    $othtml .= '	<a href="/dieli/?search=COLL_have">to have</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_essiri">essiri</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_fari">fari</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-    $othtml .= '  </div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-2">'."\n";
-    $othtml .= '    <ul class="ricota-margin-plus">'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_italy">l'."'".'Italia</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_places">lu munnu</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_timerel">lu tempu</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_daysweek">li jorna</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-    $othtml .= '  </div>'."\n";
-    $othtml .= '  <div class="minicol"></div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-3">'."\n";
-    $othtml .= '    <ul class="ricota-margin-plus">'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_months">li misi</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_holidays">li festi</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_seasons">li staggiuni</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-    $othtml .= '  </div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-3">'."\n";
-    $othtml .= '    <p style="margin-top: 0.25em; margin-bottom: 0.25em;"><b><i>lingua siciliana:</i></b></p>'."\n";
-    $othtml .= '    <ul class="ricota-margin">'."\n";
-    $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="https://arbasicula.org/" '."\n";
-    $othtml .= '          target="_blank">Arba Sicula</a></li>'."\n";
-    $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.dieli.net/" '."\n";
-    $othtml .= '      	  target="_blank">Arthur Dieli</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-    $othtml .= '  </div>'."\n";
-    $othtml .= '</div>'."\n";
-    
-    ##  let's keep this thing wide on large screens
-    $othtml .= '<div class="widenme"></div>'."\n";
-
-    ##  add some space on the bottom
-    ## $othtml .= '<br>'."\n";
-    
-    ##  return the collection
-    return $othtml;
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##

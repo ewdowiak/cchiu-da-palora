@@ -38,12 +38,14 @@ use Napizia::TextTools;
 use Napizia::Utils;
 use Napizia::HtmlDieli;
 
+my $home = $ENV{HOME};
+
 ##  retrieve storables
-my $stor_dieli_en = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieli-en-dict');
-my $stor_dieli_sc = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieli-sc-dict');
-my $stor_dplus_sc = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieliplus-sc-dict');
-my $stor_dplus_en = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieliplus-en-dict');
-my $stor_dplus_it = retrieve('/home/eryk/website/dizziunariu/lib/stor/dieliplus-it-dict');
+my $stor_dieli_en = retrieve("$home/website/dizziunariu/lib/stor/dieli-en-dict");
+my $stor_dieli_sc = retrieve("$home/website/dizziunariu/lib/stor/dieli-sc-dict");
+my $stor_dplus_sc = retrieve("$home/website/dizziunariu/lib/stor/dieliplus-sc-dict");
+my $stor_dplus_en = retrieve("$home/website/dizziunariu/lib/stor/dieliplus-en-dict");
+my $stor_dplus_it = retrieve("$home/website/dizziunariu/lib/stor/dieliplus-it-dict");
 
 ##  for HEAD of HTML page
 my $card_descrip = 'Sicilian-Italian-English Dictionary by Arthur Dieli';
@@ -82,7 +84,9 @@ sub welcome ($self) {
     my $card_url = $topinfo{"card_url"};
 
     ##  prepare HTML page
-    my $otpage = mk_htmlpage( $par_search , $par_langs );
+    my %othash = mk_htmlpage( $par_search , $par_langs );
+    my $otpage  = $othash{htmlpage};
+    my $socials = $othash{socials};
 
     ##  and render it
     $self->render(
@@ -93,7 +97,8 @@ sub welcome ($self) {
 	card_image    => $card_image , 
 	page_style    => $page_style ,
 	page_hline    => $page_hline ,
-	htmlpage      => $otpage
+	htmlpage      => $otpage ,
+	socials       => $socials 
 	);
 }
 
@@ -280,12 +285,13 @@ sub mk_htmlpage{
     my $htmlpage ;
     $htmlpage .= mk_newform( $lgparm , $insearch );
     $htmlpage .= $otline  ;
-    $htmlpage .= thank_dieli();
-    $htmlpage .= mk_ricota();
-    $htmlpage .= $share;
+    ## ##  template now handles thanks and list of collections
+    ## # $htmlpage .= thank_dieli();
+    ## # $htmlpage .= mk_ricota();
 
-    ##  return the HTML page
-    return ( $htmlpage );
+    ##  return the HTML page and the Socials
+    my %othash = ( htmlpage => $htmlpage , socials => $share );
+    return %othash ;
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##

@@ -34,7 +34,7 @@ require Exporter;
 our @ISA = qw(Exporter);
 our @EXPORT = ("mk_nounhtml","mk_adjhtml", "mk_conjhtml",
 	       "mk_dielitrans","mk_notex","mk_notex_list","mk_showall",
-	       "mk_vnkcontent","mk_cctopinfo"); ## "ask_help"
+	       "mk_vnkcontent","mk_cctopinfo");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -396,6 +396,7 @@ sub mk_dielitrans {
     ##  clean up display
     $display  =~ s/_tdonly//;
     $redirect =~ s/_tdonly//;
+    $redirect =  ( $redirect eq "" ) ? $display : $redirect ;
     
     ##  outer DIV to limit width
     $ot .= '<div class="transconj">'."\n"; 
@@ -815,34 +816,5 @@ sub mk_cctopinfo {
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 # ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
-
-## sub ask_help {
-##
-##     ##  pass in the hash key and vocabulary notes
-##     my $palora  =   $_[0];
-##     my %vnotes  = %{$_[1]};
-##
-##     ##  strip part of speech identifier
-##     my $strip = $palora;
-##     $strip =~ s/_[a-z]*$//;
-##
-##     ##  what is the display?
-##     my $display = ( ! defined $vnotes{$palora}{display_as} ) ? $strip : $vnotes{$palora}{display_as} ; 
-##    
-##     ##  prepare request text
-##     my $request = '<i>Poi dirimi chiù dâ palora:</i> '. $display .'<i>? Clicca ccà!</i>';
-##
-##     ##  prepare output
-##     my $ot;
-##    
-##     ##  DIV to limit width
-##     $ot .= '<div class="transconj">'."\n";
-##     $ot .= '<p style="margin-bottom: 0.5em;"><a href="/cgi-bin/aiutami.pl?palora='. $palora .'">' ; 
-##     $ot .= $request . '</a></p>'."\n";
-##     $ot .= '</div>'."\n";
-##
-##     ##  ask for help!
-##     return $ot;
-## }
 
 1;

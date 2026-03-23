@@ -30,8 +30,7 @@ sub rid_accents { Napizia::TextTools::rid_accents( $_[0] );}
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = ("mk_search","translate","mk_ddtopinfo",
-	       "mk_newform","thank_dieli","mk_ricota");
+our @EXPORT = ("mk_search","translate","mk_ddtopinfo","mk_newform");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -363,87 +362,7 @@ sub mk_newform {
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
-sub thank_dieli {
-    my $ot ;
-    $ot .= '<p style="margin-top: 1.5em; margin-bottom: 0.50em; text-align: center;">Grazzii a ';
-    $ot .= '<b><a href="http://www.dieli.net/" target="_blank">' ;
-    $ot .= 'Arthur Dieli</a></b> pi cumpilari stu dizziunariu.</p>'."\n"; 
-    return $ot ;
-}
-
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
-##  make "word harvest"
-sub mk_ricota {
-
-    ##  prepare output
-    my $othtml ;
-
-    ##  open project DIV
-    $othtml .= '<div class="row" style="margin: 7px 0px 2px 0px; border: 1px solid black; background-color: rgb(255,255,204);">'."\n";
-    
-    ## $othtml .= '  <div class="minicol"></div>'."\n";
-    ## $othtml .= '  <div class="minicol"></div>'."\n";
-    ## $othtml .= '  <div class="minicol"></div>'."\n";
-    $othtml .= '  <div class="minicol"></div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-3">'."\n";
-
-    $othtml .= '    <p style="margin-top: 0.25em; margin-bottom: 0.25em; padding-left: 0px;"><b><i>ricota di palori:</i></b></p>'."\n";
-
-    $othtml .= '    <ul class="ricota-margin">'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_aviri">aviri</a> &amp; '."\n";
-    $othtml .= '	<a href="/dieli/?search=COLL_have">to have</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_essiri">essiri</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_fari">fari</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-
-    $othtml .= '  </div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-2">'."\n";
-
-    $othtml .= '    <ul class="ricota-margin-plus">'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_italy">l'."'".'Italia</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_places">lu munnu</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_timerel">lu tempu</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_daysweek">li jorna</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-
-    $othtml .= '  </div>'."\n";
-    $othtml .= '  <div class="minicol"></div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-3">'."\n";
-
-    $othtml .= '    <ul class="ricota-margin-plus">'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_months">li misi</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_holidays">li festi</a></li>'."\n";
-    $othtml .= '      <li><a href="/dieli/?search=COLL_seasons">li staggiuni</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-
-    $othtml .= '  </div>'."\n";
-    $othtml .= '  <div class="col-t-2"></div>'."\n";
-    $othtml .= '  <div class="col-m-10 col-3">'."\n";
-
-    $othtml .= '    <p style="margin-top: 0.25em; margin-bottom: 0.25em;"><b><i>lingua siciliana:</i></b></p>'."\n";
-    $othtml .= '    <ul class="ricota-margin">'."\n";
-    $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="https://arbasicula.org/" target="_blank">Arba Sicula</a></li>'."\n";
-    $othtml .= '      <li style="margin-bottom: 0.125em;"><a href="http://www.dieli.net/" target="_blank">Arthur Dieli</a></li>'."\n";
-    $othtml .= '    </ul>'."\n";
-
-    $othtml .= '  </div>'."\n";
-    $othtml .= '</div>'."\n";
-    ##  close project DIV
-    
-    ##  let's keep this thing wide on large screens
-    $othtml .= '<div class="widenme"></div>'."\n"; 
-
-    ##  add some space on the bottom
-    ## $othtml .= '<br>'."\n";
-
-    return $othtml ;
-}
-
+# ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ## #
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 1;

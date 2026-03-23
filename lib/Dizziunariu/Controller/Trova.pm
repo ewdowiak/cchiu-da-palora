@@ -39,13 +39,15 @@ use Napizia::PosTools;
 use Napizia::Utils;
 use Napizia::HtmlTrova;
 
+my $home = $ENV{HOME};
+
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
 
 ##  storables
-my $samples_idx = '/home/eryk/website/dizziunariu/lib/stor/samples-index';
-my $vocab_notes = '/home/eryk/website/dizziunariu/lib/stor/vocab-notes';
-my $verb_tools  = '/home/eryk/website/dizziunariu/lib/stor/verb-tools';
+my $samples_idx = "$home/website/dizziunariu/lib/stor/samples-index";
+my $vocab_notes = "$home/website/dizziunariu/lib/stor/vocab-notes";
+my $verb_tools  = "$home/website/dizziunariu/lib/stor/verb-tools";
 
 ##  retrieve authors, words and subroutines
 my $sm_ref  = retrieve( $samples_idx );
@@ -54,8 +56,8 @@ my %smauth  = %{ $sm_ref->{smauth} };
 my %smtitle = %{ $sm_ref->{smtitle} };
 
 ##  config
-my $topnav_html = '/home/eryk/website/dizziunariu/public/config/eryk2-topnav.html';
-my $navbar_html = '/home/eryk/website/dizziunariu/public/config/eryk2-navbar.html';
+my $topnav_html = "$home/website/dizziunariu/public/config/eryk2-topnav.html";
+my $navbar_html = "$home/website/dizziunariu/public/config/eryk2-navbar.html";
 
 ##  for HEAD of HTML page
 # my $card_descrip;
@@ -107,8 +109,10 @@ sub welcome ($self) {
     my $card_descrip  = $topinfo{"card_descrip"};
     
     ##  prepare HTML page
-    my $otpage = mk_htmlpage( $par_palori , $par_autori , $par_titulu );
-    
+    my %othash  = mk_htmlpage( $par_palori , $par_autori , $par_titulu );
+    my $otpage  = $othash{htmlpage};
+    my $socials = $othash{socials};
+
     ##  and render it
     $self->render(
 	card_title    => $card_title ,
@@ -118,7 +122,8 @@ sub welcome ($self) {
 	card_image    => $card_image , 
 	page_style    => $page_style ,
 	page_hline    => $page_hline ,
-	htmlpage      => $otpage
+	htmlpage      => $otpage ,
+	socials       => $socials 
 	);
 }
 
@@ -616,16 +621,18 @@ sub mk_htmlpage{
     ##  make the shares
     my $url   = uri_escape($text_url);
     my $title = uri_escape($text_title);
+    my $socials = mk_share( $url , $title );
     
     ##  prepare the HTML page
     my $htmlpage;
     $htmlpage .= mk_form( $palori_str , $autori_str , $titulu_str );
     $htmlpage .= $otlines;
-    $htmlpage .= mk_ricota();
-    $htmlpage .= mk_share( $url , $title );
+    ## ##  template now handles list of collections
+    ## # $htmlpage .= mk_ricota();
     
-    ##  return the HTML page
-    return $htmlpage;
+    ##  return the HTML page and the Socials
+    my %othash = ( htmlpage => $htmlpage , socials => $socials );
+    return %othash ;
 }
     
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##

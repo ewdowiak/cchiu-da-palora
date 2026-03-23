@@ -36,6 +36,8 @@ use URI::Escape;
 use Napizia::TextTools;
 use Napizia::HtmlTraina;
 
+my $home = $ENV{HOME};
+
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  
 
@@ -74,16 +76,16 @@ my $nupages = 300 ;
 ##  RETRIEVE TOOLS
 ##  ======== =====
 
-my $amhash = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina-list');
+my $amhash = retrieve("$home/website/dizziunariu/lib/stor/traina-list");
 my $amlsrf = $amhash->{amlist} ;
 
-# my $ttspan = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina_span-to-hdword' );
+# my $ttspan = retrieve("$home/website/dizziunariu/lib/stor/traina_span-to-hdword");
 # my %sh_hash = %{ $ttspan };
 
-my $tthead = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina_hdword-to-line' );
+my $tthead = retrieve("$home/website/dizziunariu/lib/stor/traina_hdword-to-line");
 my %hl_hash = %{ $tthead };
 
-my $ttline = retrieve('/home/eryk/website/dizziunariu/lib/stor/traina_line-to-traina' );
+my $ttline = retrieve("$home/website/dizziunariu/lib/stor/traina_line-to-traina");
 # my %lt_hash = %{ $ttline };
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -115,7 +117,9 @@ sub welcome ($self) {
     my $card_descrip  = $topinfo{"card_descrip"};
     
     ##  prepare HTML page
-    my $otpage = mk_htmlpage( $par_palora , $par_coll );
+    my %othash  = mk_htmlpage( $par_palora , $par_coll );
+    my $otpage  = $othash{htmlpage};
+    my $socials = $othash{socials};
 
     ##  and render it
     $self->render(
@@ -126,7 +130,8 @@ sub welcome ($self) {
 	card_image    => $card_image , 
 	page_style    => $page_style ,
 	page_hline    => $page_hline ,
-	htmlpage      => $otpage
+	htmlpage      => $otpage ,
+	socials       => $socials 
 	);
 }
 
@@ -217,7 +222,7 @@ sub mk_htmlpage {
     ## $othtml .= 'Sta paggina utilizza materiali dâ versioni di '."\n";
     $othtml .= 'Sta paggina utilizza materiali di '."\n";
     $othtml .= '<a href="https://it.wikisource.org/wiki/Nuovo_vocabolario_siciliano-italiano">';
-    $othtml .= 'Wikisource Talianu</a>, '."\n";
+    $othtml .= 'Wikisource Talianu</a> '."\n";
     $othtml .= 'ca veni pubblicatu sutta la licenza '."\n";
     ## $othtml .= '<a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons '."\n";
     ## $othtml .= 'Attribuzioni-SpartiÔStissuModu 4.0 Internaziunali</a>.</small></p>'."\n";
@@ -262,10 +267,11 @@ sub mk_htmlpage {
     ##  print the social media shares
     my $url   = uri_escape($text_url);
     my $title = uri_escape($text_title);
-    $othtml .= mk_share( $url , $title );
-    
-    ##  return the output html
-    return $othtml;
+    my $socials = mk_share( $url , $title );
+
+    ##  return the HTML page and the Socials
+    my %othash = ( htmlpage => $othtml , socials => $socials );
+    return %othash ;
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  

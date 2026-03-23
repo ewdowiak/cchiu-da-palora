@@ -1,2 +1,4 @@
 % layout 'napizia-scn';
 <%== $htmlpage %>
+
+<%== $socials %>
