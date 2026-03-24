@@ -312,7 +312,7 @@ sub mk_newform {
     $ottxt .= '<form enctype="multipart/form-data" action="/dieli/" method="get">'."\n";
     $ottxt .= '<table style="max-width:500px;"><tbody>'."\n";
     $ottxt .= '<tr><td colspan="2">' ; 
-    $ottxt .= '<input type=text name="search" value="'. $sc_search .'" size=36 maxlength=72>' ; 
+    $ottxt .= '<input type=text name="search" value="'. $sc_search .'" size=28 maxlength=72>' ; 
     $ottxt .= '</td></tr>'."\n";
     $ottxt .= '<tr><td>'."\n"; 
 
@@ -337,7 +337,7 @@ sub mk_newform {
     $ottxt .= '<form enctype="multipart/form-data" action="/dieli/" method="get">'."\n";
     $ottxt .= '<table style="max-width:500px;"><tbody>'."\n";
     $ottxt .= '<tr><td colspan="2">' ;
-    $ottxt .= '<input type=text name="search" value="'. $ie_search .'" size=36 maxlength=72>' ; 
+    $ottxt .= '<input type=text name="search" value="'. $ie_search .'" size=28 maxlength=72>' ; 
     $ottxt .= '</td></tr>'."\n";
     $ottxt .= '<tr><td>'."\n"; 
 

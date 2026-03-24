@@ -113,15 +113,15 @@ sub mk_form {
     $ottxt .= '<table style="max-width:500px;"><tbody>' ."\n";
     $ottxt .= '<tr><td><small>palora</small></td>' ."\n";
     $ottxt .= '<td colspan="2">' ."\n";
-    $ottxt .= '<input type=text name="palori" value="'. $in_palori .'" size=27 maxlength=48>' ; 
+    $ottxt .= '<input type=text name="palori" value="'. $in_palori .'" size=22 maxlength=48>' ; 
     $ottxt .= '</td></tr>' . "\n" ;
     $ottxt .= '<tr><td><small>tìtulu</small></td>' ."\n";
     $ottxt .= '<td colspan="2">' ."\n";
-    $ottxt .= '<input type=text name="titulu" value="'. $in_titulu .'" size=27 maxlength=48>' ; 
+    $ottxt .= '<input type=text name="titulu" value="'. $in_titulu .'" size=22 maxlength=48>' ; 
     $ottxt .= '</td></tr>' . "\n" ;
     $ottxt .= '<tr><td><small>autori</small></td>' ."\n";
     $ottxt .= '<td>' ."\n";
-    $ottxt .= '<input type=text name="autori" value="'. $in_autori .'" size=15 maxlength=24>' ; 
+    $ottxt .= '<input type=text name="autori" value="'. $in_autori .'" size=10 maxlength=24>' ; 
     $ottxt .= '</td>' . "\n" ;
     $ottxt .= '<td align="right">' . '<input type="submit" value="Attrova">' . "\n" ;
     ## $ottxt .= '<input type=reset value="Clear Form">' . "\n" ; 
