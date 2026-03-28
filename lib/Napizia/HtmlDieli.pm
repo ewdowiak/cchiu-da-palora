@@ -302,6 +302,7 @@ sub mk_newform {
     ##  the word searched for, and only if single-item
     my $insearch = $_[1];
     my $search = ( $insearch =~ /^COLL_|_OR_/ ) ? "" : $insearch;
+    $search =~ s/_SQUOTE_/'/g;
 
     ##  place that word in the correct search box
     my $sc_search = ($lgparm =~ /SCIT|SCEN/) ? $search : "" ;

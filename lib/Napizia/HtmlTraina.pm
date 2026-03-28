@@ -228,18 +228,19 @@ sub make_alfa_coll {
     ##  create navigation tools
     ( my $prev_page  =  $coll ) =~ s/alfa_p//  ;                     ##  subtract nothing
     ( my $next_page  =  $coll ) =~ s/alfa_p//  ;  $next_page +=  1 ; ##  add one 
-    $prev_page = ( $prev_page eq "00" ) ? undef : 'alfa_p' . sprintf( "%03d" , $prev_page - 1 ); ##  subtract one
-    $next_page = ( $next_page eq $nupages ) ? undef : 'alfa_p' . sprintf( "%03d" , $next_page ); ##  add nothing
+    $prev_page = ( $coll eq "alfa_p000"  )  ? undef : 'alfa_p' . sprintf( "%03d" , $prev_page - 1 ); ## subtract one
+    $next_page = ( $next_page eq $nupages ) ? undef : 'alfa_p' . sprintf( "%03d" , $next_page ); ## add nothing
 
     ##  create navigation
     my $navigation ;
     $navigation .= '  <!-- begin row div -->' . "\n";
     $navigation .= '  <div class="row">' . "\n";
     $navigation .= "\n";
-    $navigation .= '    <div class="col-4 col-m-4 vanish">' . "\n";
+    ## $navigation .= '    <div class="col-4 col-m-4 vanish">' . "\n";
+    $navigation .= '    <div class="col-4 col-m-4">' . "\n";
     if ( ! defined $prev_page ) { my $blah = "do nothing"; } else { 
 	my $prev_title = $lists{$prev_page}{title} ;
-	$navigation .= '<p class="zero" style="text-align: left;">&lt;&lt;&nbsp;' ;
+	$navigation .= '<p class="zero" style="text-align: left;">&lt;&lt;&nbsp; ' ;
 	$navigation .= '<a href="/traina/?coll=' . $prev_page . '">' . $prev_title . '</a>'; 
 	$navigation .= '</p>' . "\n";
     }
@@ -251,12 +252,13 @@ sub make_alfa_coll {
     $navigation .= '      </p>' . "\n";
     $navigation .= '    </div>' . "\n";
     $navigation .= "\n";
-    $navigation .= '    <div class="col-4 col-m-4 vanish">' . "\n";
+    ## $navigation .= '    <div class="col-4 col-m-4 vanish">' . "\n";
+    $navigation .= '    <div class="col-4 col-m-4">' . "\n";
     if ( ! defined $next_page ) { my $blah = "do nothing"; } else { 
 	my $next_title = $lists{$next_page}{title} ;
 	$navigation .= '<p class="zero" style="text-align: right;">' . "\n";
 	$navigation .= '<a href="/traina/?coll=' . $next_page . '">' . $next_title . '</a>';
-	$navigation .= '&nbsp;&gt;&gt;</p>' . "\n";
+	$navigation .= ' &nbsp;&gt;&gt;</p>' . "\n";
     }
     $navigation .= '    </div>' . "\n";
     $navigation .= '    ' . "\n";
@@ -333,6 +335,8 @@ sub print_traina {
     my $palora   =   $_[0];
     my @lineidxs = @{$_[1]};
     my %lt_hash  = %{$_[2]};
+    my $before   =   $_[3];
+    my $after    =   $_[4];
 
     ##  prepare output
     my $othtml;
@@ -363,6 +367,7 @@ sub print_traina {
 
 	    ##  get heading
 	    my $heading = $entry_parts[0];
+	    $heading =~ s/^<p>//;
 
 	    ##  get paragraphs
 	    my $alldefs = $entry_parts[1];
@@ -395,23 +400,37 @@ sub print_traina {
     
     ##  create navigation
     my $navigation ;
-    $navigation .= '  <!-- begin row div -->' . "\n";
-    $navigation .= '  <div class="row">' . "\n";
+    $navigation .= '  <!-- begin row div -->'."\n";
+    $navigation .= '  <div class="row">'."\n";
 
-    $navigation .= '    <div class="col-4 col-m-4 vanish">' . "\n";
-    $navigation .= '    </div>' . "\n";
+    ## $navigation .= '    <div class="col-4 col-m-4 vanish">'."\n";
+    $navigation .= '    <div class="col-4 col-m-4">'."\n";
+    if ( ! defined $before ) {
+	my $blah = "do nothing";
+    } else {
+	$navigation .= '      <p class="zero" style="text-align: left;">&lt;&lt;&nbsp; ';
+	$navigation .= '<a href="/traina/?palora='. $before .'">'. $before .'</a></p>'."\n";
+    }
+    $navigation .= '    </div>'."\n";
 
-    $navigation .= '    <div class="col-4 col-m-4">' . "\n";
-    $navigation .= '      <p class="zero" style="text-align: center;">' . "\n";
-    $navigation .= '	    <a href="/traina/">ìnnici</a>' . "\n";
-    $navigation .= '      </p>' . "\n";
-    $navigation .= '    </div>' . "\n";
+    $navigation .= '    <div class="col-4 col-m-4">'."\n";
+    $navigation .= '      <p class="zero" style="text-align: center;">'."\n";
+    $navigation .= '	    <a href="/traina/">ìnnici</a>'."\n";
+    $navigation .= '      </p>'."\n";
+    $navigation .= '    </div>'."\n";
 
-    $navigation .= '    <div class="col-4 col-m-4 vanish">' . "\n";
-    $navigation .= '    </div>' . "\n";
+    ## $navigation .= '    <div class="col-4 col-m-4 vanish">'."\n";
+    $navigation .= '    <div class="col-4 col-m-4">'."\n";
+    if ( ! defined $after ) {
+	my $blah = "do nothing";
+    } else {
+	$navigation .= '      <p class="zero" style="text-align: right;">';
+	$navigation .= '<a href="/traina/?palora='. $after .'">'. $after .'</a> &nbsp;&gt;&gt;</p>'."\n";
+    }
+    $navigation .= '    </div>'."\n";
 
-    $navigation .= '  </div>' . "\n";
-    $navigation .= '  <!-- end row div -->' . "\n";
+    $navigation .= '  </div>'."\n";
+    $navigation .= '  <!-- end row div -->'."\n";
 
     ##  append navigation
     $othtml .= $navigation;

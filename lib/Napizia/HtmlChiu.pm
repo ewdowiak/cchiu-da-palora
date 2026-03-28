@@ -397,6 +397,7 @@ sub mk_dielitrans {
     $display  =~ s/_tdonly//;
     $redirect =~ s/_tdonly//;
     $redirect =  ( $redirect eq "" ) ? $display : $redirect ;
+    $display  =~ s/_SQUOTE_/'/g;
     
     ##  outer DIV to limit width
     $ot .= '<div class="transconj">'."\n"; 

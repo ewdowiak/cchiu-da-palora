@@ -109,6 +109,18 @@ sub welcome ($self) {
     ##  get the version of the word in Traina Dictionary
     my $hl_palora = scn_ucfirst( $par_palora );
     $hl_palora  = ( ! defined $hl_hash{$hl_palora} ) ? undef : $hl_palora ;
+
+    ##  if the word is still undefined and there's no collection
+    if ( ! defined $hl_palora && ! defined $par_coll && ! defined $par_palora ) {
+	##  do nothing if the "palora" parameter not defined
+	my $blah = "do nothing";
+	
+    } elsif ( ! defined $hl_palora && ! defined $par_coll && lc(rid_accents($par_palora)) =~ /[a-z]/ ) {
+	##  but if the "palora" parameter is defined
+	my @amlist = @{$amlsrf};
+	my @pidxs  = grep { lc(rid_accents($amlist[$_])) eq lc(rid_accents($par_palora)) } (0..$#amlist);
+	$hl_palora = ( $#pidxs < 0 ) ? undef : $amlist[$pidxs[0]] ;
+    }
     
     ##  for HEAD of this HTML page
     my %topinfo  = mk_topinfo( $hl_palora , $par_coll );
@@ -117,7 +129,7 @@ sub welcome ($self) {
     my $card_descrip  = $topinfo{"card_descrip"};
     
     ##  prepare HTML page
-    my %othash  = mk_htmlpage( $par_palora , $par_coll );
+    my %othash  = mk_htmlpage( $hl_palora , $par_coll );
     my $otpage  = $othash{htmlpage};
     my $socials = $othash{socials};
 
@@ -179,7 +191,7 @@ sub mk_htmlpage {
 	##  
 	##  note:  arriving from the home page
 	
-	##  browsing words one page of collection     
+	##  browsing words one page of collection
 	my $title_insert = $coll;
 	$title_insert =~ s/alfa_/ìnnici /;
 	$othtml .= make_alfa_coll( $coll , $amlsrf , $nupages );
@@ -205,11 +217,22 @@ sub mk_htmlpage {
 	
 	##  my %lt_hash = %{ $ttline };
 	##  my @lineidxs = @{$hl_hash{$uc_disp}} ;
+
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+
+	##  get words before and after
+	my @amlist = @{$amlsrf};
+	my @pidxs  = grep {$amlist[$_] eq $palora} (0..$#amlist);
 	
+	my $before = ( $#pidxs < 0 || $pidxs[0] - 1 < 0        ) ? undef : $amlist[$pidxs[0] - 1] ;
+	my $after  = ( $#pidxs < 0 || $pidxs[0] + 1 > $#amlist ) ? undef : $amlist[$pidxs[0] + 1] ;
+	
+	##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
+
 	$othtml .= '<div><h3 style="margin-top: 0em;">'; 
 	$othtml .= 'Nuovo vocabolario siciliano-italiano (1868)';
 	$othtml .= '</h3></div>'."\n"; 
-	$othtml .= print_traina( $palora , $hl_hash{$palora}  , $ttline );
+	$othtml .= print_traina( $palora , $hl_hash{$palora}  , $ttline , $before , $after );
 	
     } 
     
@@ -217,7 +240,7 @@ sub mk_htmlpage {
     ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
     
     ##  close webpage
-    $othtml .= '<p style="margin: 0.20em auto; text-align: center;"><small>';
+    $othtml .= '<p style="margin: 1.0em auto 0.20em auto; text-align: center; font-size: 0.80em;">'; ##<small>';
     ## $othtml .= 'La vuci di Traina veni dû '."\n";
     ## $othtml .= 'Sta paggina utilizza materiali dâ versioni di '."\n";
     $othtml .= 'Sta paggina utilizza materiali di '."\n";
@@ -227,7 +250,7 @@ sub mk_htmlpage {
     ## $othtml .= '<a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons '."\n";
     ## $othtml .= 'Attribuzioni-SpartiÔStissuModu 4.0 Internaziunali</a>.</small></p>'."\n";
     $othtml .= '<a href="https://creativecommons.org/licenses/by-sa/4.0/">'."\n";
-    $othtml .= 'CC BY-SA&nbsp;4.0</a>.</small></p>'."\n";
+    $othtml .= 'CC BY-SA&nbsp;4.0</a>.</p>'."\n";## </small></p>'."\n";
     
     ##  print the social media shares
     my $text_url   = 'https://dizziunariu.napizia.com/traina/';
