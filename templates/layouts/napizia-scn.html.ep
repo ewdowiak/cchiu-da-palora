@@ -15,8 +15,8 @@
     <meta property="og:description" content="<%= $in_descrip %>">
     <meta name="twitter:description" content="<%= $in_descrip %>">
     <meta name="KEYWORDS" content="<%= $in_keywords %>">
-    <meta property="og:url" content="<%= $in_url %>">
-    <meta name="twitter:url" content="<%= $in_url %>">
+    <meta property="og:url" content="<%== $in_url %>">
+    <meta name="twitter:url" content="<%== $in_url %>">
     <meta property="og:image" content="<%= $in_image %>">
     <meta name="twitter:image" content="<%= $in_image %>">
     <meta property="og:type" content="website">

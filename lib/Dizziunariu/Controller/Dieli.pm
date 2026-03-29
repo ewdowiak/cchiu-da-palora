@@ -77,16 +77,13 @@ sub welcome ($self) {
     ##  retrieve parameters
     my $par_search = $self->param('search') || '';
     my $par_langs  = $self->param('langs')  || '';
-
-    ##  for HEAD of this HTML page
-    my %topinfo  = mk_ddtopinfo( $par_search , $par_langs );
-    my $card_title = $topinfo{"card_title"};
-    my $card_url = $topinfo{"card_url"};
-
+    
     ##  prepare HTML page
     my %othash = mk_htmlpage( $par_search , $par_langs );
     my $otpage  = $othash{htmlpage};
     my $socials = $othash{socials};
+    my $card_title = $othash{card_title};
+    my $card_url = $othash{card_url};
 
     ##  and render it
     $self->render(
@@ -239,11 +236,18 @@ sub mk_htmlpage{
 		    }
 		}
 		@subsearches = uniq(@subsearches);
+
+		my @lcrids;
+		foreach my $subsearch (@subsearches) {
+		    my $lcrid = rid_accents( scn_lowercase( $subsearch ) );
+		    push( @lcrids , $lcrid );
+		}
+		@lcrids = uniq( @lcrids );
 		
-		if ( $#subsearches > -1 ) {
+		if ( $#lcrids > -1 ) {
 		    my $pclass = ' style="margin-top: 0em; margin-bottom: 0.35em;"';
 		    $otline .= '<div align="center" style="margin-bottom: 0.5em; margin-top: 1.0em;">'."\n";
-		    $otline .= mk_search( $rquest, \@subsearches , $dieli_slang , $lgparm , $pclass ,"BeNice");
+		    $otline .= mk_search( $rquest, \@lcrids , $dieli_slang , $lgparm , $pclass ,"BeNice");
 		    $otline .= '</div>'."\n";
 		    
 		} else {
@@ -290,7 +294,11 @@ sub mk_htmlpage{
     ## # $htmlpage .= mk_ricota();
 
     ##  return the HTML page and the Socials
-    my %othash = ( htmlpage => $htmlpage , socials => $share );
+    my %othash = ( htmlpage => $htmlpage ,
+		   socials => $share ,
+		   card_title => $text_title ,
+		   card_url => $text_url
+	);
     return %othash ;
 }
 
@@ -318,6 +326,10 @@ sub fetch_pagetitle {
     $lgtext =~ s/SCEN/Sc-En/;
     $lgtext =~ s/SCIT/Sc-It/;
 
+    ##  lang parameter if collection
+    $lgtext = ( $search =~ /COLL_/ ) ? "Sc-En" : $lgtext ;
+    $lgtext = ( $search =~ /COLL_have/ ) ? "En-Sc" : $lgtext ;
+
     ##  clean collections
     $search =~ s/COLL_aviri/ricota - aviri/; 
     $search =~ s/COLL_have/ricota - to have/;
@@ -331,9 +343,10 @@ sub fetch_pagetitle {
     $search =~ s/COLL_holidays/ricota - festi/;
     $search =~ s/COLL_seasons/ricota - staggiuni/;
     $search =~ s/COLL_/ricota - /;
-	    
+    
     ##  text of title
-    my $ot_title = ( $search eq "" ) ? "" : $search .' ('. $lgtext .') :: ';
+    my $lg_textparen = ( $lgtext eq "" ) ? "" : ' ('. $lgtext .')';
+    my $ot_title = ( $search eq "" ) ? "" : $search . $lg_textparen .' :: ';
     
     ##  return the title
     return $ot_title;

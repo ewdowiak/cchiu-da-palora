@@ -30,7 +30,7 @@ sub rid_accents { Napizia::TextTools::rid_accents( $_[0] );}
 
 require Exporter;
 our @ISA = qw(Exporter);
-our @EXPORT = ("mk_search","translate","mk_ddtopinfo","mk_newform");
+our @EXPORT = ("mk_search","translate","mk_newform");
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
   ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
@@ -225,70 +225,6 @@ sub translate {
     
     ##  return the results
     return( \@inword , \@inpart , \@otword , \@otpart , \@linkto ); 
-}
-
-##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
-
-sub mk_ddtopinfo {
-
-    ##  the word searched for and the language parameter
-    my $search = $_[0];
-    my $lgtext = $_[1];
-
-    ##  if not defined
-    $search = ( ! defined $search ) ? "" : $search ;
-    $lgtext = ( ! defined $lgtext ) ? "" : $lgtext ;
-
-    ##  hold the word searched for and the language parameter
-    my $param_search = $search;
-    my $param_lgtext = ( $lgtext =~ /^ENSC$|^ITSC$|^SCEN$|^SCIT$/) ? "" : $lgtext ;
-    
-    ##  clean up the text
-    $lgtext =~ s/ENSC/En-Sc/;
-    $lgtext =~ s/ITSC/It-Sc/;
-    $lgtext =~ s/SCEN/Sc-En/;
-    $lgtext =~ s/SCIT/Sc-It/;
-    
-    ##  the word searched for -- only if single-item
-    $search =~ s/_SQUOTE_/'/g;
-    $search =~ s/_OR_.*$//;
-
-    $search =~ s/COLL_aviri/ricota - aviri/; 
-    $search =~ s/COLL_have/ricota - to have/;
-    $search =~ s/COLL_essiri/ricota - essiri/;
-    $search =~ s/COLL_fari/ricota - fari/;
-    $search =~ s/COLL_places/ricota - munnu/;
-    $search =~ s/COLL_italy/ricota - Italia/;
-    $search =~ s/COLL_timerel/ricota - tempu/;
-    $search =~ s/COLL_daysweek/ricota - jorna/;
-    $search =~ s/COLL_months/ricota - misi/;
-    $search =~ s/COLL_holidays/ricota - festi/;
-    $search =~ s/COLL_seasons/ricota - staggiuni/;
-    $search =~ s/COLL_/ricota - /;
-	    
-    ##  text to insert into the title
-    my $title_insert = ( $search eq "" ) ? "" : $search .' ('. $lgtext .') :: ';
-
-    ##  and here's the TITLE
-    my $title_concat = $title_insert . 'Dizziunariu Dieli :: Napizia';
-
-    ##  form the URL
-    my $urlref = 'https://dizziunariu.napizia.com/dieli/';
-    if ( $param_search eq "" ) {
-	my $blah = 'do nothing';
-    } else {
-	$urlref .= '?search='. $param_search ;
-	$urlref .= ($param_lgtext eq "") ? "" : "&langs=". $param_lgtext ;	
-    }
-
-    ##  prepare hash to return
-    my %otinfo = (
-	"card_title" => $title_concat ,
-	"card_url" => $urlref
-	);
-    
-    ##  and return it
-    return %otinfo ;
 }
 
 ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##  ##
