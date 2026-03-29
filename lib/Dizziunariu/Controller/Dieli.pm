@@ -85,6 +85,9 @@ sub welcome ($self) {
     my $card_title = $othash{card_title};
     my $card_url = $othash{card_url};
 
+    ##  clean URL
+    $card_url = ($par_search eq '') ? 'https://dizziunariu.napizia.com/dieli/' : $card_url ;
+
     ##  and render it
     $self->render(
 	card_title    => $card_title ,
